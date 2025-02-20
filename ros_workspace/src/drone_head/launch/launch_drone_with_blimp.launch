@@ -1,0 +1,51 @@
+<launch>
+
+
+    <!-- Set GAZEBO_MODEL_PATH -->
+    <!--  <env name="GAZEBO_MODEL_PATH" value="$(optenv GAZEBO_MODEL_PATH):$(find drone_head)/models" /> -->
+    <!--   <env name="GAZEBO_MODEL_PATH" value="${GAZEBO_MODEL_PATH}:$(find drone_head)/models/AprilTagBox"/>
+    <env name="GAZEBO_RESOURCE_PATH" value="${GAZEBO_RESOURCE_PATH}:$(find drone_head)/models/AprilTagBox"/> -->
+
+    <!-- Arguments/Variables Declaration -->
+    <arg name="camera_namespace" default="/hummingbird" doc="Namespace of the camera"/>
+    <arg name="image_topic" default="image_raw" doc="Image topic to subscribe to"/>
+    <arg name="camera_info_topic" default="camera_info" doc="Camera info topic"/>
+    
+    <!-- launching controller -->
+    <include file="$(find drone_relative_position_cascaded_pid_controller)/launch/launch_drone_waypoints_interface.launch"/>
+
+    <!-- launch the AprilTag Package to detect AprilTags -->
+    <include file="$(find apriltag_ros)/launch/continuous_detection.launch">
+        <arg name="camera_name" value="$(arg camera_namespace)"/>
+        <arg name="image_topic" value="$(arg image_topic)"/>
+    </include>
+
+    <!-- launch a RQT view to visualize the camera data -->
+    <node name="rqt_image_view" pkg="rqt_image_view" type="rqt_image_view" respawn="false" output="screen"/>
+
+    <!-- Launch Reader Node to read AprilTags -->
+    <node name="read_node" pkg="drone_head" type="read.py" output="screen"/> 
+    <!-- Launch waypoint calculator node -->
+    <node name="calculate_node" pkg="drone_head" type="waypoint_calculator.py" output="screen"/> 
+    <!-- launch emergency waypoint calculator node -->
+    <node name="emergency_node" pkg="drone_head" type="emergency.py" output="screen"/> 
+    <!-- launch search node -->
+    <node name="search_node" pkg="drone_head" type="search.py" output="screen"/>  
+    <!-- launch velocity estimator node -->
+    <node name="velocity_estimator" pkg="drone_head" type="send_velocity.py" output="screen"/> 
+    <!-- Spawn blimp moving in Y Axis -->
+    <node name="spawn_and_move_blimp_node" pkg="drone_head" type="spawn_and_move_blimp.py" output="screen"/>
+    <!-- spawn blimp moving in X axis -->
+    <!-- <node name="spawn_and_move_x_node" pkg="drone_head" type="spawn_move_in_x.py" output="screen"/> -->  
+    <!-- Spawn blimp moving in circular -->
+    <!-- <node name="spawn_and_move_circular_node" pkg="drone_head" type="spawn_move_circular.py" output="screen"/> -->    
+    <!-- Spawn blimp moving in helical motion -->
+    <!-- <node name="spawn_and_move_circularwavy_node" pkg="drone_head" type="spawn_move_circular_wavy.py" output="screen"/> --> _   
+    
+
+    <!-- spawn urdf model (DOESNT WORK) -->
+    <!-- <node name="spawn_urdf_node" pkg="drone_head" type="spawn_urdf.py" output="screen"/>  -->
+    
+    <!--Old-->
+    <!-- <node name="reader_node" pkg="drone_head" type="reader.py" output="screen"/>  -->
+  </launch>

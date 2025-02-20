@@ -1,0 +1,53 @@
+source devel/setup.bash
+
+Terminal 1: Abro gazeebo con dron y apriltag
+roslaunch rotors_description drone.launch
+
+Terminal 2: Pongo apriltags box en posición específica en el espacio
+roslaunch drone_head set_position_of_apriltag_box.launch
+
+Terminal 3: Muevo el dron a cierta posición y orientación
+rostopic pub /hummingbird/command/pose geometry_msgs/PoseStamped "header:
+  seq: 0
+  stamp:
+    secs: 0
+    nsecs: 0
+  frame_id: ''
+pose:
+  position:
+    x: -1.0
+    y: 0.0
+    z: 3.0
+  orientation:
+    x: 0.0
+    y: 0.0
+    z: 0.0
+    w: 1.0" -r100
+	
+Terminal 4: Inicio detección de apriltags
+roslaunch apriltag_ros continuous_detection.launch
+
+Comandos varios:
+Ver tópicos actuales
+rostopic list
+
+Veo lo que está publicando el nodo de detección de tags
+rostopic echo /tag_detections
+
+Veo lo que publica el nodo de odometría del dron
+rostopic echo /hummingbird/real_odometry_sensor/odometry
+
+Veo lo que publica el nodo de odometría del apriltags box
+rostopic echo /apriltag_box/real_odometry_sensor/pose
+
+Visualizo lo que está sucediendo en la simulación (transformación de coordenadas
+o las cámaras, etc)
+rviz
+
+Veo en un esquema de árboles las relaciones de coordenadas
+rosrun rqt_tf_tree rqt_tf_tree 
+
+
+
+
+

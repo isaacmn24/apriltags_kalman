@@ -1,0 +1,135 @@
+
+
+<?xml version="1.0"?>
+<robot name="AprilTagGroup">
+
+    <!-- Properties of the materials used in this robot -->
+  <material name="blaasdfadfck">
+    <color rgba="0 0 0 1.0"/> <!-- RGBA: Black color -->
+  </material>
+
+  <!-- Link: body of the box -->
+  <link name="box_body">
+    <visual>
+      <geometry>
+        <box size="1 1 1"/> <!-- Define the size of the box here -->
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <material name="blaasdfadfck"/>
+    </visual>
+
+    <collision>
+      <geometry>
+        <box size="1 1 1"/> <!-- Define the size of the box here -->
+      </geometry>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </collision>
+
+    <inertial>
+      <mass value="1"/> <!-- Define the mass of the box -->
+      <inertia ixx="0.083" ixy="0" ixz="0" iyy="0.083" iyz="0" izz="0.083"/> <!-- These are approximate values for a box of size 1x1x1 and mass of 1kg. Adjust appropriately. -->
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </inertial>
+  </link>
+
+<!--    <link name="Apriltag36_11_00001_main">
+         <visual>
+            <origin xyz="0 0 0" rpy="0 -0 0"/>
+            <geometry>
+                <box size="1 1 0.01"/>
+            </geometry>
+            <material name="Apriltag36_11_00001_material">
+                <texture filename="file:///home/mahmoud/catkin_ws/src/drone_head/models/AprilTagBox/Apriltag36_11_00001/materials/scripts/Apriltag.material"/>
+                <color rgba="1 1 1 1"/> 
+            </material>
+        </visual>
+    </link>
+
+    <joint name="joint_Base_01" type="fixed">
+        <parent link="box_body"/>
+        <child link="Apriltag36_11_00001_main"/>
+        <origin xyz="0.513149 0.471565 0.484768" rpy="2.11094 -1.56599 -0.540157"/>
+    </joint>
+  -->
+<gazebo reference="Apriltag36_11_00002_main">
+    <material name="Apriltag36_11_00001">
+                    <script>
+                        <uri>"file://~/home/mahmoud/catkin_ws/src/drone_head/models/AprilTagBox/Apriltag36_11_00001/materials/scripts/Apriltag.material"</uri>
+                        <name>Gazebo/Apriltag36_11_00001</name>
+                    </script>
+                    <color rgba="1 1 1 1"/>
+<!--                     <texture filename="file://~/home/mahmoud/catkin_ws/src/drone_head/models/AprilTagBox/Apriltag36_11_00002/materials/textures/tag36_11_00002.png"/>
+ -->            </material>
+</gazebo>
+
+    
+
+    <link name="Apriltag36_11_00002_main">
+          <visual>
+            <origin xyz="0 0 0" rpy="0 -0 0"/>
+            <geometry>
+                <box size="1 1 0.01"/>
+            </geometry>
+            
+            <!-- <material name="aprasdasdadsasdiltag2">
+                <texture filename="package://drone_head/models/AprilTagBox/Apriltag36_11_00002/materials/textures/tag36_11_00002.png"/>
+                <color rgba="1 1 1 0"/> 
+            </material> -->
+            <!-- <material name="Apriltag36_11_00002_material">
+                <texture filename="file:///home/mahmoud/catkin_ws/src/drone_head/models/AprilTagBox/Apriltag36_11_00002/materials/textures/tag36_11_00002.png"/>
+                 <color rgba="1 1 1 1"/>     
+            </material> -->
+        </visual>
+    </link>
+
+
+    <joint name="joint_Base_02" type="fixed">
+        <parent link="box_body"/>
+        <child link="Apriltag36_11_00002_main"/>
+        <origin xyz="1.01878 -0.017997 0.484863" rpy="-2.59221 -1.56766 -0.549378"/>
+    </joint>
+<!-- 
+    <link name="Apriltag36_11_00003_main">
+        <visual>
+            <origin xyz="0 0 0" rpy="0 -0 0"/>
+            <geometry>
+                <box size="1 1 0.01"/>
+            </geometry>
+            <material name="Apriltag36_11_00003_material">
+                <texture filename="file:///home/mahmoud/catkin_ws/src/drone_head/models/AprilTagBox/Apriltag36_11_00003/materials/textures/tag36_11_00003.png"/>
+            </material>
+        </visual>
+    </link>
+
+
+    <joint name="joint_Base_03" type="fixed">
+        <parent link="BaseCuboid"/>
+        <child link="Apriltag36_11_00003_main"/>
+        <origin xyz="0.020301 -0.025627 0.4888" rpy="1.56864 -1.55855 1.55813"/>
+    </joint>
+
+
+    <link name="Apriltag36_11_00004_main">
+         <visual>
+            <origin xyz="0 0 0" rpy="0 -0 0"/>
+            <geometry>
+                <box size="1 1 0.01"/>
+            </geometry>
+            <material name="Apriltag36_11_00004_material">
+                <texture filename="file:///home/mahmoud/catkin_ws/src/drone_head/models/AprilTagBox/Apriltag36_11_00004/materials/textures/tag36_11_00004.png"/>
+            </material>
+        </visual>
+    </link>
+
+
+    <joint name="joint_Base_04" type="fixed">
+        <parent link="BaseCuboid"/>
+        <child link="Apriltag36_11_00004_main"/>
+        <origin xyz="0.526244 -0.524303 0.488794" rpy="1.59994 -1.55729 3.11245"/>
+    </joint> -->
+
+
+    <gazebo>
+        <static>true</static>
+    </gazebo>
+</robot>

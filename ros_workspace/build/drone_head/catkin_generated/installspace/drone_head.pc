@@ -1,0 +1,8 @@
+prefix=/home/isaac/Downloads/isaac_ws/install
+
+Name: drone_head
+Description: Description of drone_head
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

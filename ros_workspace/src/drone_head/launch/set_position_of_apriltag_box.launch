@@ -1,0 +1,21 @@
+<launch>
+    <!-- Arguments -->
+    <arg name="model_name" default="apriltag_box"/>
+    <arg name="x" default="1.0"/>
+    <arg name="y" default="0.0"/>
+    <arg name="z" default="3.0"/>
+    <arg name="roll" default="0.0"/>
+    <arg name="pitch" default="0.0"/>
+    <arg name="yaw" default="0.0"/>
+
+    <!-- Launch the Python node -->
+    <node name="set_apriltag_box_position_node" pkg="drone_head" type="set_position_of_apriltag_box.py" output="screen">
+        <param name="model_name" value="$(arg model_name)"/>
+        <param name="x" value="$(arg x)"/>
+        <param name="y" value="$(arg y)"/>
+        <param name="z" value="$(arg z)"/>
+        <param name="roll" value="$(arg roll)"/>
+        <param name="pitch" value="$(arg pitch)"/>
+        <param name="yaw" value="$(arg yaw)"/>
+    </node>
+</launch>
