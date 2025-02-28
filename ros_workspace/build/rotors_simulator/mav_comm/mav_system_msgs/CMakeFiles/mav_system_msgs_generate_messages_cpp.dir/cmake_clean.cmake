@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/isaac/Downloads/isaac_ws/devel/include/mav_system_msgs/CpuInfo.h"
-  "/home/isaac/Downloads/isaac_ws/devel/include/mav_system_msgs/ProcessInfo.h"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/include/mav_system_msgs/CpuInfo.h"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/include/mav_system_msgs/ProcessInfo.h"
   "CMakeFiles/mav_system_msgs_generate_messages_cpp"
 )
 

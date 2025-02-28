@@ -1,8 +1,8 @@
-# Install script for directory: /home/isaac/Downloads/isaac_ws/src/drone_head
+# Install script for directory: /home/isaac/Downloads/apriltags_kalman/ros_workspace/src/drone_head
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/isaac/Downloads/isaac_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/isaac/Downloads/apriltags_kalman/ros_workspace/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -38,21 +38,21 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/isaac/Downloads/isaac_ws/build/drone_head/catkin_generated/installspace/drone_head.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/drone_head/catkin_generated/installspace/drone_head.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/drone_head/cmake" TYPE FILE FILES
-    "/home/isaac/Downloads/isaac_ws/build/drone_head/catkin_generated/installspace/drone_headConfig.cmake"
-    "/home/isaac/Downloads/isaac_ws/build/drone_head/catkin_generated/installspace/drone_headConfig-version.cmake"
+    "/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/drone_head/catkin_generated/installspace/drone_headConfig.cmake"
+    "/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/drone_head/catkin_generated/installspace/drone_headConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/drone_head" TYPE FILE FILES "/home/isaac/Downloads/isaac_ws/src/drone_head/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/drone_head" TYPE FILE FILES "/home/isaac/Downloads/apriltags_kalman/ros_workspace/src/drone_head/package.xml")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/drone_head" TYPE PROGRAM FILES "/home/isaac/Downloads/isaac_ws/build/drone_head/catkin_generated/installspace/set_position_of_apriltag_box.py")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/drone_head" TYPE PROGRAM FILES "/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/drone_head/catkin_generated/installspace/set_position_of_apriltag_box.py")
 endif()
 

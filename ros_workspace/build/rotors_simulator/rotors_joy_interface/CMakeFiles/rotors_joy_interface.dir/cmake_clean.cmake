@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/isaac/Downloads/isaac_ws/devel/lib/rotors_joy_interface/rotors_joy_interface"
-  "/home/isaac/Downloads/isaac_ws/devel/lib/rotors_joy_interface/rotors_joy_interface.pdb"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/lib/rotors_joy_interface/rotors_joy_interface"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/lib/rotors_joy_interface/rotors_joy_interface.pdb"
   "CMakeFiles/rotors_joy_interface.dir/src/joy.cpp.o"
 )
 

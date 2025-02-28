@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/isaac/Downloads/isaac_ws/devel/lib/librotors_gazebo_controller_interface.pdb"
-  "/home/isaac/Downloads/isaac_ws/devel/lib/librotors_gazebo_controller_interface.so"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/lib/librotors_gazebo_controller_interface.pdb"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/lib/librotors_gazebo_controller_interface.so"
   "CMakeFiles/rotors_gazebo_controller_interface.dir/src/gazebo_controller_interface.cpp.o"
 )
 

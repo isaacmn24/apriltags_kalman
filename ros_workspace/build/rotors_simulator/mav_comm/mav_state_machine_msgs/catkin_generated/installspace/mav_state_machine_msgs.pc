@@ -1,4 +1,4 @@
-prefix=/home/isaac/Downloads/isaac_ws/install
+prefix=/home/isaac/Downloads/apriltags_kalman/ros_workspace/install
 
 Name: mav_state_machine_msgs
 Description: Description of mav_state_machine_msgs

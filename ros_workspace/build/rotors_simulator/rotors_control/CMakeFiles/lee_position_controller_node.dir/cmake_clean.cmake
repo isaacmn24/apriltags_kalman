@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/isaac/Downloads/isaac_ws/devel/lib/rotors_control/lee_position_controller_node"
-  "/home/isaac/Downloads/isaac_ws/devel/lib/rotors_control/lee_position_controller_node.pdb"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/lib/rotors_control/lee_position_controller_node"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/lib/rotors_control/lee_position_controller_node.pdb"
   "CMakeFiles/lee_position_controller_node.dir/src/nodes/lee_position_controller_node.cpp.o"
 )
 

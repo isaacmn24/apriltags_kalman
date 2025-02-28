@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/isaac/Downloads/isaac_ws/devel/lib/liblee_position_controller.pdb"
-  "/home/isaac/Downloads/isaac_ws/devel/lib/liblee_position_controller.so"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/lib/liblee_position_controller.pdb"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/lib/liblee_position_controller.so"
   "CMakeFiles/lee_position_controller.dir/src/library/lee_position_controller.cpp.o"
 )
 

@@ -1,8 +1,8 @@
 file(REMOVE_RECURSE
-  "/home/isaac/Downloads/isaac_ws/devel/share/roseus/ros/apriltag_ros/manifest.l"
-  "/home/isaac/Downloads/isaac_ws/devel/share/roseus/ros/apriltag_ros/msg/AprilTagDetection.l"
-  "/home/isaac/Downloads/isaac_ws/devel/share/roseus/ros/apriltag_ros/msg/AprilTagDetectionArray.l"
-  "/home/isaac/Downloads/isaac_ws/devel/share/roseus/ros/apriltag_ros/srv/AnalyzeSingleImage.l"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/share/roseus/ros/apriltag_ros/manifest.l"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/share/roseus/ros/apriltag_ros/msg/AprilTagDetection.l"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/share/roseus/ros/apriltag_ros/msg/AprilTagDetectionArray.l"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/share/roseus/ros/apriltag_ros/srv/AnalyzeSingleImage.l"
   "CMakeFiles/apriltag_ros_generate_messages_eus"
 )
 

@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
-  "/home/isaac/Downloads/isaac_ws/devel/include/rotors_comm/Octomap.h"
-  "/home/isaac/Downloads/isaac_ws/devel/include/rotors_comm/RecordRosbag.h"
-  "/home/isaac/Downloads/isaac_ws/devel/include/rotors_comm/WindSpeed.h"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/include/rotors_comm/Octomap.h"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/include/rotors_comm/RecordRosbag.h"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/include/rotors_comm/WindSpeed.h"
   "CMakeFiles/rotors_comm_generate_messages_cpp"
 )
 

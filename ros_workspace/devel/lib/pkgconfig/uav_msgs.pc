@@ -1,8 +1,8 @@
-prefix=/home/isaac/Downloads/isaac_ws/devel
+prefix=/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel
 
 Name: uav_msgs
 Description: Description of uav_msgs
 Version: 0.0.0
-Cflags: -I/home/isaac/Downloads/isaac_ws/devel/include
+Cflags: -I/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/include
 Libs: -L${prefix}/lib 
 Requires: message_runtime std_msgs nav_msgs geometry_msgs

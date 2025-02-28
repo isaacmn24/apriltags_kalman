@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/isaac/Downloads/isaac_ws/devel/lib/rotors_gazebo/hovering_example"
-  "/home/isaac/Downloads/isaac_ws/devel/lib/rotors_gazebo/hovering_example.pdb"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/lib/rotors_gazebo/hovering_example"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/lib/rotors_gazebo/hovering_example.pdb"
   "CMakeFiles/hovering_example.dir/src/hovering_example.cpp.o"
 )
 

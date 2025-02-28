@@ -1,2 +1,2 @@
-set(rotors_comm_MESSAGE_FILES "/home/isaac/Downloads/isaac_ws/src/rotors_simulator/rotors_comm/msg/WindSpeed.msg")
-set(rotors_comm_SERVICE_FILES "/home/isaac/Downloads/isaac_ws/src/rotors_simulator/rotors_comm/srv/Octomap.srv;/home/isaac/Downloads/isaac_ws/src/rotors_simulator/rotors_comm/srv/RecordRosbag.srv")
+set(rotors_comm_MESSAGE_FILES "/home/isaac/Downloads/apriltags_kalman/ros_workspace/src/rotors_simulator/rotors_comm/msg/WindSpeed.msg")
+set(rotors_comm_SERVICE_FILES "/home/isaac/Downloads/apriltags_kalman/ros_workspace/src/rotors_simulator/rotors_comm/srv/Octomap.srv;/home/isaac/Downloads/apriltags_kalman/ros_workspace/src/rotors_simulator/rotors_comm/srv/RecordRosbag.srv")

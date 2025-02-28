@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/isaac/Downloads/isaac_ws/devel/share/roseus/ros/uav_msgs/manifest.l"
-  "/home/isaac/Downloads/isaac_ws/devel/share/roseus/ros/uav_msgs/msg/uav_pose.l"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/share/roseus/ros/uav_msgs/manifest.l"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/share/roseus/ros/uav_msgs/msg/uav_pose.l"
   "CMakeFiles/uav_msgs_generate_messages_eus"
 )
 

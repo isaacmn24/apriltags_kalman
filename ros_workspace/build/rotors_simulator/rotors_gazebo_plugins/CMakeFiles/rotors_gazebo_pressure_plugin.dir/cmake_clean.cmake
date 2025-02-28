@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/isaac/Downloads/isaac_ws/devel/lib/librotors_gazebo_pressure_plugin.pdb"
-  "/home/isaac/Downloads/isaac_ws/devel/lib/librotors_gazebo_pressure_plugin.so"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/lib/librotors_gazebo_pressure_plugin.pdb"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/lib/librotors_gazebo_pressure_plugin.so"
   "CMakeFiles/rotors_gazebo_pressure_plugin.dir/src/gazebo_pressure_plugin.cpp.o"
 )
 

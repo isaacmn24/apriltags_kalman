@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/isaac/Downloads/isaac_ws/devel/lib/libapriltag_ros_single_image_detector.pdb"
-  "/home/isaac/Downloads/isaac_ws/devel/lib/libapriltag_ros_single_image_detector.so"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/lib/libapriltag_ros_single_image_detector.pdb"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/lib/libapriltag_ros_single_image_detector.so"
   "CMakeFiles/apriltag_ros_single_image_detector.dir/src/single_image_detector.cpp.o"
 )
 

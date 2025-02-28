@@ -1,4 +1,4 @@
-prefix=/home/isaac/Downloads/isaac_ws/install
+prefix=/home/isaac/Downloads/apriltags_kalman/ros_workspace/install
 
 Name: uav_msgs
 Description: Description of uav_msgs

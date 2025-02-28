@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/isaac/Downloads/isaac_ws/devel/share/common-lisp/ros/mav_system_msgs/msg/CpuInfo.lisp"
-  "/home/isaac/Downloads/isaac_ws/devel/share/common-lisp/ros/mav_system_msgs/msg/ProcessInfo.lisp"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/share/common-lisp/ros/mav_system_msgs/msg/CpuInfo.lisp"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/share/common-lisp/ros/mav_system_msgs/msg/ProcessInfo.lisp"
   "CMakeFiles/mav_system_msgs_generate_messages_lisp"
 )
 

@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/isaac/Downloads/isaac_ws/devel/lib/libLiftDragPlugin.pdb"
-  "/home/isaac/Downloads/isaac_ws/devel/lib/libLiftDragPlugin.so"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/lib/libLiftDragPlugin.pdb"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/lib/libLiftDragPlugin.so"
   "CMakeFiles/LiftDragPlugin.dir/src/liftdrag_plugin/liftdrag_plugin.cpp.o"
 )
 

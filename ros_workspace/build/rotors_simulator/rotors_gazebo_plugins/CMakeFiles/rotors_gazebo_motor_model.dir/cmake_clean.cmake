@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/isaac/Downloads/isaac_ws/devel/lib/librotors_gazebo_motor_model.pdb"
-  "/home/isaac/Downloads/isaac_ws/devel/lib/librotors_gazebo_motor_model.so"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/lib/librotors_gazebo_motor_model.pdb"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/lib/librotors_gazebo_motor_model.so"
   "CMakeFiles/rotors_gazebo_motor_model.dir/src/gazebo_motor_model.cpp.o"
 )
 

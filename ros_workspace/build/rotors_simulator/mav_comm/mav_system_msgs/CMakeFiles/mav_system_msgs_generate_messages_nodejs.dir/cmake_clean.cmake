@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/isaac/Downloads/isaac_ws/devel/share/gennodejs/ros/mav_system_msgs/msg/CpuInfo.js"
-  "/home/isaac/Downloads/isaac_ws/devel/share/gennodejs/ros/mav_system_msgs/msg/ProcessInfo.js"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/share/gennodejs/ros/mav_system_msgs/msg/CpuInfo.js"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/share/gennodejs/ros/mav_system_msgs/msg/ProcessInfo.js"
   "CMakeFiles/mav_system_msgs_generate_messages_nodejs"
 )
 

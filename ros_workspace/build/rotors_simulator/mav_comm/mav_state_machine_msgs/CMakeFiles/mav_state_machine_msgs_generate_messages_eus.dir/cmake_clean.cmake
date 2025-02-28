@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
-  "/home/isaac/Downloads/isaac_ws/devel/share/roseus/ros/mav_state_machine_msgs/manifest.l"
-  "/home/isaac/Downloads/isaac_ws/devel/share/roseus/ros/mav_state_machine_msgs/msg/StartStopTask.l"
-  "/home/isaac/Downloads/isaac_ws/devel/share/roseus/ros/mav_state_machine_msgs/srv/RunTaskService.l"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/share/roseus/ros/mav_state_machine_msgs/manifest.l"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/share/roseus/ros/mav_state_machine_msgs/msg/StartStopTask.l"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/share/roseus/ros/mav_state_machine_msgs/srv/RunTaskService.l"
   "CMakeFiles/mav_state_machine_msgs_generate_messages_eus"
 )
 

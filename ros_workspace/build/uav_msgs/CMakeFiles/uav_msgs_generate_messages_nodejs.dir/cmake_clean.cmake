@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "/home/isaac/Downloads/isaac_ws/devel/share/gennodejs/ros/uav_msgs/msg/uav_pose.js"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/share/gennodejs/ros/uav_msgs/msg/uav_pose.js"
   "CMakeFiles/uav_msgs_generate_messages_nodejs"
 )
 

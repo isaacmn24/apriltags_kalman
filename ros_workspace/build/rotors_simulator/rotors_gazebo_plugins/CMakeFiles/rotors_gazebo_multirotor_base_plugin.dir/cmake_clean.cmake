@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/isaac/Downloads/isaac_ws/devel/lib/librotors_gazebo_multirotor_base_plugin.pdb"
-  "/home/isaac/Downloads/isaac_ws/devel/lib/librotors_gazebo_multirotor_base_plugin.so"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/lib/librotors_gazebo_multirotor_base_plugin.pdb"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/lib/librotors_gazebo_multirotor_base_plugin.so"
   "CMakeFiles/rotors_gazebo_multirotor_base_plugin.dir/src/gazebo_multirotor_base_plugin.cpp.o"
 )
 

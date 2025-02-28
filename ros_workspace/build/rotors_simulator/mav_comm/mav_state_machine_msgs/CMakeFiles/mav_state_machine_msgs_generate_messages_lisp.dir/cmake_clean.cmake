@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/isaac/Downloads/isaac_ws/devel/share/common-lisp/ros/mav_state_machine_msgs/msg/StartStopTask.lisp"
-  "/home/isaac/Downloads/isaac_ws/devel/share/common-lisp/ros/mav_state_machine_msgs/srv/RunTaskService.lisp"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/share/common-lisp/ros/mav_state_machine_msgs/msg/StartStopTask.lisp"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/share/common-lisp/ros/mav_state_machine_msgs/srv/RunTaskService.lisp"
   "CMakeFiles/mav_state_machine_msgs_generate_messages_lisp"
 )
 

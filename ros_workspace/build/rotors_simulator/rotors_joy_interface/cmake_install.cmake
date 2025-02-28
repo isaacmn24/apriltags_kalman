@@ -1,8 +1,8 @@
-# Install script for directory: /home/isaac/Downloads/isaac_ws/src/rotors_simulator/rotors_joy_interface
+# Install script for directory: /home/isaac/Downloads/apriltags_kalman/ros_workspace/src/rotors_simulator/rotors_joy_interface
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/isaac/Downloads/isaac_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/isaac/Downloads/apriltags_kalman/ros_workspace/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -38,18 +38,18 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/isaac/Downloads/isaac_ws/build/rotors_simulator/rotors_joy_interface/catkin_generated/installspace/rotors_joy_interface.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/rotors_simulator/rotors_joy_interface/catkin_generated/installspace/rotors_joy_interface.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rotors_joy_interface/cmake" TYPE FILE FILES
-    "/home/isaac/Downloads/isaac_ws/build/rotors_simulator/rotors_joy_interface/catkin_generated/installspace/rotors_joy_interfaceConfig.cmake"
-    "/home/isaac/Downloads/isaac_ws/build/rotors_simulator/rotors_joy_interface/catkin_generated/installspace/rotors_joy_interfaceConfig-version.cmake"
+    "/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/rotors_simulator/rotors_joy_interface/catkin_generated/installspace/rotors_joy_interfaceConfig.cmake"
+    "/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/rotors_simulator/rotors_joy_interface/catkin_generated/installspace/rotors_joy_interfaceConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rotors_joy_interface" TYPE FILE FILES "/home/isaac/Downloads/isaac_ws/src/rotors_simulator/rotors_joy_interface/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rotors_joy_interface" TYPE FILE FILES "/home/isaac/Downloads/apriltags_kalman/ros_workspace/src/rotors_simulator/rotors_joy_interface/package.xml")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
@@ -59,7 +59,7 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
          FILE "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/rotors_joy_interface/rotors_joy_interface"
          RPATH "")
   endif()
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/rotors_joy_interface" TYPE EXECUTABLE FILES "/home/isaac/Downloads/isaac_ws/devel/lib/rotors_joy_interface/rotors_joy_interface")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/rotors_joy_interface" TYPE EXECUTABLE FILES "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/lib/rotors_joy_interface/rotors_joy_interface")
   if(EXISTS "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/rotors_joy_interface/rotors_joy_interface" AND
      NOT IS_SYMLINK "$ENV{DESTDIR}${CMAKE_INSTALL_PREFIX}/lib/rotors_joy_interface/rotors_joy_interface")
     file(RPATH_CHANGE

@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/isaac/Downloads/isaac_ws/devel/lib/apriltag_ros/apriltag_ros_single_image_client_node"
-  "/home/isaac/Downloads/isaac_ws/devel/lib/apriltag_ros/apriltag_ros_single_image_client_node.pdb"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/lib/apriltag_ros/apriltag_ros_single_image_client_node"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/lib/apriltag_ros/apriltag_ros_single_image_client_node.pdb"
   "CMakeFiles/apriltag_ros_single_image_client_node.dir/src/apriltag_ros_single_image_client_node.cpp.o"
 )
 

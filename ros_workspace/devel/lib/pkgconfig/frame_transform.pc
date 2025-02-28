@@ -1,0 +1,8 @@
+prefix=/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel
+
+Name: frame_transform
+Description: Description of frame_transform
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

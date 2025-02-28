@@ -1,4 +1,4 @@
-prefix=/home/isaac/Downloads/isaac_ws/devel
+prefix=/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel
 
 Name: rotors_gazebo
 Description: Description of rotors_gazebo

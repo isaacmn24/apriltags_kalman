@@ -4,5 +4,5 @@ PROJECT_PKG_CONFIG_INCLUDE_DIRS = "".split(';') if "" != "" else []
 PROJECT_CATKIN_DEPENDS = "".replace(';', ' ')
 PKG_CONFIG_LIBRARIES_WITH_PREFIX = "".split(';') if "" != "" else []
 PROJECT_NAME = "rotors_evaluation"
-PROJECT_SPACE_DIR = "/home/isaac/Downloads/isaac_ws/install"
+PROJECT_SPACE_DIR = "/home/isaac/Downloads/apriltags_kalman/ros_workspace/install"
 PROJECT_VERSION = "2.2.3"

@@ -6,5 +6,5 @@ CXX_FLAGS = -O3 -DNDEBUG -fPIC   -O3 -funsafe-loop-optimizations -fsee -funroll-
 
 CXX_DEFINES = -DROSCONSOLE_BACKEND_LOG4CXX -DROS_BUILD_SHARED_LIBS=1 -DROS_PACKAGE_NAME=\"apriltag_ros\" -Dapriltag_ros_continuous_detector_EXPORTS
 
-CXX_INCLUDES = -I/home/isaac/Downloads/isaac_ws/devel/include -I/home/isaac/Downloads/isaac_ws/src/apriltag_ros/apriltag_ros/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/usr/include/eigen3 -isystem /opt/ros/noetic/include -isystem /usr/include/opencv4 -isystem /opt/ros/noetic/include/apriltag 
+CXX_INCLUDES = -I/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/include -I/home/isaac/Downloads/apriltags_kalman/ros_workspace/src/apriltag_ros/apriltag_ros/include -I/opt/ros/noetic/share/xmlrpcpp/cmake/../../../include/xmlrpcpp -I/usr/include/eigen3 -isystem /opt/ros/noetic/include -isystem /usr/include/opencv4 -isystem /opt/ros/noetic/include/apriltag 
 

@@ -67,14 +67,14 @@ set(apriltag_ros_CONFIG_INCLUDED TRUE)
 
 # set variables for source/devel/install prefixes
 if("TRUE" STREQUAL "TRUE")
-  set(apriltag_ros_SOURCE_PREFIX /home/isaac/Downloads/isaac_ws/src/apriltag_ros/apriltag_ros)
-  set(apriltag_ros_DEVEL_PREFIX /home/isaac/Downloads/isaac_ws/devel)
+  set(apriltag_ros_SOURCE_PREFIX /home/isaac/Downloads/apriltags_kalman/ros_workspace/src/apriltag_ros/apriltag_ros)
+  set(apriltag_ros_DEVEL_PREFIX /home/isaac/Downloads/apriltags_kalman/ros_workspace/devel)
   set(apriltag_ros_INSTALL_PREFIX "")
   set(apriltag_ros_PREFIX ${apriltag_ros_DEVEL_PREFIX})
 else()
   set(apriltag_ros_SOURCE_PREFIX "")
   set(apriltag_ros_DEVEL_PREFIX "")
-  set(apriltag_ros_INSTALL_PREFIX /home/isaac/Downloads/isaac_ws/install)
+  set(apriltag_ros_INSTALL_PREFIX /home/isaac/Downloads/apriltags_kalman/ros_workspace/install)
   set(apriltag_ros_PREFIX ${apriltag_ros_INSTALL_PREFIX})
 endif()
 
@@ -91,9 +91,9 @@ endif()
 # flag project as catkin-based to distinguish if a find_package()-ed project is a catkin project
 set(apriltag_ros_FOUND_CATKIN_PROJECT TRUE)
 
-if(NOT "/home/isaac/Downloads/isaac_ws/devel/include;/home/isaac/Downloads/isaac_ws/src/apriltag_ros/apriltag_ros/include;/usr/include/eigen3;/opt/ros/noetic/include;/opt/ros/noetic/include/apriltag;/usr/include/opencv4 " STREQUAL " ")
+if(NOT "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/include;/home/isaac/Downloads/apriltags_kalman/ros_workspace/src/apriltag_ros/apriltag_ros/include;/usr/include/eigen3;/opt/ros/noetic/include;/opt/ros/noetic/include/apriltag;/usr/include/opencv4 " STREQUAL " ")
   set(apriltag_ros_INCLUDE_DIRS "")
-  set(_include_dirs "/home/isaac/Downloads/isaac_ws/devel/include;/home/isaac/Downloads/isaac_ws/src/apriltag_ros/apriltag_ros/include;/usr/include/eigen3;/opt/ros/noetic/include;/opt/ros/noetic/include/apriltag;/usr/include/opencv4")
+  set(_include_dirs "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/include;/home/isaac/Downloads/apriltags_kalman/ros_workspace/src/apriltag_ros/apriltag_ros/include;/usr/include/eigen3;/opt/ros/noetic/include;/opt/ros/noetic/include/apriltag;/usr/include/opencv4")
   if(NOT "https://github.com/AprilRobotics/apriltag_ros/issues " STREQUAL " ")
     set(_report "Check the issue tracker 'https://github.com/AprilRobotics/apriltag_ros/issues' and consider creating a ticket if the problem has not been reported yet.")
   elseif(NOT "http://www.ros.org/wiki/apriltag_ros " STREQUAL " ")
@@ -110,7 +110,7 @@ if(NOT "/home/isaac/Downloads/isaac_ws/devel/include;/home/isaac/Downloads/isaac
         message(FATAL_ERROR "Project 'apriltag_ros' specifies '${idir}' as an include dir, which is not found.  It does not exist in '${include}'.  ${_report}")
       endif()
     else()
-      message(FATAL_ERROR "Project 'apriltag_ros' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/isaac/Downloads/isaac_ws/src/apriltag_ros/apriltag_ros/${idir}'.  ${_report}")
+      message(FATAL_ERROR "Project 'apriltag_ros' specifies '${idir}' as an include dir, which is not found.  It does neither exist as an absolute directory nor in '/home/isaac/Downloads/apriltags_kalman/ros_workspace/src/apriltag_ros/apriltag_ros/${idir}'.  ${_report}")
     endif()
     _list_append_unique(apriltag_ros_INCLUDE_DIRS ${include})
   endforeach()
@@ -154,7 +154,7 @@ foreach(library ${libraries})
     set(lib_path "")
     set(lib "${library}-NOTFOUND")
     # since the path where the library is found is returned we have to iterate over the paths manually
-    foreach(path /home/isaac/Downloads/isaac_ws/devel/lib;/opt/ros/noetic/lib)
+    foreach(path /home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/lib;/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/lib;/opt/ros/noetic/lib)
       find_library(lib ${library}
         PATHS ${path}
         NO_DEFAULT_PATH NO_CMAKE_FIND_ROOT_PATH)

@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
-  "/home/isaac/Downloads/isaac_ws/devel/share/gennodejs/ros/rotors_comm/msg/WindSpeed.js"
-  "/home/isaac/Downloads/isaac_ws/devel/share/gennodejs/ros/rotors_comm/srv/Octomap.js"
-  "/home/isaac/Downloads/isaac_ws/devel/share/gennodejs/ros/rotors_comm/srv/RecordRosbag.js"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/share/gennodejs/ros/rotors_comm/msg/WindSpeed.js"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/share/gennodejs/ros/rotors_comm/srv/Octomap.js"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/share/gennodejs/ros/rotors_comm/srv/RecordRosbag.js"
   "CMakeFiles/rotors_comm_generate_messages_nodejs"
 )
 

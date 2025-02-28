@@ -6,7 +6,7 @@
 
 #IncludeRegexTransform: 
 
-/home/isaac/Downloads/isaac_ws/devel/include/mav_msgs/RollPitchYawrateThrust.h
+/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/include/mav_msgs/RollPitchYawrateThrust.h
 string
 -
 vector
@@ -26,9 +26,9 @@ std_msgs/Header.h
 geometry_msgs/Vector3.h
 -
 
-/home/isaac/Downloads/isaac_ws/src/rotors_simulator/mav_comm/mav_msgs/include/mav_msgs/default_topics.h
+/home/isaac/Downloads/apriltags_kalman/ros_workspace/src/rotors_simulator/mav_comm/mav_msgs/include/mav_msgs/default_topics.h
 
-/home/isaac/Downloads/isaac_ws/src/rotors_simulator/rotors_joy_interface/include/rotors_joy_interface/joy.h
+/home/isaac/Downloads/apriltags_kalman/ros_workspace/src/rotors_simulator/rotors_joy_interface/include/rotors_joy_interface/joy.h
 geometry_msgs/PoseStamped.h
 -
 mav_msgs/RollPitchYawrateThrust.h
@@ -38,9 +38,9 @@ ros/ros.h
 sensor_msgs/Joy.h
 -
 
-/home/isaac/Downloads/isaac_ws/src/rotors_simulator/rotors_joy_interface/src/joy.cpp
+/home/isaac/Downloads/apriltags_kalman/ros_workspace/src/rotors_simulator/rotors_joy_interface/src/joy.cpp
 rotors_joy_interface/joy.h
-/home/isaac/Downloads/isaac_ws/src/rotors_simulator/rotors_joy_interface/src/rotors_joy_interface/joy.h
+/home/isaac/Downloads/apriltags_kalman/ros_workspace/src/rotors_simulator/rotors_joy_interface/src/rotors_joy_interface/joy.h
 mav_msgs/default_topics.h
 -
 

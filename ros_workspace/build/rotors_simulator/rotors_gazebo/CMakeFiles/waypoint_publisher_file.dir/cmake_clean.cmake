@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/isaac/Downloads/isaac_ws/devel/lib/rotors_gazebo/waypoint_publisher_file"
-  "/home/isaac/Downloads/isaac_ws/devel/lib/rotors_gazebo/waypoint_publisher_file.pdb"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/lib/rotors_gazebo/waypoint_publisher_file"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/lib/rotors_gazebo/waypoint_publisher_file.pdb"
   "CMakeFiles/waypoint_publisher_file.dir/src/waypoint_publisher_file.cpp.o"
 )
 

@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "/home/isaac/Downloads/isaac_ws/src/rotors_simulator/rotors_gazebo/models/iris/iris.sdf"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/src/rotors_simulator/rotors_gazebo/models/iris/iris.sdf"
   "CMakeFiles/sdf"
 )
 

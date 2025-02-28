@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/isaac/Downloads/isaac_ws/devel/share/gennodejs/ros/mav_state_machine_msgs/msg/StartStopTask.js"
-  "/home/isaac/Downloads/isaac_ws/devel/share/gennodejs/ros/mav_state_machine_msgs/srv/RunTaskService.js"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/share/gennodejs/ros/mav_state_machine_msgs/msg/StartStopTask.js"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/share/gennodejs/ros/mav_state_machine_msgs/srv/RunTaskService.js"
   "CMakeFiles/mav_state_machine_msgs_generate_messages_nodejs"
 )
 

@@ -13,21 +13,21 @@ fi
 
 echo_and_run() { echo "+ $@" ; "$@" ; }
 
-echo_and_run cd "/home/isaac/Downloads/isaac_ws/src/rotors_simulator/rotors_evaluation"
+echo_and_run cd "/home/isaac/Downloads/apriltags_kalman/ros_workspace/src/rotors_simulator/rotors_evaluation"
 
 # ensure that Python install destination exists
-echo_and_run mkdir -p "$DESTDIR/home/isaac/Downloads/isaac_ws/install/lib/python3/dist-packages"
+echo_and_run mkdir -p "$DESTDIR/home/isaac/Downloads/apriltags_kalman/ros_workspace/install/lib/python3/dist-packages"
 
 # Note that PYTHONPATH is pulled from the environment to support installing
 # into one location when some dependencies were installed in another
 # location, #123.
 echo_and_run /usr/bin/env \
-    PYTHONPATH="/home/isaac/Downloads/isaac_ws/install/lib/python3/dist-packages:/home/isaac/Downloads/isaac_ws/build/lib/python3/dist-packages:$PYTHONPATH" \
-    CATKIN_BINARY_DIR="/home/isaac/Downloads/isaac_ws/build" \
+    PYTHONPATH="/home/isaac/Downloads/apriltags_kalman/ros_workspace/install/lib/python3/dist-packages:/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/lib/python3/dist-packages:$PYTHONPATH" \
+    CATKIN_BINARY_DIR="/home/isaac/Downloads/apriltags_kalman/ros_workspace/build" \
     "/usr/bin/python3" \
-    "/home/isaac/Downloads/isaac_ws/src/rotors_simulator/rotors_evaluation/setup.py" \
+    "/home/isaac/Downloads/apriltags_kalman/ros_workspace/src/rotors_simulator/rotors_evaluation/setup.py" \
      \
-    build --build-base "/home/isaac/Downloads/isaac_ws/build/rotors_simulator/rotors_evaluation" \
+    build --build-base "/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/rotors_simulator/rotors_evaluation" \
     install \
     --root="${DESTDIR-/}" \
-    --install-layout=deb --prefix="/home/isaac/Downloads/isaac_ws/install" --install-scripts="/home/isaac/Downloads/isaac_ws/install/bin"
+    --install-layout=deb --prefix="/home/isaac/Downloads/apriltags_kalman/ros_workspace/install" --install-scripts="/home/isaac/Downloads/apriltags_kalman/ros_workspace/install/bin"

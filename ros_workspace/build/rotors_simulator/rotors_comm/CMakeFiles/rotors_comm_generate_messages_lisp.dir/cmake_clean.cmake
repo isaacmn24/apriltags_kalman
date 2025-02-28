@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
-  "/home/isaac/Downloads/isaac_ws/devel/share/common-lisp/ros/rotors_comm/msg/WindSpeed.lisp"
-  "/home/isaac/Downloads/isaac_ws/devel/share/common-lisp/ros/rotors_comm/srv/Octomap.lisp"
-  "/home/isaac/Downloads/isaac_ws/devel/share/common-lisp/ros/rotors_comm/srv/RecordRosbag.lisp"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/share/common-lisp/ros/rotors_comm/msg/WindSpeed.lisp"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/share/common-lisp/ros/rotors_comm/srv/Octomap.lisp"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/share/common-lisp/ros/rotors_comm/srv/RecordRosbag.lisp"
   "CMakeFiles/rotors_comm_generate_messages_lisp"
 )
 

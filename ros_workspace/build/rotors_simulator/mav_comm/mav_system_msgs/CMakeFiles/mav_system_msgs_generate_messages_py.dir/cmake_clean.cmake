@@ -1,7 +1,7 @@
 file(REMOVE_RECURSE
-  "/home/isaac/Downloads/isaac_ws/devel/lib/python3/dist-packages/mav_system_msgs/msg/_CpuInfo.py"
-  "/home/isaac/Downloads/isaac_ws/devel/lib/python3/dist-packages/mav_system_msgs/msg/_ProcessInfo.py"
-  "/home/isaac/Downloads/isaac_ws/devel/lib/python3/dist-packages/mav_system_msgs/msg/__init__.py"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/lib/python3/dist-packages/mav_system_msgs/msg/_CpuInfo.py"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/lib/python3/dist-packages/mav_system_msgs/msg/_ProcessInfo.py"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/lib/python3/dist-packages/mav_system_msgs/msg/__init__.py"
   "CMakeFiles/mav_system_msgs_generate_messages_py"
 )
 

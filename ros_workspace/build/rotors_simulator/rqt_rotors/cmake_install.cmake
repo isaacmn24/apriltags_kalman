@@ -1,8 +1,8 @@
-# Install script for directory: /home/isaac/Downloads/isaac_ws/src/rotors_simulator/rqt_rotors
+# Install script for directory: /home/isaac/Downloads/apriltags_kalman/ros_workspace/src/rotors_simulator/rqt_rotors
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/isaac/Downloads/isaac_ws/install")
+  set(CMAKE_INSTALL_PREFIX "/home/isaac/Downloads/apriltags_kalman/ros_workspace/install")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -38,17 +38,17 @@ if(NOT DEFINED CMAKE_CROSSCOMPILING)
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/isaac/Downloads/isaac_ws/build/rotors_simulator/rqt_rotors/catkin_generated/installspace/rqt_rotors.pc")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/pkgconfig" TYPE FILE FILES "/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/rotors_simulator/rqt_rotors/catkin_generated/installspace/rqt_rotors.pc")
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rqt_rotors/cmake" TYPE FILE FILES
-    "/home/isaac/Downloads/isaac_ws/build/rotors_simulator/rqt_rotors/catkin_generated/installspace/rqt_rotorsConfig.cmake"
-    "/home/isaac/Downloads/isaac_ws/build/rotors_simulator/rqt_rotors/catkin_generated/installspace/rqt_rotorsConfig-version.cmake"
+    "/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/rotors_simulator/rqt_rotors/catkin_generated/installspace/rqt_rotorsConfig.cmake"
+    "/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/rotors_simulator/rqt_rotors/catkin_generated/installspace/rqt_rotorsConfig-version.cmake"
     )
 endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
-  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rqt_rotors" TYPE FILE FILES "/home/isaac/Downloads/isaac_ws/src/rotors_simulator/rqt_rotors/package.xml")
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rqt_rotors" TYPE FILE FILES "/home/isaac/Downloads/apriltags_kalman/ros_workspace/src/rotors_simulator/rqt_rotors/package.xml")
 endif()
 

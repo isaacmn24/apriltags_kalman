@@ -1,6 +1,6 @@
 file(REMOVE_RECURSE
-  "/home/isaac/Downloads/isaac_ws/devel/lib/python3/dist-packages/uav_msgs/msg/__init__.py"
-  "/home/isaac/Downloads/isaac_ws/devel/lib/python3/dist-packages/uav_msgs/msg/_uav_pose.py"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/lib/python3/dist-packages/uav_msgs/msg/__init__.py"
+  "/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/lib/python3/dist-packages/uav_msgs/msg/_uav_pose.py"
   "CMakeFiles/uav_msgs_generate_messages_py"
 )
 
