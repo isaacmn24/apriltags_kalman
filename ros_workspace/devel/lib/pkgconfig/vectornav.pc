@@ -1,0 +1,8 @@
+prefix=/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel
+
+Name: vectornav
+Description: Description of vectornav
+Version: 2.0.0
+Cflags: -I/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/include
+Libs: -L${prefix}/lib 
+Requires: roscpp sensor_msgs

@@ -1,0 +1,35 @@
+frequency: 30  # Hz, update rate of EKF
+sensor_timeout: 0.1  # Max time delay before ignoring a sensor
+
+two_d_mode: false  # Set to true if ignoring Z-axis (not recommended for drones)
+transform_time_offset: 0.0
+transform_timeout: 0.0
+
+# Set world frame and robot frame
+map_frame: "world"  # Global frame
+odom_frame: "odom"  # Local odometry frame (optional)
+base_link_frame: "drone_frame"  # Your drone's body frame
+world_frame: "world"
+
+# Configure Pose Inputs
+# First source: Transformed pose from tf2_listener.py
+pose0: 
+  topic: /transformed_pose
+  nodelay: true
+  differential: false
+  queue_size: 10
+  relative: false
+  pose_rejection_threshold: 5.0
+  twist_rejection_threshold: 1.0
+  covariance: [0.05, 0.05, 0.05, 0.01, 0.01, 0.01]  # Adjust based on sensor reliability
+
+# Second source: Apriltag detection pose
+pose1:
+  topic: /apriltag/pose
+  nodelay: true
+  differential: false
+  queue_size: 10
+  relative: false
+  pose_rejection_threshold: 5.0
+  twist_rejection_threshold: 1.0
+  covariance: [0.1, 0.1, 0.1, 0.02, 0.02, 0.02]  # Adjust based on tag accuracy

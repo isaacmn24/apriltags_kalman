@@ -20,4 +20,8 @@
     <rosparam command="load" file="$(find apriltag_ros)/config/settings.yaml"/>
     <rosparam command="load" file="$(find apriltag_ros)/config/tags.yaml"/>
   </node>
+
+  <node name="tag_converter" pkg="apriltag_ros" type="apriltag_pose_conversion.py" output="screen"/>
+
+
 </launch>

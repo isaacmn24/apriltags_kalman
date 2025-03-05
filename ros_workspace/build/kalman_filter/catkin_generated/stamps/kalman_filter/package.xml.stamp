@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package format="2">
+
+  <name>kalman_filter</name>
+  <version>1.0.0</version>
+  <description>Provides libraries for implementing Kalman Filters.</description>
+  <license>MIT</license>
+
+  <author email="pcdangio@gmail.com">Paul D'Angio</author>
+  <maintainer email="pcdangio@gmail.com">Paul D'Angio</maintainer>
+
+  <buildtool_depend>catkin</buildtool_depend>
+  <build_depend>EIGEN3</build_depend>
+  <doc_depend>doxygen</doc_depend>
+
+</package>

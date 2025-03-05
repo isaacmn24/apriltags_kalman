@@ -2,51 +2,82 @@
 
 import rospy
 import tf2_ros
-import geometry_msgs.msg
+from geometry_msgs.msg import PoseStamped, PoseWithCovarianceStamped
+from nav_msgs.msg import Odometry
+import tf2_geometry_msgs
+import numpy as np
+import tf.transformations
 
-def transform_pose(target_frame, source_frame):
-    """Transforms a pose from the source_frame to the target_frame using TF2."""
-    rospy.loginfo(f"Transforming pose from {source_frame} to {target_frame}...")
 
-    # Create TF buffer and listener
-    tf_buffer = tf2_ros.Buffer()
-    listener = tf2_ros.TransformListener(tf_buffer)
+class TransformListener():
+    def __init__(self):
+        self.pose = PoseStamped()
+        self.pose_covariance = np.zeros((6, 6))  # Placeholder for covariance matrix
+        self.source_frame = "apriltag_frame"
+        self.target_frame = "drone_frame"
+        self.tf_buffer = tf2_ros.Buffer()
+        self.listener = tf2_ros.TransformListener(self.tf_buffer)
+        
+        rospy.sleep(5)
 
-    try:
-        # Wait for the transform to be available
-        tf_buffer.lookup_transform(target_frame, source_frame, rospy.Time(0), rospy.Duration(1.0))
+        self.pub = rospy.Publisher("/transformed_pose", PoseWithCovarianceStamped, queue_size=10)
+        self.sub = rospy.Subscriber("/apriltag_box/real_odometry_sensor/odometry",Odometry, self.read_odom)
 
-        # Create an identity PoseStamped in source_frame
-        pose = geometry_msgs.msg.PoseStamped()
-        pose.header.frame_id = source_frame
-        pose.header.stamp = rospy.Time.now()
-        pose.pose.position.x = 0.0
-        pose.pose.position.y = 0.0
-        pose.pose.position.z = 0.0
-        pose.pose.orientation.w = 1.0  # Identity quaternion
+        return
+    
+    def read_odom(self,msg):
+        self.pose.header = msg.header
+        self.pose.pose = msg.pose.pose
+        self.pose_covariance = np.array(msg.pose.covariance).reshape((6, 6))  # Store as 6x6 matrix
+        self.source_frame = msg.header.frame_id
+        return
+
+
+    def transform_pose(self):
+        """Transforms a pose from the source_frame to the target_frame using TF2."""
+
+        # Create TF buffer and listener
+        
 
         # Transform pose to target_frame
-        transformed_pose = tf_buffer.transform(pose, target_frame, rospy.Duration(1.0))
-        return transformed_pose.pose
+        transformation = self.tf_buffer.lookup_transform(self.target_frame, self.source_frame,rospy.Time(0))
+        transformed_pose = tf2_geometry_msgs.do_transform_pose(self.pose,transformation)
+        
+        # Extract rotation from transformation
+        q = transformation.transform.rotation
+        rotation_matrix = tf.transformations.quaternion_matrix([q.x, q.y, q.z, q.w])[:3, :3]  # Extract 3x3 rotation
+        
+        # Apply covariance transformation (R * Cov * R^T)
+        transformed_covariance_matrix = np.zeros((6, 6))
+        transformed_covariance_matrix[:3, :3] = rotation_matrix @ self.pose_covariance[:3, :3] @ rotation_matrix.T
+        transformed_covariance_matrix[3:, 3:] = rotation_matrix @ self.pose_covariance[3:, 3:] @ rotation_matrix.T
 
-    except tf2_ros.LookupException as e:
-        rospy.logwarn(f"Transform lookup failed: {e}")
-        return None
-    except tf2_ros.ExtrapolationException as e:
-        rospy.logwarn(f"Transform extrapolation error: {e}")
-        return None
+        # Convert back to list for ROS message
+        transformed_covariance = transformed_covariance_matrix.flatten().tolist()
+
+        transformed_msg = PoseWithCovarianceStamped()
+        transformed_msg.header = transformed_pose.header
+        transformed_msg.pose.pose = transformed_pose.pose
+        transformed_msg.pose.covariance = transformed_covariance
+
+        self.pub.publish(transformed_msg)
+
+
+        #self.pub.publish(transformed_pose)
+        print("\033[92m Published transformed pose stamped message\033[0m")
+        
+        return
+
+
 
 if __name__ == '__main__':
     # Initialize ROS node
     rospy.init_node("tf_listener")
-
+    transform_listener = TransformListener()
     # Example: Transform object's pose into drone's frame
-    rospy.sleep(1)  # Give some time for TF to populate
-    pose_in_drone_frame = transform_pose("drone_frame", "object_frame")
 
-    if pose_in_drone_frame:
-        rospy.loginfo(f"Object's pose in drone frame: {pose_in_drone_frame}")
-    else:
-        rospy.logwarn("Could not transform object pose to drone frame.")
+    rate = rospy.Rate(10)  # 10 Hz
+    while not rospy.is_shutdown():
+        transform_listener.transform_pose()
 
-    rospy.spin()
+        rate.sleep()  # Give some time for TF to populate

@@ -1,0 +1,6 @@
+<launch>
+  <node pkg="robot_localization" type="ekf_localization_node" name="ekf_filter" output="screen">
+    <rosparam file="$(find ekf_fusion)/config/ekf_config.yaml" command="load"/>
+  </node>
+</launch>
+

@@ -174,7 +174,7 @@
     transform_topic="real_odometry_sensor/transform"
     odometry_topic="real_odometry_sensor/odometry"
     parent_frame_id="world"
-    child_frame_id="$apriltag_box/real_odometry_sensor"
+    child_frame_id="/apriltag_box/real_odometry_sensor"
     mass_odometry_sensor="0.00001"
     measurement_divisor="1"
     measurement_delay="0"
