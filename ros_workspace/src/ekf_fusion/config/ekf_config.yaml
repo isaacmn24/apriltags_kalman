@@ -6,30 +6,28 @@ transform_time_offset: 0.0
 transform_timeout: 0.0
 
 # Set world frame and robot frame
-map_frame: "world"  # Global frame
-odom_frame: "odom"  # Local odometry frame (optional)
-base_link_frame: "drone_frame"  # Your drone's body frame
-world_frame: "world"
+world_frame: drone_frame             # Global reference frame
+odom_frame: drone_frame              # Use the global frame since no dedicated odom frame is available
+base_link_frame: apriltag_frame   # Drone is your base (or "base_link")
 
 # Configure Pose Inputs
 # First source: Transformed pose from tf2_listener.py
-pose0: 
-  topic: /transformed_pose
-  nodelay: true
-  differential: false
-  queue_size: 10
-  relative: false
-  pose_rejection_threshold: 5.0
-  twist_rejection_threshold: 1.0
-  covariance: [0.05, 0.05, 0.05, 0.01, 0.01, 0.01]  # Adjust based on sensor reliability
+pose0: /transformed_pose
+pose0_config: [true,  true,  true,
+               true,  true,  true,
+               false, false, false
+               false, false, false
+               false, false, false]
+pose0_queue_size: 10
+pose0_differential: true
+#covariance: [0.05, 0.05, 0.05, 0.01, 0.01, 0.01]  # Adjust based on sensor reliability
 
 # Second source: Apriltag detection pose
-pose1:
-  topic: /apriltag/pose
-  nodelay: true
-  differential: false
-  queue_size: 10
-  relative: false
-  pose_rejection_threshold: 5.0
-  twist_rejection_threshold: 1.0
-  covariance: [0.1, 0.1, 0.1, 0.02, 0.02, 0.02]  # Adjust based on tag accuracy
+pose1: /apriltag/pose
+pose1_config: [true,  true,  true,
+               true,  true,  true,
+               false, false, false
+               false, false, false
+               false, false, false]
+pose1_queue_size: 10
+#covariance: [0.1, 0.1, 0.1, 0.02, 0.02, 0.02]  # Adjust based on tag accuracy

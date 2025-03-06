@@ -1,0 +1,30 @@
+digraph G {
+"hummingbird/base_link" -> "hummingbird/rotor_0"[label=" Broadcaster: /hummingbird/robot_state_publisher\nAverage rate: 50.402\nBuffer length: 4.98\nMost recent transform: 18.342\nOldest transform: 13.362\n"];
+"world" -> "hummingbird/base_link"[label=" Broadcaster: /gazebo\nAverage rate: 437.876\nBuffer length: 4.99\nMost recent transform: 18.354\nOldest transform: 13.364\n"];
+"hummingbird/base_link" -> "hummingbird/rotor_1"[label=" Broadcaster: /hummingbird/robot_state_publisher\nAverage rate: 50.402\nBuffer length: 4.98\nMost recent transform: 18.342\nOldest transform: 13.362\n"];
+"hummingbird/base_link" -> "hummingbird/rotor_2"[label=" Broadcaster: /hummingbird/robot_state_publisher\nAverage rate: 50.402\nBuffer length: 4.98\nMost recent transform: 18.342\nOldest transform: 13.362\n"];
+"hummingbird/base_link" -> "hummingbird/rotor_3"[label=" Broadcaster: /hummingbird/robot_state_publisher\nAverage rate: 50.402\nBuffer length: 4.98\nMost recent transform: 18.342\nOldest transform: 13.362\n"];
+"hummingbird/base_link" -> "hummingbird/base_link_inertia"[label=" Broadcaster: /hummingbird/robot_state_publisher\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"hummingbird/base_link" -> "hummingbird/camera_link"[label=" Broadcaster: /hummingbird/robot_state_publisher\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"hummingbird/camera_link" -> "hummingbird/camera_link_optical"[label=" Broadcaster: /hummingbird/robot_state_publisher\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"april_tag_box_link" -> "led_link_0"[label=" Broadcaster: /apriltag_box/robot_state_publisher\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"april_tag_box_link" -> "led_link_1"[label=" Broadcaster: /apriltag_box/robot_state_publisher\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"april_tag_box_link" -> "led_link_2"[label=" Broadcaster: /apriltag_box/robot_state_publisher\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"april_tag_box_link" -> "led_link_3"[label=" Broadcaster: /apriltag_box/robot_state_publisher\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"april_tag_box_link" -> "led_link_4"[label=" Broadcaster: /apriltag_box/robot_state_publisher\nAverage rate: 10000.0\nBuffer length: 0.0\nMost recent transform: 0.0\nOldest transform: 0.0\n"];
+"world" -> "hummingbird/odometry_sensor1"[label=" Broadcaster: /gazebo\nAverage rate: 434.095\nBuffer length: 4.992\nMost recent transform: 18.354\nOldest transform: 13.362\n"];
+"world" -> "apriltag_box/real_odometry_sensor"[label=" Broadcaster: /gazebo\nAverage rate: 433.494\nBuffer length: 4.992\nMost recent transform: 18.354\nOldest transform: 13.362\n"];
+"world" -> "apriltag_frame"[label=" Broadcaster: /tf_broadcaster\nAverage rate: 259.319\nBuffer length: 4.99\nMost recent transform: 18.354\nOldest transform: 13.364\n"];
+"world" -> "hummingbird/real_odometry_sensor"[label=" Broadcaster: /gazebo\nAverage rate: 435.872\nBuffer length: 4.99\nMost recent transform: 18.354\nOldest transform: 13.364\n"];
+"world" -> "drone_frame"[label=" Broadcaster: /tf_broadcaster\nAverage rate: 266.546\nBuffer length: 4.986\nMost recent transform: 18.354\nOldest transform: 13.368\n"];
+"hummingbird/base_link" -> "hummingbird/imu_link"[label=" Broadcaster: /hummingbird/robot_state_publisher\nAverage rate: 9.592\nBuffer length: 4.9\nMost recent transform: 18.3\nOldest transform: 13.4\n"];
+"hummingbird/base_link" -> "hummingbird/imugt_link"[label=" Broadcaster: /hummingbird/robot_state_publisher\nAverage rate: 9.592\nBuffer length: 4.9\nMost recent transform: 18.3\nOldest transform: 13.4\n"];
+"hummingbird/base_link" -> "hummingbird/odometry_sensor1_link"[label=" Broadcaster: /hummingbird/robot_state_publisher\nAverage rate: 9.592\nBuffer length: 4.9\nMost recent transform: 18.3\nOldest transform: 13.4\n"];
+"hummingbird/base_link" -> "hummingbird/odometry_sensor2_link"[label=" Broadcaster: /hummingbird/robot_state_publisher\nAverage rate: 9.592\nBuffer length: 4.9\nMost recent transform: 18.3\nOldest transform: 13.4\n"];
+"hummingbird/base_link" -> "hummingbird/odometry_sensorgt_link"[label=" Broadcaster: /hummingbird/robot_state_publisher\nAverage rate: 9.592\nBuffer length: 4.9\nMost recent transform: 18.3\nOldest transform: 13.4\n"];
+"april_tag_box_link" -> "apriltag_box/odometry_sensor2_link"[label=" Broadcaster: /apriltag_box/robot_state_publisher\nAverage rate: 10.204\nBuffer length: 4.9\nMost recent transform: 18.3\nOldest transform: 13.4\n"];
+edge [style=invis];
+ subgraph cluster_legend { style=bold; color=black; label ="view_frames Result";
+"Recorded at time: 18.396"[ shape=plaintext ] ;
+}->"april_tag_box_link";
+}

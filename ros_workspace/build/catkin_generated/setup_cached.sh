@@ -7,10 +7,4 @@
 # new environment variables
 
 # modified environment variables
-export CMAKE_PREFIX_PATH="/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel:$CMAKE_PREFIX_PATH"
-export LD_LIBRARY_PATH="/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/lib:$LD_LIBRARY_PATH"
-export PKG_CONFIG_PATH="/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/lib/pkgconfig:$PKG_CONFIG_PATH"
 export PWD='/home/isaac/Downloads/apriltags_kalman/ros_workspace/build'
-export PYTHONPATH="/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/lib/python3/dist-packages:$PYTHONPATH"
-export ROSLISP_PACKAGE_DIRECTORIES='/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/share/common-lisp'
-export ROS_PACKAGE_PATH="/home/isaac/Downloads/apriltags_kalman/ros_workspace/src:$ROS_PACKAGE_PATH"
