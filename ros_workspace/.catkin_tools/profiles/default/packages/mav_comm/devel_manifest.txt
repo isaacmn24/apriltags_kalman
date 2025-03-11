@@ -1,0 +1,2 @@
+rotors_simulator/mav_comm/mav_comm
+/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/.private/mav_comm/cmake.lock /home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/./cmake.lock

@@ -1,0 +1,2 @@
+- setup-file:
+    local-name: /home/isaac/Downloads/apriltags_kalman/ros_workspace/devel_isolated/ekf_fusion/setup.sh

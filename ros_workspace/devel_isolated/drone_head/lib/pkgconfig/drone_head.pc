@@ -1,0 +1,8 @@
+prefix=/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel_isolated/drone_head
+
+Name: drone_head
+Description: Description of drone_head
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

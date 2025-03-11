@@ -52,3 +52,19 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rqt_rotors" TYPE FILE FILES "/home/isaac/Downloads/apriltags_kalman/ros_workspace/src/rotors_simulator/rqt_rotors/package.xml")
 endif()
 
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  include("/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/rotors_simulator/rqt_rotors/catkin_generated/safe_execute_install.cmake")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rqt_rotors" TYPE FILE FILES "/home/isaac/Downloads/apriltags_kalman/ros_workspace/src/rotors_simulator/rqt_rotors/plugin.xml")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/rqt_rotors" TYPE DIRECTORY FILES "/home/isaac/Downloads/apriltags_kalman/ros_workspace/src/rotors_simulator/rqt_rotors/resource")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/rqt_rotors" TYPE PROGRAM FILES "/home/isaac/Downloads/apriltags_kalman/ros_workspace/src/rotors_simulator/rqt_rotors/scripts/hil_plugin")
+endif()
+

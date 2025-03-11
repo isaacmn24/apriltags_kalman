@@ -80,6 +80,17 @@ install/local/fast: preinstall/fast
 	/usr/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
 .PHONY : install/local/fast
 
+# Special rule for the target rebuild_cache
+rebuild_cache:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
+	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+.PHONY : rebuild_cache
+
+# Special rule for the target rebuild_cache
+rebuild_cache/fast: rebuild_cache
+
+.PHONY : rebuild_cache/fast
+
 # Special rule for the target install
 install: preinstall
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
@@ -92,17 +103,6 @@ install/fast: preinstall/fast
 	/usr/bin/cmake -P cmake_install.cmake
 .PHONY : install/fast
 
-# Special rule for the target test
-test:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
-	/usr/bin/ctest --force-new-ctest-process $(ARGS)
-.PHONY : test
-
-# Special rule for the target test
-test/fast: test
-
-.PHONY : test/fast
-
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
@@ -114,17 +114,6 @@ edit_cache/fast: edit_cache
 
 .PHONY : edit_cache/fast
 
-# Special rule for the target rebuild_cache
-rebuild_cache:
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/usr/bin/cmake -S$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
-.PHONY : rebuild_cache
-
-# Special rule for the target rebuild_cache
-rebuild_cache/fast: rebuild_cache
-
-.PHONY : rebuild_cache/fast
-
 # Special rule for the target list_install_components
 list_install_components:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
@@ -134,6 +123,17 @@ list_install_components:
 list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
+
+# Special rule for the target test
+test:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running tests..."
+	/usr/bin/ctest --force-new-ctest-process $(ARGS)
+.PHONY : test
+
+# Special rule for the target test
+test/fast: test
+
+.PHONY : test/fast
 
 # The main all target
 all: cmake_check_build_system
@@ -168,79 +168,49 @@ depend:
 .PHONY : depend
 
 # Convenience name for target.
-rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_fw_dynamics_plugin.dir/rule:
-	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_fw_dynamics_plugin.dir/rule
-.PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_fw_dynamics_plugin.dir/rule
+rotors_simulator/rotors_gazebo_plugins/CMakeFiles/LiftDragPlugin.dir/rule:
+	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/LiftDragPlugin.dir/rule
+.PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/LiftDragPlugin.dir/rule
 
 # Convenience name for target.
-rotors_gazebo_fw_dynamics_plugin: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_fw_dynamics_plugin.dir/rule
+LiftDragPlugin: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/LiftDragPlugin.dir/rule
 
-.PHONY : rotors_gazebo_fw_dynamics_plugin
+.PHONY : LiftDragPlugin
 
 # fast build rule for target.
-rotors_gazebo_fw_dynamics_plugin/fast:
-	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_fw_dynamics_plugin.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_fw_dynamics_plugin.dir/build
-.PHONY : rotors_gazebo_fw_dynamics_plugin/fast
+LiftDragPlugin/fast:
+	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/LiftDragPlugin.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/LiftDragPlugin.dir/build
+.PHONY : LiftDragPlugin/fast
 
 # Convenience name for target.
-rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/rule:
-	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/rule
-.PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/rule
+rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_nodejs.dir/rule:
+	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_nodejs.dir/rule
+.PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_nodejs.dir/rule
 
 # Convenience name for target.
-visualization_msgs_generate_messages_lisp: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/rule
+topic_tools_generate_messages_nodejs: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_nodejs.dir/rule
 
-.PHONY : visualization_msgs_generate_messages_lisp
+.PHONY : topic_tools_generate_messages_nodejs
 
 # fast build rule for target.
-visualization_msgs_generate_messages_lisp/fast:
-	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/build
-.PHONY : visualization_msgs_generate_messages_lisp/fast
+topic_tools_generate_messages_nodejs/fast:
+	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_nodejs.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_nodejs.dir/build
+.PHONY : topic_tools_generate_messages_nodejs/fast
 
 # Convenience name for target.
-rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_imu_plugin.dir/rule:
-	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_imu_plugin.dir/rule
-.PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_imu_plugin.dir/rule
+rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_py.dir/rule:
+	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_py.dir/rule
+.PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_py.dir/rule
 
 # Convenience name for target.
-rotors_gazebo_imu_plugin: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_imu_plugin.dir/rule
+visualization_msgs_generate_messages_py: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_py.dir/rule
 
-.PHONY : rotors_gazebo_imu_plugin
+.PHONY : visualization_msgs_generate_messages_py
 
 # fast build rule for target.
-rotors_gazebo_imu_plugin/fast:
-	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_imu_plugin.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_imu_plugin.dir/build
-.PHONY : rotors_gazebo_imu_plugin/fast
-
-# Convenience name for target.
-rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_controller_interface.dir/rule:
-	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_controller_interface.dir/rule
-.PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_controller_interface.dir/rule
-
-# Convenience name for target.
-rotors_gazebo_controller_interface: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_controller_interface.dir/rule
-
-.PHONY : rotors_gazebo_controller_interface
-
-# fast build rule for target.
-rotors_gazebo_controller_interface/fast:
-	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_controller_interface.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_controller_interface.dir/build
-.PHONY : rotors_gazebo_controller_interface/fast
-
-# Convenience name for target.
-rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_bag_plugin.dir/rule:
-	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_bag_plugin.dir/rule
-.PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_bag_plugin.dir/rule
-
-# Convenience name for target.
-rotors_gazebo_bag_plugin: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_bag_plugin.dir/rule
-
-.PHONY : rotors_gazebo_bag_plugin
-
-# fast build rule for target.
-rotors_gazebo_bag_plugin/fast:
-	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_bag_plugin.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_bag_plugin.dir/build
-.PHONY : rotors_gazebo_bag_plugin/fast
+visualization_msgs_generate_messages_py/fast:
+	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_py.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_py.dir/build
+.PHONY : visualization_msgs_generate_messages_py/fast
 
 # Convenience name for target.
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_wind_plugin.dir/rule:
@@ -258,19 +228,79 @@ rotors_gazebo_wind_plugin/fast:
 .PHONY : rotors_gazebo_wind_plugin/fast
 
 # Convenience name for target.
-rotors_simulator/rotors_gazebo_plugins/CMakeFiles/LiftDragPlugin.dir/rule:
-	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/LiftDragPlugin.dir/rule
-.PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/LiftDragPlugin.dir/rule
+rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_odometry_plugin.dir/rule:
+	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_odometry_plugin.dir/rule
+.PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_odometry_plugin.dir/rule
 
 # Convenience name for target.
-LiftDragPlugin: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/LiftDragPlugin.dir/rule
+rotors_gazebo_odometry_plugin: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_odometry_plugin.dir/rule
 
-.PHONY : LiftDragPlugin
+.PHONY : rotors_gazebo_odometry_plugin
 
 # fast build rule for target.
-LiftDragPlugin/fast:
-	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/LiftDragPlugin.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/LiftDragPlugin.dir/build
-.PHONY : LiftDragPlugin/fast
+rotors_gazebo_odometry_plugin/fast:
+	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_odometry_plugin.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_odometry_plugin.dir/build
+.PHONY : rotors_gazebo_odometry_plugin/fast
+
+# Convenience name for target.
+rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_pressure_plugin.dir/rule:
+	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_pressure_plugin.dir/rule
+.PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_pressure_plugin.dir/rule
+
+# Convenience name for target.
+rotors_gazebo_pressure_plugin: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_pressure_plugin.dir/rule
+
+.PHONY : rotors_gazebo_pressure_plugin
+
+# fast build rule for target.
+rotors_gazebo_pressure_plugin/fast:
+	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_pressure_plugin.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_pressure_plugin.dir/build
+.PHONY : rotors_gazebo_pressure_plugin/fast
+
+# Convenience name for target.
+rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_eus.dir/rule:
+	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_eus.dir/rule
+.PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+topic_tools_generate_messages_eus: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_eus.dir/rule
+
+.PHONY : topic_tools_generate_messages_eus
+
+# fast build rule for target.
+topic_tools_generate_messages_eus/fast:
+	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_eus.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_eus.dir/build
+.PHONY : topic_tools_generate_messages_eus/fast
+
+# Convenience name for target.
+rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_cpp.dir/rule:
+	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_cpp.dir/rule
+.PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+topic_tools_generate_messages_cpp: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_cpp.dir/rule
+
+.PHONY : topic_tools_generate_messages_cpp
+
+# fast build rule for target.
+topic_tools_generate_messages_cpp/fast:
+	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_cpp.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_cpp.dir/build
+.PHONY : topic_tools_generate_messages_cpp/fast
+
+# Convenience name for target.
+rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_nodejs.dir/rule:
+	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_nodejs.dir/rule
+.PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+visualization_msgs_generate_messages_nodejs: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_nodejs.dir/rule
+
+.PHONY : visualization_msgs_generate_messages_nodejs
+
+# fast build rule for target.
+visualization_msgs_generate_messages_nodejs/fast:
+	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_nodejs.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_nodejs.dir/build
+.PHONY : visualization_msgs_generate_messages_nodejs/fast
 
 # Convenience name for target.
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_eus.dir/rule:
@@ -303,6 +333,21 @@ rotors_gazebo_motor_model/fast:
 .PHONY : rotors_gazebo_motor_model/fast
 
 # Convenience name for target.
+rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_lisp.dir/rule:
+	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_lisp.dir/rule
+.PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+topic_tools_generate_messages_lisp: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_lisp.dir/rule
+
+.PHONY : topic_tools_generate_messages_lisp
+
+# fast build rule for target.
+topic_tools_generate_messages_lisp/fast:
+	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_lisp.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_lisp.dir/build
+.PHONY : topic_tools_generate_messages_lisp/fast
+
+# Convenience name for target.
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/mav_msgs.dir/rule:
 	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/mav_msgs.dir/rule
 .PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/mav_msgs.dir/rule
@@ -333,19 +378,19 @@ visualization_msgs_generate_messages_cpp/fast:
 .PHONY : visualization_msgs_generate_messages_cpp/fast
 
 # Convenience name for target.
-rotors_simulator/rotors_gazebo_plugins/CMakeFiles/gazebo_geotagged_images_plugin.dir/rule:
-	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/gazebo_geotagged_images_plugin.dir/rule
-.PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/gazebo_geotagged_images_plugin.dir/rule
+rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_fw_dynamics_plugin.dir/rule:
+	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_fw_dynamics_plugin.dir/rule
+.PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_fw_dynamics_plugin.dir/rule
 
 # Convenience name for target.
-gazebo_geotagged_images_plugin: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/gazebo_geotagged_images_plugin.dir/rule
+rotors_gazebo_fw_dynamics_plugin: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_fw_dynamics_plugin.dir/rule
 
-.PHONY : gazebo_geotagged_images_plugin
+.PHONY : rotors_gazebo_fw_dynamics_plugin
 
 # fast build rule for target.
-gazebo_geotagged_images_plugin/fast:
-	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/gazebo_geotagged_images_plugin.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/gazebo_geotagged_images_plugin.dir/build
-.PHONY : gazebo_geotagged_images_plugin/fast
+rotors_gazebo_fw_dynamics_plugin/fast:
+	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_fw_dynamics_plugin.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_fw_dynamics_plugin.dir/build
+.PHONY : rotors_gazebo_fw_dynamics_plugin/fast
 
 # Convenience name for target.
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/gazebo_plugins_gencfg.dir/rule:
@@ -363,19 +408,94 @@ gazebo_plugins_gencfg/fast:
 .PHONY : gazebo_plugins_gencfg/fast
 
 # Convenience name for target.
-rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_py.dir/rule:
-	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_py.dir/rule
-.PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_py.dir/rule
+rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_bag_plugin.dir/rule:
+	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_bag_plugin.dir/rule
+.PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_bag_plugin.dir/rule
 
 # Convenience name for target.
-visualization_msgs_generate_messages_py: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_py.dir/rule
+rotors_gazebo_bag_plugin: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_bag_plugin.dir/rule
 
-.PHONY : visualization_msgs_generate_messages_py
+.PHONY : rotors_gazebo_bag_plugin
 
 # fast build rule for target.
-visualization_msgs_generate_messages_py/fast:
-	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_py.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_py.dir/build
-.PHONY : visualization_msgs_generate_messages_py/fast
+rotors_gazebo_bag_plugin/fast:
+	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_bag_plugin.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_bag_plugin.dir/build
+.PHONY : rotors_gazebo_bag_plugin/fast
+
+# Convenience name for target.
+rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_controller_interface.dir/rule:
+	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_controller_interface.dir/rule
+.PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_controller_interface.dir/rule
+
+# Convenience name for target.
+rotors_gazebo_controller_interface: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_controller_interface.dir/rule
+
+.PHONY : rotors_gazebo_controller_interface
+
+# fast build rule for target.
+rotors_gazebo_controller_interface/fast:
+	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_controller_interface.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_controller_interface.dir/build
+.PHONY : rotors_gazebo_controller_interface/fast
+
+# Convenience name for target.
+rotors_simulator/rotors_gazebo_plugins/CMakeFiles/gazebo_geotagged_images_plugin.dir/rule:
+	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/gazebo_geotagged_images_plugin.dir/rule
+.PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/gazebo_geotagged_images_plugin.dir/rule
+
+# Convenience name for target.
+gazebo_geotagged_images_plugin: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/gazebo_geotagged_images_plugin.dir/rule
+
+.PHONY : gazebo_geotagged_images_plugin
+
+# fast build rule for target.
+gazebo_geotagged_images_plugin/fast:
+	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/gazebo_geotagged_images_plugin.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/gazebo_geotagged_images_plugin.dir/build
+.PHONY : gazebo_geotagged_images_plugin/fast
+
+# Convenience name for target.
+rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_magnetometer_plugin.dir/rule:
+	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_magnetometer_plugin.dir/rule
+.PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_magnetometer_plugin.dir/rule
+
+# Convenience name for target.
+rotors_gazebo_magnetometer_plugin: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_magnetometer_plugin.dir/rule
+
+.PHONY : rotors_gazebo_magnetometer_plugin
+
+# fast build rule for target.
+rotors_gazebo_magnetometer_plugin/fast:
+	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_magnetometer_plugin.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_magnetometer_plugin.dir/build
+.PHONY : rotors_gazebo_magnetometer_plugin/fast
+
+# Convenience name for target.
+rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/rule:
+	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/rule
+.PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+visualization_msgs_generate_messages_lisp: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/rule
+
+.PHONY : visualization_msgs_generate_messages_lisp
+
+# fast build rule for target.
+visualization_msgs_generate_messages_lisp/fast:
+	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_lisp.dir/build
+.PHONY : visualization_msgs_generate_messages_lisp/fast
+
+# Convenience name for target.
+rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_imu_plugin.dir/rule:
+	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_imu_plugin.dir/rule
+.PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_imu_plugin.dir/rule
+
+# Convenience name for target.
+rotors_gazebo_imu_plugin: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_imu_plugin.dir/rule
+
+.PHONY : rotors_gazebo_imu_plugin
+
+# fast build rule for target.
+rotors_gazebo_imu_plugin/fast:
+	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_imu_plugin.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_imu_plugin.dir/build
+.PHONY : rotors_gazebo_imu_plugin/fast
 
 # Convenience name for target.
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_noisydepth_plugin.dir/rule:
@@ -391,6 +511,51 @@ rotors_gazebo_noisydepth_plugin: rotors_simulator/rotors_gazebo_plugins/CMakeFil
 rotors_gazebo_noisydepth_plugin/fast:
 	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_noisydepth_plugin.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_noisydepth_plugin.dir/build
 .PHONY : rotors_gazebo_noisydepth_plugin/fast
+
+# Convenience name for target.
+rotors_simulator/rotors_gazebo_plugins/CMakeFiles/mavros_dummy_target.dir/rule:
+	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/mavros_dummy_target.dir/rule
+.PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/mavros_dummy_target.dir/rule
+
+# Convenience name for target.
+mavros_dummy_target: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/mavros_dummy_target.dir/rule
+
+.PHONY : mavros_dummy_target
+
+# fast build rule for target.
+mavros_dummy_target/fast:
+	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/mavros_dummy_target.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/mavros_dummy_target.dir/build
+.PHONY : mavros_dummy_target/fast
+
+# Convenience name for target.
+rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_py.dir/rule:
+	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_py.dir/rule
+.PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_py.dir/rule
+
+# Convenience name for target.
+topic_tools_generate_messages_py: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_py.dir/rule
+
+.PHONY : topic_tools_generate_messages_py
+
+# fast build rule for target.
+topic_tools_generate_messages_py/fast:
+	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_py.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_py.dir/build
+.PHONY : topic_tools_generate_messages_py/fast
+
+# Convenience name for target.
+rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_mavlink_interface.dir/rule:
+	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_mavlink_interface.dir/rule
+.PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_mavlink_interface.dir/rule
+
+# Convenience name for target.
+rotors_gazebo_mavlink_interface: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_mavlink_interface.dir/rule
+
+.PHONY : rotors_gazebo_mavlink_interface
+
+# fast build rule for target.
+rotors_gazebo_mavlink_interface/fast:
+	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_mavlink_interface.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_mavlink_interface.dir/build
+.PHONY : rotors_gazebo_mavlink_interface/fast
 
 # Convenience name for target.
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_multirotor_base_plugin.dir/rule:
@@ -438,51 +603,6 @@ rotors_gazebo_lidar_plugin/fast:
 .PHONY : rotors_gazebo_lidar_plugin/fast
 
 # Convenience name for target.
-rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_magnetometer_plugin.dir/rule:
-	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_magnetometer_plugin.dir/rule
-.PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_magnetometer_plugin.dir/rule
-
-# Convenience name for target.
-rotors_gazebo_magnetometer_plugin: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_magnetometer_plugin.dir/rule
-
-.PHONY : rotors_gazebo_magnetometer_plugin
-
-# fast build rule for target.
-rotors_gazebo_magnetometer_plugin/fast:
-	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_magnetometer_plugin.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_magnetometer_plugin.dir/build
-.PHONY : rotors_gazebo_magnetometer_plugin/fast
-
-# Convenience name for target.
-rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_odometry_plugin.dir/rule:
-	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_odometry_plugin.dir/rule
-.PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_odometry_plugin.dir/rule
-
-# Convenience name for target.
-rotors_gazebo_odometry_plugin: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_odometry_plugin.dir/rule
-
-.PHONY : rotors_gazebo_odometry_plugin
-
-# fast build rule for target.
-rotors_gazebo_odometry_plugin/fast:
-	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_odometry_plugin.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_odometry_plugin.dir/build
-.PHONY : rotors_gazebo_odometry_plugin/fast
-
-# Convenience name for target.
-rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_pressure_plugin.dir/rule:
-	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_pressure_plugin.dir/rule
-.PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_pressure_plugin.dir/rule
-
-# Convenience name for target.
-rotors_gazebo_pressure_plugin: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_pressure_plugin.dir/rule
-
-.PHONY : rotors_gazebo_pressure_plugin
-
-# fast build rule for target.
-rotors_gazebo_pressure_plugin/fast:
-	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_pressure_plugin.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_pressure_plugin.dir/build
-.PHONY : rotors_gazebo_pressure_plugin/fast
-
-# Convenience name for target.
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_ros_interface_plugin.dir/rule:
 	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_ros_interface_plugin.dir/rule
 .PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_ros_interface_plugin.dir/rule
@@ -496,21 +616,6 @@ rotors_gazebo_ros_interface_plugin: rotors_simulator/rotors_gazebo_plugins/CMake
 rotors_gazebo_ros_interface_plugin/fast:
 	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_ros_interface_plugin.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_ros_interface_plugin.dir/build
 .PHONY : rotors_gazebo_ros_interface_plugin/fast
-
-# Convenience name for target.
-rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_nodejs.dir/rule:
-	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_nodejs.dir/rule
-.PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_nodejs.dir/rule
-
-# Convenience name for target.
-visualization_msgs_generate_messages_nodejs: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_nodejs.dir/rule
-
-.PHONY : visualization_msgs_generate_messages_nodejs
-
-# fast build rule for target.
-visualization_msgs_generate_messages_nodejs/fast:
-	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_nodejs.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_nodejs.dir/build
-.PHONY : visualization_msgs_generate_messages_nodejs/fast
 
 Actuators.pb.o: Actuators.pb.cc.o
 
@@ -1565,6 +1670,33 @@ src/gazebo_magnetometer_plugin.cpp.s:
 	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_magnetometer_plugin.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_magnetometer_plugin.dir/src/gazebo_magnetometer_plugin.cpp.s
 .PHONY : src/gazebo_magnetometer_plugin.cpp.s
 
+src/gazebo_mavlink_interface.o: src/gazebo_mavlink_interface.cpp.o
+
+.PHONY : src/gazebo_mavlink_interface.o
+
+# target to build an object file
+src/gazebo_mavlink_interface.cpp.o:
+	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_mavlink_interface.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_mavlink_interface.dir/src/gazebo_mavlink_interface.cpp.o
+.PHONY : src/gazebo_mavlink_interface.cpp.o
+
+src/gazebo_mavlink_interface.i: src/gazebo_mavlink_interface.cpp.i
+
+.PHONY : src/gazebo_mavlink_interface.i
+
+# target to preprocess a source file
+src/gazebo_mavlink_interface.cpp.i:
+	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_mavlink_interface.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_mavlink_interface.dir/src/gazebo_mavlink_interface.cpp.i
+.PHONY : src/gazebo_mavlink_interface.cpp.i
+
+src/gazebo_mavlink_interface.s: src/gazebo_mavlink_interface.cpp.s
+
+.PHONY : src/gazebo_mavlink_interface.s
+
+# target to generate assembly for a file
+src/gazebo_mavlink_interface.cpp.s:
+	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_mavlink_interface.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_mavlink_interface.dir/src/gazebo_mavlink_interface.cpp.s
+.PHONY : src/gazebo_mavlink_interface.cpp.s
+
 src/gazebo_motor_model.o: src/gazebo_motor_model.cpp.o
 
 .PHONY : src/gazebo_motor_model.o
@@ -1754,6 +1886,33 @@ src/gazebo_wind_plugin.cpp.s:
 	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_wind_plugin.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_wind_plugin.dir/src/gazebo_wind_plugin.cpp.s
 .PHONY : src/gazebo_wind_plugin.cpp.s
 
+src/geo_mag_declination.o: src/geo_mag_declination.cpp.o
+
+.PHONY : src/geo_mag_declination.o
+
+# target to build an object file
+src/geo_mag_declination.cpp.o:
+	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_mavlink_interface.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_mavlink_interface.dir/src/geo_mag_declination.cpp.o
+.PHONY : src/geo_mag_declination.cpp.o
+
+src/geo_mag_declination.i: src/geo_mag_declination.cpp.i
+
+.PHONY : src/geo_mag_declination.i
+
+# target to preprocess a source file
+src/geo_mag_declination.cpp.i:
+	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_mavlink_interface.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_mavlink_interface.dir/src/geo_mag_declination.cpp.i
+.PHONY : src/geo_mag_declination.cpp.i
+
+src/geo_mag_declination.s: src/geo_mag_declination.cpp.s
+
+.PHONY : src/geo_mag_declination.s
+
+# target to generate assembly for a file
+src/geo_mag_declination.cpp.s:
+	cd /home/isaac/Downloads/apriltags_kalman/ros_workspace/build && $(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_mavlink_interface.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_mavlink_interface.dir/src/geo_mag_declination.cpp.s
+.PHONY : src/geo_mag_declination.cpp.s
+
 src/liftdrag_plugin/liftdrag_plugin.o: src/liftdrag_plugin/liftdrag_plugin.cpp.o
 
 .PHONY : src/liftdrag_plugin/liftdrag_plugin.o
@@ -1788,35 +1947,42 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... install/strip"
-	@echo "... rotors_gazebo_fw_dynamics_plugin"
-	@echo "... visualization_msgs_generate_messages_lisp"
-	@echo "... rotors_gazebo_imu_plugin"
-	@echo "... rotors_gazebo_controller_interface"
-	@echo "... rotors_gazebo_bag_plugin"
-	@echo "... rotors_gazebo_wind_plugin"
-	@echo "... LiftDragPlugin"
 	@echo "... install/local"
-	@echo "... visualization_msgs_generate_messages_eus"
-	@echo "... rotors_gazebo_motor_model"
-	@echo "... mav_msgs"
-	@echo "... visualization_msgs_generate_messages_cpp"
-	@echo "... gazebo_geotagged_images_plugin"
-	@echo "... gazebo_plugins_gencfg"
-	@echo "... visualization_msgs_generate_messages_py"
+	@echo "... LiftDragPlugin"
+	@echo "... rebuild_cache"
+	@echo "... topic_tools_generate_messages_nodejs"
 	@echo "... install"
-	@echo "... rotors_gazebo_noisydepth_plugin"
-	@echo "... rotors_gazebo_multirotor_base_plugin"
-	@echo "... rotors_gazebo_gps_plugin"
-	@echo "... rotors_gazebo_lidar_plugin"
-	@echo "... rotors_gazebo_magnetometer_plugin"
-	@echo "... test"
+	@echo "... visualization_msgs_generate_messages_py"
+	@echo "... rotors_gazebo_wind_plugin"
 	@echo "... rotors_gazebo_odometry_plugin"
 	@echo "... rotors_gazebo_pressure_plugin"
 	@echo "... edit_cache"
-	@echo "... rebuild_cache"
-	@echo "... rotors_gazebo_ros_interface_plugin"
-	@echo "... visualization_msgs_generate_messages_nodejs"
+	@echo "... topic_tools_generate_messages_eus"
+	@echo "... topic_tools_generate_messages_cpp"
 	@echo "... list_install_components"
+	@echo "... visualization_msgs_generate_messages_nodejs"
+	@echo "... visualization_msgs_generate_messages_eus"
+	@echo "... rotors_gazebo_motor_model"
+	@echo "... topic_tools_generate_messages_lisp"
+	@echo "... mav_msgs"
+	@echo "... visualization_msgs_generate_messages_cpp"
+	@echo "... rotors_gazebo_fw_dynamics_plugin"
+	@echo "... gazebo_plugins_gencfg"
+	@echo "... rotors_gazebo_bag_plugin"
+	@echo "... rotors_gazebo_controller_interface"
+	@echo "... gazebo_geotagged_images_plugin"
+	@echo "... test"
+	@echo "... rotors_gazebo_magnetometer_plugin"
+	@echo "... visualization_msgs_generate_messages_lisp"
+	@echo "... rotors_gazebo_imu_plugin"
+	@echo "... rotors_gazebo_noisydepth_plugin"
+	@echo "... mavros_dummy_target"
+	@echo "... topic_tools_generate_messages_py"
+	@echo "... rotors_gazebo_mavlink_interface"
+	@echo "... rotors_gazebo_multirotor_base_plugin"
+	@echo "... rotors_gazebo_gps_plugin"
+	@echo "... rotors_gazebo_lidar_plugin"
+	@echo "... rotors_gazebo_ros_interface_plugin"
 	@echo "... Actuators.pb.o"
 	@echo "... Actuators.pb.i"
 	@echo "... Actuators.pb.s"
@@ -1934,6 +2100,9 @@ help:
 	@echo "... src/gazebo_magnetometer_plugin.o"
 	@echo "... src/gazebo_magnetometer_plugin.i"
 	@echo "... src/gazebo_magnetometer_plugin.s"
+	@echo "... src/gazebo_mavlink_interface.o"
+	@echo "... src/gazebo_mavlink_interface.i"
+	@echo "... src/gazebo_mavlink_interface.s"
 	@echo "... src/gazebo_motor_model.o"
 	@echo "... src/gazebo_motor_model.i"
 	@echo "... src/gazebo_motor_model.s"
@@ -1955,6 +2124,9 @@ help:
 	@echo "... src/gazebo_wind_plugin.o"
 	@echo "... src/gazebo_wind_plugin.i"
 	@echo "... src/gazebo_wind_plugin.s"
+	@echo "... src/geo_mag_declination.o"
+	@echo "... src/geo_mag_declination.i"
+	@echo "... src/geo_mag_declination.s"
 	@echo "... src/liftdrag_plugin/liftdrag_plugin.o"
 	@echo "... src/liftdrag_plugin/liftdrag_plugin.i"
 	@echo "... src/liftdrag_plugin/liftdrag_plugin.s"

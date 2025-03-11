@@ -1,0 +1,5 @@
+Symlinking /home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/share/drone_head/cmake/drone_headConfig-version.cmake
+Symlinking /home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/share/drone_head/cmake/drone_headConfig.cmake
+Symlinking /home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/lib/pkgconfig/drone_head.pc
+Symlinking /home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/lib/drone_head/set_position_of_apriltag_box.py
+Symlinking /home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/lib/drone_head/cmake.lock

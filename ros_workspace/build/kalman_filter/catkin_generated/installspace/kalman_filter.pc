@@ -1,8 +1,0 @@
-prefix=/home/isaac/Downloads/apriltags_kalman/ros_workspace/install
-
-Name: kalman_filter
-Description: Description of kalman_filter
-Version: 1.0.0
-Cflags: -I${prefix}/include -I/usr/include/eigen3
-Libs: -L${prefix}/lib -lkalman_filter_kf -lkalman_filter_ukf -lkalman_filter_ukfa
-Requires: 

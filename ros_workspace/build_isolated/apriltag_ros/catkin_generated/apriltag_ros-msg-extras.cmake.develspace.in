@@ -1,0 +1,2 @@
+set(apriltag_ros_MESSAGE_FILES "/home/isaac/Downloads/apriltags_kalman/ros_workspace/src/apriltag_ros/apriltag_ros/msg/AprilTagDetection.msg;/home/isaac/Downloads/apriltags_kalman/ros_workspace/src/apriltag_ros/apriltag_ros/msg/AprilTagDetectionArray.msg")
+set(apriltag_ros_SERVICE_FILES "/home/isaac/Downloads/apriltags_kalman/ros_workspace/src/apriltag_ros/apriltag_ros/srv/AnalyzeSingleImage.srv")

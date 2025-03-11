@@ -1,0 +1,1 @@
+/usr/bin/cc -fPIC -O3 -DNDEBUG  -shared  -o apriltag..so CMakeFiles/apriltag..dir/apriltag_pywrap.c.o  -Wl,-rpath,/home/isaac/Downloads/apriltags_kalman/ros_workspace/build_isolated/apriltag/devel: libapriltag.so.3.4.3 /usr/lib/x86_64-linux-gnu/libpython3.8.so -lpthread -lm 

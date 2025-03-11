@@ -1,0 +1,6 @@
+rotors_simulator/rotors_joy_interface
+/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/.private/rotors_joy_interface/cmake.lock /home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/./cmake.lock
+/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/.private/rotors_joy_interface/share/rotors_joy_interface/cmake/rotors_joy_interfaceConfig-version.cmake /home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/share/rotors_joy_interface/cmake/rotors_joy_interfaceConfig-version.cmake
+/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/.private/rotors_joy_interface/share/rotors_joy_interface/cmake/rotors_joy_interfaceConfig.cmake /home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/share/rotors_joy_interface/cmake/rotors_joy_interfaceConfig.cmake
+/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/.private/rotors_joy_interface/lib/pkgconfig/rotors_joy_interface.pc /home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/lib/pkgconfig/rotors_joy_interface.pc
+/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/.private/rotors_joy_interface/lib/rotors_joy_interface/rotors_joy_interface /home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/lib/rotors_joy_interface/rotors_joy_interface

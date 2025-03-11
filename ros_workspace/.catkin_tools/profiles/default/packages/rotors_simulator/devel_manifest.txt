@@ -1,0 +1,2 @@
+rotors_simulator/rotors_simulator
+/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/.private/rotors_simulator/cmake.lock /home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/./cmake.lock

@@ -1,0 +1,8 @@
+rotors_simulator/rqt_rotors
+/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/.private/rqt_rotors/cmake.lock /home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/./cmake.lock
+/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/.private/rqt_rotors/bin/hil_plugin /home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/bin/hil_plugin
+/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/.private/rqt_rotors/bin/cmake.lock /home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/bin/cmake.lock
+/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/.private/rqt_rotors/share/rqt_rotors/cmake/rqt_rotorsConfig-version.cmake /home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/share/rqt_rotors/cmake/rqt_rotorsConfig-version.cmake
+/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/.private/rqt_rotors/share/rqt_rotors/cmake/rqt_rotorsConfig.cmake /home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/share/rqt_rotors/cmake/rqt_rotorsConfig.cmake
+/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/.private/rqt_rotors/lib/pkgconfig/rqt_rotors.pc /home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/lib/pkgconfig/rqt_rotors.pc
+/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/.private/rqt_rotors/lib/python3/dist-packages/rqt_rotors/__init__.py /home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/lib/python3/dist-packages/rqt_rotors/__init__.py

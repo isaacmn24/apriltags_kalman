@@ -52,3 +52,15 @@ if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_
   file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/share/frame_transform" TYPE FILE FILES "/home/isaac/Downloads/apriltags_kalman/ros_workspace/src/frame_transform/package.xml")
 endif()
 
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/frame_transform" TYPE PROGRAM FILES "/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/frame_transform/catkin_generated/installspace/tf2_broadcaster.py")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/frame_transform" TYPE PROGRAM FILES "/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/frame_transform/catkin_generated/installspace/tf2_listener_apriltag_box.py")
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  file(INSTALL DESTINATION "${CMAKE_INSTALL_PREFIX}/lib/frame_transform" TYPE PROGRAM FILES "/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/frame_transform/catkin_generated/installspace/tf2_listener_tag_detection.py")
+endif()
+

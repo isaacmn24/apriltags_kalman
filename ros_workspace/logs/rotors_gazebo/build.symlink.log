@@ -1,0 +1,6 @@
+Symlinking /home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/share/rotors_gazebo/cmake/rotors_gazeboConfig-version.cmake
+Symlinking /home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/share/rotors_gazebo/cmake/rotors_gazeboConfig.cmake
+Symlinking /home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/lib/pkgconfig/rotors_gazebo.pc
+Symlinking /home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/lib/rotors_gazebo/waypoint_publisher_file
+Symlinking /home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/lib/rotors_gazebo/hovering_example
+Symlinking /home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/lib/rotors_gazebo/waypoint_publisher

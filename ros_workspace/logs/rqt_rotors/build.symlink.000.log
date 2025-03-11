@@ -1,0 +1,6 @@
+Symlinking /home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/bin/hil_plugin
+Symlinking /home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/bin/cmake.lock
+Symlinking /home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/share/rqt_rotors/cmake/rqt_rotorsConfig-version.cmake
+Symlinking /home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/share/rqt_rotors/cmake/rqt_rotorsConfig.cmake
+Symlinking /home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/lib/pkgconfig/rqt_rotors.pc
+Symlinking /home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/lib/python3/dist-packages/rqt_rotors/__init__.py

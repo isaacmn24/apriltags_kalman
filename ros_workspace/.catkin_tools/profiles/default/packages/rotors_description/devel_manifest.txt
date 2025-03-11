@@ -1,0 +1,5 @@
+rotors_simulator/rotors_description
+/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/.private/rotors_description/cmake.lock /home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/./cmake.lock
+/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/.private/rotors_description/share/rotors_description/cmake/rotors_descriptionConfig.cmake /home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/share/rotors_description/cmake/rotors_descriptionConfig.cmake
+/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/.private/rotors_description/share/rotors_description/cmake/rotors_descriptionConfig-version.cmake /home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/share/rotors_description/cmake/rotors_descriptionConfig-version.cmake
+/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/.private/rotors_description/lib/pkgconfig/rotors_description.pc /home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/lib/pkgconfig/rotors_description.pc
