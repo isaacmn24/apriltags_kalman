@@ -167,7 +167,10 @@ include_directories(
 # Mark executable scripts (Python etc.) for installation
 # in contrast to setup.py, you can choose the destination
 catkin_install_python(PROGRAMS
+  scripts/sphinx_waypoint_mpc.py
   scripts/anafi_control_waypoint_mpc.py
+  scripts/sphinx_cascaded_pid_interface.py
+  scripts/sphinx_cascaded_pid_relative_info.py
   scripts/anafi_control_cascaded_pid_interface.py
   scripts/anafi_control_cascaded_pid_relative_info.py
   scripts/trajectory_generator.py

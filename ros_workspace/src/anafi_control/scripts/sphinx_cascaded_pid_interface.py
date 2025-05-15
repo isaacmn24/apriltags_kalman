@@ -33,43 +33,43 @@ max_v_z = 4 #[3/s]
 
 #Cascaded PID x-direction
 #outer loop controlling p_x, output is v_x
-x_position_setpoint_topic = ('/'+drone_name+'/pid/x/ol_position/setpoint_ac',Float64)
-x_position_state_topic = ('/'+drone_name+'/pid/x/ol_position/state_ac',Float64)
-x_position_effort_topic = ('/'+drone_name+'/pid/x/ol_position/effort_ac',Float64)
+x_position_setpoint_topic = ('/'+drone_name+'/pid/x/ol_position/setpoint',Float64)
+x_position_state_topic = ('/'+drone_name+'/pid/x/ol_position/state',Float64)
+x_position_effort_topic = ('/'+drone_name+'/pid/x/ol_position/effort',Float64)
 #inner loop controlling v_x, output is pitch angle
-x_velocity_setpoint_topic = ('/'+drone_name+'/pid/x/il_velocity/setpoint_ac',Float64)
-x_velocity_state_topic = ('/'+drone_name+'/pid/x/il_velocity/state_ac',Float64)
-x_velocity_effort_topic = ('/'+drone_name+'/pid/x/il_velocity/effort_ac',Float64)
+x_velocity_setpoint_topic = ('/'+drone_name+'/pid/x/il_velocity/setpoint',Float64)
+x_velocity_state_topic = ('/'+drone_name+'/pid/x/il_velocity/state',Float64)
+x_velocity_effort_topic = ('/'+drone_name+'/pid/x/il_velocity/effort',Float64)
 
 #Cascaded PID y-direction
 #outer loop controlling p_y, output is v_y
-y_position_setpoint_topic = ('/'+drone_name+'/pid/y/ol_position/setpoint_ac',Float64)
-y_position_state_topic = ('/'+drone_name+'/pid/y/ol_position/state_ac',Float64)
-y_position_effort_topic = ('/'+drone_name+'/pid/y/ol_position/effort_ac',Float64)
+y_position_setpoint_topic = ('/'+drone_name+'/pid/y/ol_position/setpoint',Float64)
+y_position_state_topic = ('/'+drone_name+'/pid/y/ol_position/state',Float64)
+y_position_effort_topic = ('/'+drone_name+'/pid/y/ol_position/effort',Float64)
 #inner loop controlling v_y, output is roll angle
-y_velocity_setpoint_topic = ('/'+drone_name+'/pid/y/il_velocity/setpoint_ac',Float64)
-y_velocity_state_topic = ('/'+drone_name+'/pid/y/il_velocity/state_ac',Float64)
-y_velocity_effort_topic = ('/'+drone_name+'/pid/y/il_velocity/effort_ac',Float64)
+y_velocity_setpoint_topic = ('/'+drone_name+'/pid/y/il_velocity/setpoint',Float64)
+y_velocity_state_topic = ('/'+drone_name+'/pid/y/il_velocity/state',Float64)
+y_velocity_effort_topic = ('/'+drone_name+'/pid/y/il_velocity/effort',Float64)
 
 
 #PID z-direction
 #One loop controlling p_z, output is v_z
-z_position_setpoint_topic = ('/'+drone_name+'/pid/z/setpoint_ac',Float64)
-z_position_state_topic = ('/'+drone_name+'/pid/z/state_ac',Float64)
-z_position_effort_topic = ('/'+drone_name+'/pid/z/effort_ac',Float64)
+z_position_setpoint_topic = ('/'+drone_name+'/pid/z/setpoint',Float64)
+z_position_state_topic = ('/'+drone_name+'/pid/z/state',Float64)
+z_position_effort_topic = ('/'+drone_name+'/pid/z/effort',Float64)
 
 #PID yaw
 #One loop controlling yaw angle, output is yaw_rate
-yaw_setpoint_topic = ('/'+drone_name+'/pid/yaw/setpoint_ac',Float64)
-yaw_state_topic = ('/'+drone_name+'/pid/yaw/state_ac',Float64)
-yaw_effort_topic = ('/'+drone_name+'/pid/yaw/effort_ac',Float64)
+yaw_setpoint_topic = ('/'+drone_name+'/pid/yaw/setpoint',Float64)
+yaw_state_topic = ('/'+drone_name+'/pid/yaw/state',Float64)
+yaw_effort_topic = ('/'+drone_name+'/pid/yaw/effort',Float64)
 
 
 #Waypoint topic
-waypoint_topic = ('/'+drone_name+"/drone_frame/waypoint/state_ac",State)
+waypoint_topic = ('/'+drone_name+"/drone_frame/waypoint/state",State)
 
 #Drone topic
-drone_topic =  ('/'+drone_name+"/drone_frame/drone/state_ac",State)
+drone_topic =  ('/'+drone_name+"/drone_frame/drone/state",State)
 
 #Drone command topic
 drone_command_topic = ('/'+drone_name+"/drone/rpyt",PilotingCommand)
@@ -142,15 +142,16 @@ class PIDControlInterface():
         return
     
     def read_yaw_effort(self,msg):
-        self.piloting_command.yaw = -msg.data
+        self.piloting_command.yaw = msg.data
         return
     
     def read_x_velocity_effort(self,msg):
-        self.piloting_command.pitch = msg.data 
+        self.piloting_command.pitch = np.deg2rad(msg.data)
+        self.piloting_command.pitch = msg.data
         return
     
     def read_y_velocity_effort(self,msg):
-        self.piloting_command.roll = -msg.data
+        self.piloting_command.roll = msg.data
 
         return
     
@@ -206,7 +207,7 @@ class PIDControlInterface():
 
         
         self.piloting_command_stability_axes.roll = np.rad2deg(roll_sa)
-        self.piloting_command_stability_axes.pitch = np.rad2deg(pitch_sa) 
+        self.piloting_command_stability_axes.pitch =  np.rad2deg(pitch_sa)
         self.piloting_command_stability_axes.yaw = self.piloting_command.yaw
         self.piloting_command_stability_axes.gaz = self.piloting_command.gaz
         return

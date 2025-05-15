@@ -12,8 +12,12 @@ class TransformListener:
     def __init__(self, publisher_topic, subscriber_topic):
         self.pose = PoseStamped()
         self.pose_covariance = np.zeros((6, 6))  # Placeholder for covariance matrix
-        self.target_frame = "hummingbird/real_odometry_sensor"
-        self.source_frame = "hummingbird/camera_link_optical"                 # Initialize to None as withholder
+        # self.target_frame = "hummingbird/real_odometry_sensor"
+        # self.source_frame = "hummingbird/camera_link_optical"                 # Initialize to None as withholder
+        
+        self.target_frame = "anafi_localization_1"
+        self.source_frame = "correct_camera_frame" 
+
         self.tf_buffer = tf2_ros.Buffer()
         self.listener = tf2_ros.TransformListener(self.tf_buffer)
         

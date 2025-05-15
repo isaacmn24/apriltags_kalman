@@ -16,7 +16,7 @@ class Odom():
         rospy.Subscriber("/vrpn_client_node/marker_board_1/pose", PoseStamped, self.read_pose)
         rospy.Subscriber("/vrpn_client_node/marker_board_1/twist", TwistStamped, self.read_twist)
         
-        self.pub = rospy.Publisher("/apriltag_box/transformed_odom", Odometry, queue_size=10)
+        self.pub = rospy.Publisher("/apriltag_box/real_odometry_sensor/odometry", Odometry, queue_size=10)
 
         return
     
@@ -38,6 +38,26 @@ class Odom():
         transformed_msg.pose.covariance = covariance
         transformed_msg.twist.twist = self.twist.twist
         transformed_msg.twist.covariance = covariance
+
+        # Uncomment to simulate twist and covariances in order to check
+        # in  tf2_listener_apriltag_box that they're being correctly transformed
+        # transformed_msg.twist.twist.linear.z = 20 
+        # transformed_msg.twist.covariance = [
+        #     0,0,0,0,0,0,
+        #     0,0,0,0,0,0,
+        #     0,0,20,0,0,0,
+        #     0,0,0,0,0,0,
+        #     0,0,0,0,0,0,
+        #     0,0,0,0,0,0
+        # ]
+        # transformed_msg.pose.covariance = [
+        #     0,0,0,0,0,0,
+        #     0,15,0,0,0,0,
+        #     0,0,0,0,0,0,
+        #     0,0,0,0,0,0,
+        #     0,0,0,0,0,0,
+        #     0,0,0,0,0,0
+        # ]
 
         self.pub.publish(transformed_msg)
 

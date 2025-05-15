@@ -6,9 +6,13 @@ transform_time_offset: 0.0
 transform_timeout: 0.0
 
 # Set world frame and robot frame
-world_frame: hummingbird/real_odometry_sensor             # Global reference frame
-odom_frame: hummingbird/real_odometry_sensor              # Use the global frame since no dedicated odom frame is available
-base_link_frame: apriltag_box/real_odometry_sensor        # Drone is your base (or "base_link")
+# world_frame: hummingbird/real_odometry_sensor             # Global reference frame
+# odom_frame: hummingbird/real_odometry_sensor              # Use the global frame since no dedicated odom frame is available
+# base_link_frame: apriltag_box/real_odometry_sensor        # Drone is your base (or "base_link")
+world_frame: anafi_localization_1             # Global reference frame
+odom_frame: anafi_localization_1              # Use the global frame since no dedicated odom frame is available
+base_link_frame: marker_board_1               # Drone is your base (or "base_link")
+
 
 # Configure Pose Inputs
 # First source: Transformed pose from tf2_listener.py

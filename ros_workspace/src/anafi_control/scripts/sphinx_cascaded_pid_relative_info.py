@@ -32,32 +32,31 @@ from anafi_control.msg import State
 import numpy as np
 from copy import deepcopy
 from tf.transformations import quaternion_from_euler
-import time
 
 #Parameters
-node_name='cascaded_pid_relative_info_node'
+node_name='sphinx_cascaded_pid_relative_info_node'
 relative_info_hz = float(rospy.get_param(rospy.get_namespace()+node_name+'/relative_info_hz',"10"))
 drone_name = rospy.get_param(rospy.get_namespace()+node_name+'/drone_name','anafi')
 
 
 #Subscriber topics
 waypoint_topic = ('/'+drone_name+'/position_control/waypoint',Waypoint)
-sphinx_drone_topic = ('/'+drone_name+'/position_control/state_enu',State)
+sphinx_drone_topic = ('/'+drone_name+'/sphinx/drone_data',Sphinx)
 
 
 
 #Publisher topics
-relative_vel_state_topic = ('drone_frame/relative_waypoint_drone/state/twist_ac',TwistStamped)
-relative_pos_state_topic = ('drone_frame/relative_waypoint_drone/state/pose_ac',PoseStamped)
-relative_vel_state_world_topic = ('wp_frame/relative_waypoint_drone/state/twist_ac',TwistStamped)
-relative_pos_state_world_topic = ('wp_frame/relative_waypoint_drone/state/pose_ac',PoseStamped)
-drone_state_topic = ('drone_frame/drone/state_ac',State)
-target_state_topic = ('drone_frame/waypoint/state_ac',State)
-drone_state_world_topic = ('world_frame/drone/state_ac',State)
-target_state_world_topic = ('world_frame/waypoint/state_ac',State)
-relative_rpy_topic = ("drone_frame/relative_waypoint_drone/roll_pitch_yaw_ac",Float64MultiArray)
-drone_rpy_topic = ("drone_frame/drone/roll_pitch_yaw_ac",Float64MultiArray)
-target_rpy_topic = ("drone_frame/waypoint/roll_pitch_yaw_ac",Float64MultiArray)
+relative_vel_state_topic = ('drone_frame/relative_waypoint_drone/state/twist',TwistStamped)
+relative_pos_state_topic = ('drone_frame/relative_waypoint_drone/state/pose',PoseStamped)
+relative_vel_state_world_topic = ('wp_frame/relative_waypoint_drone/state/twist',TwistStamped)
+relative_pos_state_world_topic = ('wp_frame/relative_waypoint_drone/state/pose',PoseStamped)
+drone_state_topic = ('drone_frame/drone/state',State)
+target_state_topic = ('drone_frame/waypoint/state',State)
+drone_state_world_topic = ('world_frame/drone/state',State)
+target_state_world_topic = ('world_frame/waypoint/state',State)
+relative_rpy_topic = ("drone_frame/relative_waypoint_drone/roll_pitch_yaw",Float64MultiArray)
+drone_rpy_topic = ("drone_frame/drone/roll_pitch_yaw",Float64MultiArray)
+target_rpy_topic = ("drone_frame/waypoint/roll_pitch_yaw",Float64MultiArray)
 
 #Publisher definitions
 relative_vel_state_publisher = rospy.Publisher(relative_vel_state_topic[0],relative_vel_state_topic[1],queue_size = 0)
@@ -107,11 +106,22 @@ target_state_in_drone_frame = PoseTwistState()
 
 def read_drone(msg):
 
-    drone_state_in_wp_frame.pose = msg.pose
-    drone_state_in_wp_frame.twist = msg.twist
+    drone_state_in_wp_frame.pose.pose.position.x = msg.posX
+    drone_state_in_wp_frame.pose.pose.position.y = msg.posY
+    drone_state_in_wp_frame.pose.pose.position.z = msg.posZ
+    q = quaternion_from_euler(msg.attitudeX,msg.attitudeY,msg.attitudeZ)
+    drone_state_in_wp_frame.pose.pose.orientation.x = q[0]
+    drone_state_in_wp_frame.pose.pose.orientation.y = q[1]
+    drone_state_in_wp_frame.pose.pose.orientation.z = q[2]
+    drone_state_in_wp_frame.pose.pose.orientation.w = q[3]
 
-
-
+    drone_state_in_wp_frame.twist.twist.linear.vector.x = msg.velXENU
+    drone_state_in_wp_frame.twist.twist.linear.vector.y = msg.velYENU
+    drone_state_in_wp_frame.twist.twist.linear.vector.z = msg.velZENU
+    #ang velocity in ENU frame is not determined, therefore set to 0
+    drone_state_in_wp_frame.twist.twist.angular.vector.x = 0
+    drone_state_in_wp_frame.twist.twist.angular.vector.y = 0
+    drone_state_in_wp_frame.twist.twist.angular.vector.z = 0
     return
 
 
@@ -245,7 +255,6 @@ def compute_rpy_std_msg(q):
 if __name__ == '__main__':
     #Init nodes and subscribers
     rospy.init_node(node_name)
-    time.sleep(5)
 
     drone_subscriber = rospy.Subscriber(sphinx_drone_topic[0],sphinx_drone_topic[1],read_drone)
     waypoint_subscriber = rospy.Subscriber(waypoint_topic[0],waypoint_topic[1],read_waypoint)
@@ -263,8 +272,7 @@ if __name__ == '__main__':
 
     while not rospy.is_shutdown():
         try:
-            #transform drone and moving platform position and velocity in target frame . 
-            # print(drone_frame)  
+            #transform drone and moving platform position and velocity in target frame .                                    
             trans_world_to_drone_frame = tfBuffer.lookup_transform(drone_frame,wp_frame, rospy.Time())
 
             target_state_in_drone_frame.pose = tf2_geometry_msgs.do_transform_pose(target_state_in_wp_frame.pose,trans_world_to_drone_frame)

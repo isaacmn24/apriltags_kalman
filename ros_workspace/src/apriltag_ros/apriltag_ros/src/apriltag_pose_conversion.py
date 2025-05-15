@@ -70,7 +70,7 @@ def get_covariance(measured_position):
 if __name__ == '__main__':
     rospy.init_node("tag_converter")
 
-    with open("/home/isaac/Downloads/apriltags_kalman/ros_workspace/covariance_matrices.pkl", "rb") as f:
+    with open("/home/raven/src/apriltags_kalman/ros_workspace/covariance_matrices.pkl", "rb") as f:
         covariance_matrices = pickle.load(f)
         print(covariance_matrices.keys())
 

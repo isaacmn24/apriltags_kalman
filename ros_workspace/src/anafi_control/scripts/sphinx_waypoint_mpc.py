@@ -1,4 +1,3 @@
-#!/home/raven/venvs/sphinx_with_gazebo/bin/python
 import osqp
 import numpy as np
 from scipy import sparse
@@ -11,21 +10,19 @@ import tf2_geometry_msgs
 from sphinx_with_gazebo.msg import Sphinx
 from anafi_control.msg import Waypoint
 from olympe_bridge.msg import PilotingCommand
-from anafi_control.msg import State
-from tf.transformations import euler_from_quaternion
 
 
 
 
 #Parameters
-node_name = "anafi_control_waypoint_mpc_node"
+node_name = "sphinx_waypoint_mpc_node"
 publish_hz = float(rospy.get_param(rospy.get_namespace()+node_name+'/publish_hz',"50"))
 drone_name = rospy.get_param(rospy.get_namespace()+node_name+'/drone_name',"anafi")
 
 
 #General Topics
-waypoint_topic = ('/'+drone_name+'/position_control/waypoint',Waypoint)
-uav_state_topic = ('/'+drone_name+'/position_control/state_enu',State)
+uav_state_topic = ('/'+drone_name+'/sphinx/drone_data',Sphinx)
+waypoint_topic =  ('/'+drone_name+'/waypoints_debug',Waypoint)
 
 yaw_pid_state_topic =          ('/'+drone_name+'/yaw_pid/state',Float64)
 yaw_pid_setpoint_topic =       ('/'+drone_name+'/yaw_pid/setpoint',Float64)
@@ -39,7 +36,7 @@ x_state_debug_topic = ('/'+drone_name+'/x_state_debug',Float64MultiArray)
 x_desired_debug_topic = ('/'+drone_name+'/x_desired_debug',Float64MultiArray)
 eint_x_debug_topic = ('/'+drone_name+'/eint_x_debug',Float64MultiArray)
 eint_y_debug_topic = ('/'+drone_name+'/eint_y_debug',Float64MultiArray)
-eint_z_debug_topic = ('/'+drone_name+'/eint_z_debug',Float64MultiArray) 
+eint_z_debug_topic = ('/'+drone_name+'/eint_z_debug',Float64MultiArray)
 eint_vx_debug_topic = ('/'+drone_name+'/eint_vx_debug',Float64MultiArray)
 eint_vy_debug_topic = ('/'+drone_name+'/eint_vy_debug',Float64MultiArray)
 eint_vz_debug_topic = ('/'+drone_name+'/eint_vz_debug',Float64MultiArray)
@@ -109,15 +106,9 @@ class MPCOSQPWaypoint():
         self.eint_min = np.array([-np.inf,-np.inf,-np.inf,-np.inf,-np.inf,-np.inf])
         self.eint_max = np.array([ np.inf, np.inf, np.inf, np.inf, np.inf, np.inf])
 
-                                #      x_ref        x      y_ref      y         z_ref           z         vx_ref  vx     vy_ref      vy    vz_ref      vz    x_int   y_int  z_int    vx_int  vy_int    vz_int   
-        # self.weights_Q  =   np.array([ 0.0 ,   0.0,   0.0,    0.0,       0.0,        0.0,       0e1,   0e1,    0e1,       0e1,   0e1,       0e1,   0.4,    0.4,   6,       0,       0,    0e0])
-        # self.weights_QN =   np.array([ 0.0 ,   0.0,   0.0,    0.0,       0.0,        0.0,       0e1,   0e1,    0e1,       0e1,   0e1,       0e1,   3e1,    3e1,   3e1,       0e1,    0e1,   0e0])
-
-                               #      x_ref    x      y_ref   y         z_ref        z         vx_ref  vx     vy_ref      vy    vz_ref      vz    x_int   y_int  z_int    vx_int  vy_int    vz_int          
-        self.weights_Q  =   np.array([ 0.0 ,   0.0,   0.0,    0.0,       0.0,        0.0,       0e1,   0e1,    0e1,       0e1,   0e1,       0e1,   0.001,     0.001,   0.001,       0,      0,     0e0])
-        self.weights_QN =   np.array([ 0.0 ,   0.0,   0.0,    0.0,       0.0,        0.0,       0e1,   0e1,    0e1,       0e1,   0e1,       0e1,   5e0,    5e0,   5e0,       0e1,    0e1,   0e0])
-        
-        
+                                #      x_ref        x       y_ref         y         z_ref         z         vx_ref  vx     vy_ref      vy    vz_ref      vz      x_int   y_int  z_int    vx_int  vy_int    vz_int   
+        self.weights_Q  =   np.array([ 0.0 ,        0.0,     0.0,        0.0,        0.0,        0.0,        0e1,   0e1,    0e1,       0e1,   0e1,       0e1,     0,          0,   0,       0,       0,    0e1])
+        self.weights_QN =   np.array([ 0.0  ,       0.0,     0.0,        0.0,        0.0,        0.0,        0e1,   0e1,    0e1,       0e1,   0e1,       0e1,     5e1,      5e1,  5e1,       0e1,    0e1,    0e0])
         self.weight_R = 0.2
 
         #Solver params
@@ -150,7 +141,7 @@ class MPCOSQPWaypoint():
         self.yaw_control_state = 0
 
         self.pos_error_interval = 0.1 #s
-        self.pos_error_list = int(self.pos_error_interval*100)*[np.array([0,0,0])]
+        self.pos_error_list = int(self.pos_error_interval*rospy.get_param("/anafi/sphinx_interface_node/publish_hz"))*[np.array([0,0,0])]
         return
 
     def set_up_mpc_problem(self):
@@ -338,7 +329,6 @@ class MPCOSQPWaypoint():
                 self.x_trajectory[j+1,:] = self.Ad.dot(self.x_trajectory[j]) + self.Bd.dot(ctrl)
                 self.u_trajectory[j,:] = ctrl
 
-
             msg_eint_x = Float64MultiArray()
             msg_eint_y = Float64MultiArray()
             msg_eint_z =  Float64MultiArray()
@@ -375,14 +365,22 @@ class MPCOSQPWaypoint():
             self.trajectory_vx_debug_publisher.publish(msg_trajectory_vx)
             self.trajectory_vy_debug_publisher.publish(msg_trajectory_vy)
             self.trajectory_vz_debug_publisher.publish(msg_trajectory_vz)
+
+
+
+
+
+
+
+        
         return solve_successful
     
     def update_x0(self):
         #To avoid invalid initialization values when copter gets to fast
         x0 = self.x_state
-        x0[7]  = np.clip(x0[7],self.vmin[0],self.vmax[0])
-        x0[9]  = np.clip(x0[9],self.vmin[1],self.vmax[1])
-        x0[11] = np.clip(x0[11],self.vmin[2],self.vmax[2])
+        x0[7] =np.clip(x0[7],self.vmin[0],self.vmax[0])
+        x0[9] =np.clip(x0[9],self.vmin[1],self.vmax[1])
+        x0[11] =np.clip(x0[11],self.vmin[2],self.vmax[2])
         #Initialize the integral error with the current error
         x0[12] = np.clip(self.x0[12],self.eint_min[0],self.eint_max[0])
         x0[13] = np.clip(self.x0[13],self.eint_min[1],self.eint_max[1])
@@ -451,28 +449,28 @@ class MPCOSQPWaypoint():
         return
 
     def read_uav_state(self,msg):
-        self.x_state[1]  =  msg.pose.pose.position.x
-        self.x_state[3]  =  msg.pose.pose.position.y
-        self.x_state[5]  =  msg.pose.pose.position.z
-        self.x_state[7]  =  msg.twist.twist.linear.vector.x
-        self.x_state[9]  =  msg.twist.twist.linear.vector.y
-        self.x_state[11] =  msg.twist.twist.linear.vector.z
-        q = np.array([msg.pose.pose.orientation.x,msg.pose.pose.orientation.y,msg.pose.pose.orientation.z,msg.pose.pose.orientation.w])
-        roll,pitch,yaw = euler_from_quaternion([q[0],q[1],q[2],q[3]])
-        self.yaw_control_state = yaw
+
+
+        self.x_state[1] = msg.posX
+        self.x_state[3] = msg.posY
+        self.x_state[5] = msg.posZ
+        self.x_state[7] = msg.velXENU
+        self.x_state[9] = msg.velYENU
+        self.x_state[11] = msg.velZENU
+        self.yaw_control_state = msg.attitudeZ
 
         msg_pos_error = Vector3Stamped()
         msg_pos_error.header.stamp = rospy.Time.now()
         msg_pos_error.header.frame_id = "world"
         msg_pos_error.vector = Vector3(self.x_state[0]-self.x_state[1],self.x_state[2]-self.x_state[3],self.x_state[3]-self.x_state[4])
-        # self.position_error_debug_publisher.publish(msg_pos_error)
+        self.position_error_debug_publisher.publish(msg_pos_error)
         
         msg_x_state = Float64MultiArray()
         msg_x_state.data = self.x_state
         self.x_state_debug_publisher.publish(msg_x_state)
         msg_x_desired = Float64MultiArray()
         msg_x_desired.data = self.x_desired
-        # self.x_desired_debug_publisher.publish(msg_x_desired)
+        self.x_desired_debug_publisher.publish(msg_x_desired)
 
         
         return
@@ -557,7 +555,6 @@ class MPCOSQPWaypoint():
 
 
     def transform_vector3(self,vector3,target_frame_name,original_frame_name):
-        print(target_frame_name)
         trans_world_to_target_frame = self.tfBuffer.lookup_transform(target_frame_name,original_frame_name, rospy.Time())
         vector3_transformed = tf2_geometry_msgs.do_transform_vector3(vector3,trans_world_to_target_frame)
         return vector3_transformed
@@ -576,11 +573,11 @@ class MPCOSQPWaypoint():
 
 
 
-        v.vector.x = self.u_trajectory[0,0] # backup 1
-        v.vector.y = self.u_trajectory[0,1]# backup 1
+        v.vector.x = self.u_trajectory[1,0]
+        v.vector.y = self.u_trajectory[1,1]
 
 
-        v.vector.z = self.x_trajectory[5,11] #backup 5
+        v.vector.z = self.x_trajectory[5,11]
 
 
 
@@ -600,16 +597,13 @@ class MPCOSQPWaypoint():
 
 
 
-        # theta = np.clip(np.rad2deg(np.arcsin(vt.vector.x/9.81)),-0.5,0.5) #deg
-        # phi = np.clip(np.rad2deg(np.arcsin(vt.vector.y/9.81)),-0.5,0.5) #deg
-        # psi_dot = np.clip(self.yaw_control_effort,-3,3) #deg/s
-        theta = np.rad2deg(np.arcsin(vt.vector.x/9.81))#deg
-        phi = np.rad2deg(np.arcsin(vt.vector.y/9.81)) #deg
-        psi_dot = self.yaw_control_effort #deg/s
+        phi = np.rad2deg(np.arcsin(vt.vector.x/9.81)) #deg
+        theta = np.rad2deg(np.arcsin(vt.vector.y/9.81)) #deg
+        psi_dot = self.yaw_control_effort #deg /2
         msg = PilotingCommand()
-        msg.roll = phi #account for conversion to NED of firmware
-        msg.pitch = theta #account for conversion to NED of firmware
-        msg.yaw = -psi_dot 
+        msg.roll = -theta #account for conversion to NED of firmware
+        msg.pitch = phi #account for conversion to NED of firmware
+        msg.yaw = psi_dot 
         msg.gaz = vt.vector.z
         self.rpyt_publisher.publish(msg)
         return
