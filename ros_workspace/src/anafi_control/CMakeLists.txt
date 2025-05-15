@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.0.2)
-project(frame_transform)
+project(anafi_control)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 # add_compile_options(-std=c++11)
@@ -8,10 +8,12 @@ project(frame_transform)
 ## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
 ## is used, also find other catkin packages
 find_package(catkin REQUIRED COMPONENTS
-  roscpp
+  geometry_msgs
   roscpp
   rospy
+  std_msgs
   tf2
+  tf2_geometry_msgs
   tf2_ros
 )
 
@@ -49,11 +51,14 @@ find_package(catkin REQUIRED COMPONENTS
 ##   * add every package in MSG_DEP_SET to generate_messages(DEPENDENCIES ...)
 
 ## Generate messages in the 'msg' folder
-# add_message_files(
-#   FILES
-#   Message1.msg
-#   Message2.msg
-# )
+add_message_files(
+  FILES
+  Waypoint.msg
+  TwistModified.msg
+  TwistStampedModified.msg
+  State.msg
+  MultiRotorRelativeState.msg
+)
 
 ## Generate services in the 'srv' folder
 # add_service_files(
@@ -70,10 +75,10 @@ find_package(catkin REQUIRED COMPONENTS
 # )
 
 ## Generate added messages and services with any dependencies listed here
-# generate_messages(
-#   DEPENDENCIES
-#   std_msgs  # Or other packages containing msgs
-# )
+generate_messages(
+  DEPENDENCIES
+  geometry_msgs#   std_msgs#   tf2_geometry_msgs
+)
 
 ################################################
 ## Declare ROS dynamic reconfigure parameters ##
@@ -106,8 +111,8 @@ find_package(catkin REQUIRED COMPONENTS
 ## DEPENDS: system dependencies of this project that dependent projects also need
 catkin_package(
 #  INCLUDE_DIRS include
-#  LIBRARIES frame_transform
-#  CATKIN_DEPENDS roscpp roscpp rospy tf2 tf2_ros
+#  LIBRARIES anafi_control
+#  CATKIN_DEPENDS geometry_msgs roscpp rospy std_msgs tf2 tf2_geometry_msgs tf2_ros
 #  DEPENDS system_lib
 )
 
@@ -124,7 +129,7 @@ include_directories(
 
 ## Declare a C++ library
 # add_library(${PROJECT_NAME}
-#   src/${PROJECT_NAME}/frame_transform.cpp
+#   src/${PROJECT_NAME}/anafi_control.cpp
 # )
 
 ## Add cmake target dependencies of the library
@@ -135,7 +140,7 @@ include_directories(
 ## Declare a C++ executable
 ## With catkin_make all packages are built within a single CMake context
 ## The recommended prefix ensures that target names across packages don't collide
-# add_executable(${PROJECT_NAME}_node src/frame_transform_node.cpp)
+# add_executable(${PROJECT_NAME}_node src/anafi_control_node.cpp)
 
 ## Rename C++ executable without prefix
 ## The above recommended prefix causes long target names, the following renames the
@@ -162,12 +167,11 @@ include_directories(
 # Mark executable scripts (Python etc.) for installation
 # in contrast to setup.py, you can choose the destination
 catkin_install_python(PROGRAMS
-  scripts/csv_generator.py
-  scripts/tf2_broadcaster_ground_truth.py
-  scripts/tf2_listener_error.py
-  scripts/tf2_listener_ground_truth.py
-  scripts/tf2_listener_tag_detection.py
-  scripts/tf2_listener_apriltag_box.py
+  scripts/anafi_control_waypoint_mpc.py
+  scripts/anafi_control_cascaded_pid_interface.py
+  scripts/anafi_control_cascaded_pid_relative_info.py
+  scripts/trajectory_generator.py
+  scripts/anafi_control_publish_stability_axes.py
   DESTINATION ${CATKIN_PACKAGE_BIN_DESTINATION}
 )
 
@@ -204,7 +208,7 @@ catkin_install_python(PROGRAMS
 #############
 
 ## Add gtest based cpp test target and link libraries
-# catkin_add_gtest(${PROJECT_NAME}-test test/test_frame_transform.cpp)
+# catkin_add_gtest(${PROJECT_NAME}-test test/test_anafi_control.cpp)
 # if(TARGET ${PROJECT_NAME}-test)
 #   target_link_libraries(${PROJECT_NAME}-test ${PROJECT_NAME})
 # endif()

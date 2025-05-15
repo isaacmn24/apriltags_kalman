@@ -1,0 +1,102 @@
+#!/usr/bin/env python3
+
+import rospy
+import tf2_ros
+from geometry_msgs.msg import PoseStamped, PoseWithCovarianceStamped, TransformStamped
+from nav_msgs.msg import Odometry
+import tf2_geometry_msgs
+import numpy as np
+import tf.transformations as tft
+
+class TransformListener:
+    # def __init__(self, publisher_topic, subscriber_topic):
+    def __init__(self, publisher_topic):
+        self.pose = PoseStamped()
+        # self.target_frame = "marker_board_1"
+        # self.source_frame = "anafi_localization_1"
+
+        self.source_frame = "marker_board_1"
+        # self.target_frame = "anafi_localization_1"
+        self.target_frame = "anafi_localization_combined"
+
+        self.tf_buffer = tf2_ros.Buffer()
+        self.listener = tf2_ros.TransformListener(self.tf_buffer)
+        
+        rospy.sleep(5)
+
+        self.pub = rospy.Publisher(publisher_topic, TransformStamped, queue_size=10)
+        # self.sub = rospy.Subscriber(subscriber_topic, PoseWithCovarianceStamped, self.read_odom)
+
+        return
+    
+    def read_odom(self,msg):
+        self.pose.pose = msg.pose.pose
+        self.pose.header = msg.header
+        self.source_frame = msg.header.frame_id
+        return
+
+    def transform_pose(self):
+        """Transforms a pose from the source_frame to the target_frame using TF2."""
+
+        # Create TF buffer and listener
+
+        # Transform pose to target_frame
+        try:
+            transformation = self.tf_buffer.lookup_transform(self.target_frame, self.source_frame, rospy.Time())
+        except (tf2_ros.LookupException, tf2_ros.ConnectivityException, tf2_ros.ExtrapolationException) as e:
+            rospy.logwarn(f"Transform lookup failed: {e}")
+            return
+
+        #print(transformation)
+
+        # orig_pose = tft.quaternion_matrix(transformation.transform.rotation)
+        # orig_pose = 
+
+        # Rotate everythin by 90 degrees
+        orig_q = transformation.transform.rotation
+        orig_quaternions = [orig_q.x, orig_q.y, orig_q.z, orig_q.w]
+
+        #print(np.degrees(tft.euler_from_quaternion(orig_quaternions)))
+
+        rotated_q = tft.quaternion_multiply(orig_quaternions, [0.707, 0, 0, 0.707])
+
+        rotated_transform = TransformStamped()
+        rotated_transform.header = transformation.header
+        rotated_transform.child_frame_id = transformation.child_frame_id
+        rotated_transform.transform.translation.x = transformation.transform.translation.x
+        rotated_transform.transform.translation.y = -transformation.transform.translation.z
+        rotated_transform.transform.translation.z = transformation.transform.translation.y
+        # rotated_transform.transform.rotation.x = rotated_q[0]
+        # rotated_transform.transform.rotation.y = rotated_q[1]
+        # rotated_transform.transform.rotation.z = rotated_q[2]
+        # rotated_transform.transform.rotation.w = rotated_q[3]
+
+        rotated_transform.transform.rotation = transformation.transform.rotation
+
+        print(rotated_transform)
+        # print(np.degrees(tft.euler_from_quaternion(rotated_q)))
+
+        self.pub.publish(rotated_transform)
+
+        print("\033[92m Published transformed pose stamped message\033[0m")
+        
+        return
+
+if __name__ == '__main__':
+    # Initialize ROS node
+    rospy.init_node("tf_listener_ground_truth")
+
+    #tag_detections_sub_topic = "/vrpn_client_node/anafi_localization_1/pose"
+    tag_detections_pub_topic = "/apriltag/transformed_pose/ground_truth"
+
+    # transform_listener_tag_detections = TransformListener(tag_detections_pub_topic, tag_detections_sub_topic)
+    transform_listener_tag_detections = TransformListener(tag_detections_pub_topic)
+
+    rate = rospy.Rate(10)  # 10 Hz
+    while not rospy.is_shutdown():
+        # transform_listener_apriltag_odom.transform_pose()
+        transform_listener_tag_detections.transform_pose()
+
+        rate.sleep()  # Give some time for TF to populate
+
+

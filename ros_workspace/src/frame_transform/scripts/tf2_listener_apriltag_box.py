@@ -16,7 +16,8 @@ class TransformListener:
         self.twist = TwistStamped()
         self.twist_covariance = np.zeros((6, 6))
         self.target_frame = "hummingbird/real_odometry_sensor"
-        self.source_frame = "apriltag_box/real_odometry_sensor"                 # Initialize to None as withholder
+        # self.source_frame = "apriltag_box/real_odometry_sensor"
+        self.source_frame = "world"
         self.tf_buffer = tf2_ros.Buffer()
         self.listener = tf2_ros.TransformListener(self.tf_buffer)
         
@@ -36,27 +37,93 @@ class TransformListener:
         self.twist.twist = msg.twist.twist
         self.twist_covariance = np.array(msg.twist.covariance).reshape((6, 6))
 
-        self.source_frame = msg.header.frame_id
         return
 
-    def transform_odom(self):
-        """Transforms a pose from the source_frame to the target_frame using TF2."""
+    def get_transform_matrix(self, target_frame, source_frame, debugging=False):
+        try:
+            transformation = self.tf_buffer.lookup_transform(target_frame, source_frame, rospy.Time())
 
-        # Create TF buffer and listener
+        except (tf2_ros.LookupException, tf2_ros.ConnectivityException, tf2_ros.ExtrapolationException) as e:
+            rospy.logwarn(f"Transform lookup failed: {e}")
+            return
+
+        # Extract translation and rotation
+        trans = transformation.transform.translation
+        rot = transformation.transform.rotation
+
+        # Convert quaternion to 4x4 rotation matrix
+        quat = [rot.x, rot.y, rot.z, rot.w]
+        matrix = tf.transformations.quaternion_matrix(quat)
+
+        # Set translation in the matrix
+        matrix[0, 3] = trans.x
+        matrix[1, 3] = trans.y
+        matrix[2, 3] = trans.z
+
+        if debugging:
+            print(f'\nTRANSFORM WITH TARGET: {target_frame} AND SOURCE: {source_frame}\n{transformation}\n\n{matrix}')
+
+        return matrix
+    
+    def apply_transform(self, transform, pose, debugging=False):
+        pos = pose.pose.position
+        ori = pose.pose.orientation
+
+        new_pose = np.array([
+            pos.x + transform[0,3],
+            pos.y + transform[1,3],
+            pos.z + transform[2,3]
+            ])
+
+        # Convert quaternion to rotation matrix
+        quat = [ori.x, ori.y, ori.z, ori.w]
+        matrix = tf.transformations.quaternion_matrix(quat)  # 4x4 rotation matrix
+
+        new_ori = np.dot(transform[0:3, 0:3], matrix[0:3, 0:3])
+        new_ori_extended = np.identity(4)
+        new_ori_extended[:3, :3] = new_ori
+
+        pose_matrix = matrix
+        pose_matrix[0,3] = pos.x
+        pose_matrix[1,3] = pos.y
+        pose_matrix[2,3] = pos.z
+
+        new_ori_extended = np.dot(transform, pose_matrix)
+
+
+        new_ori = tf.transformations.quaternion_from_matrix(new_ori_extended)
+
+        transformed_pose = PoseStamped()
+        transformed_pose.header = pose.header
+        transformed_pose.pose.position.x = new_ori_extended[0,3]
+        transformed_pose.pose.position.y = new_ori_extended[1,3]
+        transformed_pose.pose.position.z = new_ori_extended[2,3]
+
+        transformed_pose.pose.orientation.x = new_ori[0]
+        transformed_pose.pose.orientation.y = new_ori[1]
+        transformed_pose.pose.orientation.z = new_ori[2]
+        transformed_pose.pose.orientation.w = new_ori[3]
+
         
-        # # If message wasn't received before calling current function
-        # if self.source_frame is None:
-        #     return
 
+        if debugging:
+            print(f'\nTRANSFORM:\n{transform}\n\nOLD POSE:\n{matrix}\n\nNEW POSE:\n{new_pose}\n\nNEW ORIENTATION:\n{new_ori}\n\nTRANSFORMED POSE:\n{transformed_pose}')
+
+        return transformed_pose
+
+    def transform_odom(self):
         # Transform pose to target_frame
-        transformation = self.tf_buffer.lookup_transform(self.target_frame, self.source_frame,rospy.Time(0))
+        # transformation = self.tf_buffer.lookup_transform(self.target_frame, self.source_frame,rospy.Time(0))
+
+        transformation_matrix = self.get_transform_matrix(self.target_frame, self.source_frame)
 
         """ POSE TRANSFORMATION """
-        transformed_pose = tf2_geometry_msgs.do_transform_pose(self.pose,transformation)
+        # transformed_pose = tf2_geometry_msgs.do_transform_pose(self.pose,transformation)
+        transformed_pose = self.apply_transform(transformation_matrix, self.pose)
         
         # Extract rotation from transformation
-        q = transformation.transform.rotation
-        rotation_matrix = tf.transformations.quaternion_matrix([q.x, q.y, q.z, q.w])[:3, :3]  # Extract 3x3 rotation
+        # q = transformation.transform.rotation
+        rotation_matrix = transformation_matrix[:3, :3]  # Extract 3x3 rotation
         
         # Apply covariance transformation (R * Cov * R^T)
         transformed_pose_covariance_matrix = np.zeros((6, 6))
@@ -94,7 +161,8 @@ class TransformListener:
 
         transformed_msg = Odometry()
         transformed_msg.header = transformed_pose.header
-        transformed_msg.child_frame_id = self.source_frame
+        transformed_msg.header.frame_id = self.target_frame
+        transformed_msg.child_frame_id = "apriltag_box/real_odometry_sensor"
         transformed_msg.pose.pose = transformed_pose.pose
         transformed_msg.pose.covariance = transformed_pose_covariance
         transformed_msg.twist.twist = transformed_twist.twist

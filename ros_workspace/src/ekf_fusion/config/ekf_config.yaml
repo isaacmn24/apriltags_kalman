@@ -8,26 +8,26 @@ transform_timeout: 0.0
 # Set world frame and robot frame
 world_frame: hummingbird/real_odometry_sensor             # Global reference frame
 odom_frame: hummingbird/real_odometry_sensor              # Use the global frame since no dedicated odom frame is available
-base_link_frame: apriltag_box/real_odometry_sensor   # Drone is your base (or "base_link")
+base_link_frame: apriltag_box/real_odometry_sensor        # Drone is your base (or "base_link")
 
 # Configure Pose Inputs
 # First source: Transformed pose from tf2_listener.py
-pose0: /apriltag_box/transformed_odom
-pose0_config: [true,  true,  true,
+odom0: /apriltag_box/transformed_odom
+odom0_config: [true,  true,  true,
                true,  true,  true,
                true,  true,  true,
                true,  true,  true,
                false, false, false]
-pose0_queue_size: 15
-pose0_differential: true
-covariance: [0.4, 0.4, 0.4, 0.2, 0.2, 0.2]  # Adjust based on sensor reliability
+odom0_queue_size: 15
+odom0_differential: true
+odom0_covariance: [0.4, 0.4, 0.4, 0.2, 0.2, 0.2]  # Adjust based on sensor reliability
 
 # Second source: Apriltag detection pose
-pose1: /tag_detections/transformed_pose
-pose1_config: [true,  true,  true,
+pose0: /tag_detections/transformed_pose
+pose0_config: [true,  true,  true,
                true,  true,  true,
                false, false, false,
                false, false, false,
                false, false, false]
-pose1_queue_size: 15
-covariance: [0.05, 0.05, 0.05, 0.01, 0.01, 0.01]  # Adjust based on sensor reliability
+pose0_queue_size: 15
+pose0_covariance: [0.05, 0.05, 0.05, 0.01, 0.01, 0.01]  # Adjust based on sensor reliability
