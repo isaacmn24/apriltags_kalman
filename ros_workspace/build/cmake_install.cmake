@@ -118,6 +118,21 @@ endif()
 
 if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
   list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
+   "/home/isaac/Downloads/apriltags_kalman/ros_workspace/install/setup.fish;/home/isaac/Downloads/apriltags_kalman/ros_workspace/install/local_setup.fish")
+  if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
+    message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
+  endif()
+  if(CMAKE_ERROR_ON_ABSOLUTE_INSTALL_DESTINATION)
+    message(FATAL_ERROR "ABSOLUTE path INSTALL DESTINATION forbidden (by caller): ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
+  endif()
+file(INSTALL DESTINATION "/home/isaac/Downloads/apriltags_kalman/ros_workspace/install" TYPE FILE FILES
+    "/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/catkin_generated/installspace/setup.fish"
+    "/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/catkin_generated/installspace/local_setup.fish"
+    )
+endif()
+
+if("x${CMAKE_INSTALL_COMPONENT}x" STREQUAL "xUnspecifiedx" OR NOT CMAKE_INSTALL_COMPONENT)
+  list(APPEND CMAKE_ABSOLUTE_DESTINATION_FILES
    "/home/isaac/Downloads/apriltags_kalman/ros_workspace/install/.rosinstall")
   if(CMAKE_WARN_ON_ABSOLUTE_INSTALL_DESTINATION)
     message(WARNING "ABSOLUTE path INSTALL DESTINATION : ${CMAKE_ABSOLUTE_DESTINATION_FILES}")
@@ -145,8 +160,10 @@ if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   include("/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/rotors_simulator/rotors_control/cmake_install.cmake")
   include("/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/rotors_simulator/rotors_joy_interface/cmake_install.cmake")
   include("/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/rotors_simulator/rqt_rotors/cmake_install.cmake")
+  include("/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/coordination_algorithm/cmake_install.cmake")
   include("/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/frame_transform/cmake_install.cmake")
   include("/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/apriltag_ros/apriltag_ros/cmake_install.cmake")
+  include("/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/anafi_control/cmake_install.cmake")
   include("/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/ekf_fusion/cmake_install.cmake")
   include("/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/rotors_simulator/rotors_gazebo_plugins/cmake_install.cmake")
   include("/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/rotors_simulator/rotors_gazebo/cmake_install.cmake")

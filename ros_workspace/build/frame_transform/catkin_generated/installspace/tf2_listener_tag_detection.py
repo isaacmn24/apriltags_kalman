@@ -8,13 +8,12 @@ import tf2_geometry_msgs
 import numpy as np
 import tf.transformations
 
-
 class TransformListener:
     def __init__(self, publisher_topic, subscriber_topic):
         self.pose = PoseStamped()
         self.pose_covariance = np.zeros((6, 6))  # Placeholder for covariance matrix
-        self.target_frame = "drone_frame"
-        self.source_frame = None                 # Initialize to None as withholder
+        self.target_frame = "hummingbird/real_odometry_sensor"
+        self.source_frame = "hummingbird/camera_link_optical"                 # Initialize to None as withholder
         self.tf_buffer = tf2_ros.Buffer()
         self.listener = tf2_ros.TransformListener(self.tf_buffer)
         
@@ -29,25 +28,44 @@ class TransformListener:
         self.pose.header = msg.header
         self.pose.pose = msg.pose.pose
         self.pose_covariance = np.array(msg.pose.covariance).reshape((6, 6))  # Store as 6x6 matrix
-        self.source_frame = msg.header.frame_id
+        #self.source_frame = msg.header.frame_id
         return
 
-    def transform_pose(self):
-        """Transforms a pose from the source_frame to the target_frame using TF2."""
-
-        # Create TF buffer and listener
-        
-        # If message wasn't received before calling current function
-        if self.source_frame is None:
+    def get_transform_matrix(self, target_frame, source_frame, debugging=False):
+        try:
+            transformation = self.tf_buffer.lookup_transform(target_frame, source_frame, rospy.Time())
+        except (tf2_ros.LookupException, tf2_ros.ConnectivityException, tf2_ros.ExtrapolationException) as e:
+            rospy.logwarn(f"Transform lookup failed: {e}")
             return
 
+        # Extract translation and rotation
+        trans = transformation.transform.translation
+        rot = transformation.transform.rotation
+
+        # Convert quaternion to 4x4 rotation matrix
+        quat = [rot.x, rot.y, rot.z, rot.w]
+        matrix = tf.transformations.quaternion_matrix(quat)
+
+        # Set translation in the matrix
+        matrix[0, 3] = trans.x
+        matrix[1, 3] = trans.y
+        matrix[2, 3] = trans.z
+
+        if debugging:
+            print(f'\nTRANSFORM WITH TARGET: {target_frame} AND SOURCE: {source_frame}\n{transformation}\n\n{matrix}')
+
+        return matrix
+
+    def transform_pose(self):
         # Transform pose to target_frame
-        transformation = self.tf_buffer.lookup_transform(self.target_frame, self.source_frame,rospy.Time(0))
+        transformation_matrix = self.get_transform_matrix(self.target_frame, self.source_frame)
+
+        transformation = self.tf_buffer.lookup_transform(self.target_frame, self.source_frame, rospy.Time(0))
         transformed_pose = tf2_geometry_msgs.do_transform_pose(self.pose,transformation)
         
         # Extract rotation from transformation
-        q = transformation.transform.rotation
-        rotation_matrix = tf.transformations.quaternion_matrix([q.x, q.y, q.z, q.w])[:3, :3]  # Extract 3x3 rotation
+        # q = transformation.transform.rotation
+        rotation_matrix = transformation_matrix[:3, :3]
         
         # Apply covariance transformation (R * Cov * R^T)
         transformed_covariance_matrix = np.zeros((6, 6))
@@ -61,7 +79,6 @@ class TransformListener:
         transformed_msg.header = transformed_pose.header
         transformed_msg.pose.pose = transformed_pose.pose
         transformed_msg.pose.covariance = transformed_covariance
-
         self.pub.publish(transformed_msg)
 
 
@@ -74,14 +91,9 @@ if __name__ == '__main__':
     # Initialize ROS node
     rospy.init_node("tf_listener_tag_detection")
 
-    # apriltag_odom_sub_topic = "/apriltag_box/real_odometry_sensor/pose_with_covariance"
-    # apriltag_odom_pub_topic = "/apriltag_box/transformed_pose"
-
-    tag_detections_sub_topic = "/tag_detections"
+    tag_detections_sub_topic = "/tag_detections_corrected"
     tag_detections_pub_topic = "/tag_detections/transformed_pose"
 
-    #transform_listener_tag_detections = TransformListener(tag_detections_pub_topic, tag_detections_sub_topic)
-    # transform_listener_apriltag_odom = TransformListener(apriltag_odom_pub_topic, apriltag_odom_sub_topic)
     transform_listener_tag_detections = TransformListener(tag_detections_pub_topic, tag_detections_sub_topic)
 
     rate = rospy.Rate(10)  # 10 Hz

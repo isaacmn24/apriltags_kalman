@@ -3,64 +3,101 @@
 import rospy
 import csv
 from geometry_msgs.msg import PoseStamped, PoseWithCovarianceStamped, TransformStamped
+from std_msgs.msg import Header
+from nav_msgs.msg import Odometry
 import tf.transformations
 import numpy as np
+import subprocess
+import os
 
-# Test
-test = "top-left"
+# Bag files
+path = "/home/isaac/Downloads/apriltags_kalman/ros_workspace/other_files"
+bag_files = [f for f in os.listdir(path) if f.endswith(".bag")]
 
-# Define the CSV file
-ground_truth_filename = f"ground_truth_data_{test}.csv"
-error_filename = f"error_data_{test}.csv"
+class DataGenerator():
+    def __init__(self):
+        self.bag_file = ""
+        
+        # Define the CSV file
+        self.ground_truth_filename = ""
+        self.filter_filename       = ""
 
-# Write the header for the CSV file
-with open(ground_truth_filename, mode="w") as file:
-    writer = csv.writer(file)
-    writer.writerow(["time_secs", "time_nsecs", "x_meas", "y_meas", "z_meas", "roll_meas", "pitch_meas", "yaw_meas"])
+        self.header = Header()
 
-# Write the header for the CSV file
-with open(error_filename, mode="w") as file:
-    writer = csv.writer(file)
-    writer.writerow(["time_secs", "time_nsecs", "x_err", "y_err", "z_err", "roll_err", "pitch_err", "yaw_err"])
+        return
+    
+    def initialize(self, test):
+        self.bag_file = os.path.join(path, test)
+        
+        # Define the CSV file
+        base_name = os.path.splitext(test)[0]  # Removes .bag
+        self.ground_truth_filename = f"ground_truth_data_{base_name}.csv"
+        self.filter_filename       = f"filter_data_{base_name}.csv"
 
-def pose_callback(file_name, msg):
-    """Callback function for the PoseStamped message."""
+        # Write the header for the CSV file
+        with open(self.ground_truth_filename, mode="w") as file:
+            writer = csv.writer(file)
+            writer.writerow(["time_secs", "time_nsecs", "x_ground", "y_ground", "z_ground", "roll_ground", "pitch_ground", "yaw_ground"])
 
-    if isinstance(msg, PoseWithCovarianceStamped):
-        msg.pose = msg.pose.pose
+        # Write the header for the CSV file
+        with open(self.filter_filename, mode="w") as file:
+            writer = csv.writer(file)
+            writer.writerow(["time_secs", "time_nsecs", "x_filter", "y_filter", "z_filter", "roll_filter", "pitch_filter", "yaw_filter"])
 
-    # Convert quaternions to euler
-    qx = msg.transform.rotation.x
-    qy = msg.transform.rotation.y
-    qz = msg.transform.rotation.z
-    qw = msg.transform.rotation.w
+        self.ground_truth_sub = rospy.Subscriber("/apriltag_box/transformed_odom", Odometry, self.ground_truth_callback)
+        self.filter_sub       = rospy.Subscriber("/odometry/filtered", Odometry, self.filter_callback)
 
-    roll, pitch, yaw = np.rad2deg(tf.transformations.euler_from_quaternion([qx,qy,qz,qw]))
+        return
 
-    # Write to csv
-    with open(file_name, mode="a") as file:
-        writer = csv.writer(file)
-        writer.writerow([
-            msg.header.stamp.secs,
-            msg.header.stamp.nsecs,
-            msg.transform.translation.x,
-            msg.transform.translation.y,
-            msg.transform.translation.z,
-            roll,pitch, yaw
-        ])
-        print(f"Logged data to {file_name}")
+    def pose_callback(self, file_name, msg):
+        #Callback function for the PoseStamped message.
 
-def error_callback(msg):
-    pose_callback(error_filename, msg)
+        # Convert quaternions to euler
+        qx = msg.pose.pose.orientation.x
+        qy = msg.pose.pose.orientation.y
+        qz = msg.pose.pose.orientation.z
+        qw = msg.pose.pose.orientation.w
 
-def ground_truth_callback(msg):
-    pose_callback(ground_truth_filename, msg)
+        roll, pitch, yaw = np.degrees(tf.transformations.euler_from_quaternion([qx,qy,qz,qw]))
+
+        # Write to csv
+        with open(file_name, mode="a") as file:
+            writer = csv.writer(file)
+            writer.writerow([
+                self.header.stamp.secs,
+                self.header.stamp.nsecs,
+                msg.pose.pose.position.x,
+                msg.pose.pose.position.y,
+                msg.pose.pose.position.z,
+                roll,pitch, yaw
+            ])
+            print(f"Logged data to {file_name}")
+
+    def filter_callback(self, msg):
+        self.pose_callback(self.filter_filename, msg)
+
+    def ground_truth_callback(self, msg):
+        self.header = msg.header
+        self.pose_callback(self.ground_truth_filename, msg)
 
 if __name__ == "__main__":
     """Initializes the ROS node and subscriber."""
     rospy.init_node("pose_logger", anonymous=True)
 
-    rospy.Subscriber("/apriltag/transformed_pose/ground_truth", TransformStamped, ground_truth_callback)
-    rospy.Subscriber("/apriltag/transformed_pose/error", TransformStamped, error_callback)
+    csv_generator = DataGenerator()
 
-    rospy.spin()
+    for test in bag_files:
+        bag_file = os.path.join(path, test)
+
+        print("Starting rosbag playback...")
+        process = subprocess.Popen(["rosbag", "play", bag_file])
+
+        csv_generator.initialize(test)
+
+        rospy.loginfo("Waiting for rosbag to finish...")
+        while process.poll() is None and not rospy.is_shutdown():
+            rospy.sleep(0.1)
+
+
+#    rospy.spin()
+

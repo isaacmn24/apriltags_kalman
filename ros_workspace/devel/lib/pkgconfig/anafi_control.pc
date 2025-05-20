@@ -1,0 +1,8 @@
+prefix=/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel
+
+Name: anafi_control
+Description: Description of anafi_control
+Version: 0.0.0
+Cflags: -I/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel/include
+Libs: -L${prefix}/lib 
+Requires: 

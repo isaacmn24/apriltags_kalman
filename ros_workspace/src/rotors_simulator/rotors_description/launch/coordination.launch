@@ -120,7 +120,18 @@
 	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
 	</group>
 
+<group ns="apriltag_box">
+  	<include file="$(find rotors_description)/launch/apriltag_box.launch">
+			<arg name="anafi_component" value="apriltag_box"/>
+			<arg name="namespace" value="apriltag_box"/>
+			<arg name="x" value="2.0"/>
+			<arg name="y" value="0.0"/>
+			<arg name="z" value="3"/>
+	</include>  
+	<node name="robot_state_publisher" pkg="robot_state_publisher" type="robot_state_publisher" />
+	<node name="joint_state_publisher" pkg="joint_state_publisher" type="joint_state_publisher" />
 
+</group>
 
 
 <node name="camera_frame_id_fixer" pkg="rotors_description" type="camera_correction.py" />

@@ -1,0 +1,8 @@
+prefix=/home/isaac/Downloads/apriltags_kalman/ros_workspace/devel
+
+Name: coordination_algorithm
+Description: Description of coordination_algorithm
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

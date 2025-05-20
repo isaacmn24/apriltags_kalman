@@ -8,7 +8,6 @@ import tf2_geometry_msgs
 import numpy as np
 import tf.transformations
 
-
 class TransformListener:
     def __init__(self, publisher_topic, subscriber_topic):
         self.pose = PoseStamped()

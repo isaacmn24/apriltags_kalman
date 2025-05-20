@@ -191,7 +191,7 @@ mav_msgs/Actuators.h
 -
 
 /opt/ros/noetic/include/class_loader/class_loader.hpp
-boost/bind.hpp
+boost/bind/bind.hpp
 -
 boost/shared_ptr.hpp
 -
@@ -531,8 +531,6 @@ vector
 -
 boost/algorithm/string.hpp
 /opt/ros/noetic/include/pluginlib/boost/algorithm/string.hpp
-boost/bind.hpp
-/opt/ros/noetic/include/pluginlib/boost/bind.hpp
 boost/filesystem.hpp
 /opt/ros/noetic/include/pluginlib/boost/filesystem.hpp
 boost/foreach.hpp

@@ -1,0 +1,2 @@
+set(anafi_control_MESSAGE_FILES "/home/isaac/Downloads/apriltags_kalman/ros_workspace/src/anafi_control/msg/Waypoint.msg;/home/isaac/Downloads/apriltags_kalman/ros_workspace/src/anafi_control/msg/TwistModified.msg;/home/isaac/Downloads/apriltags_kalman/ros_workspace/src/anafi_control/msg/TwistStampedModified.msg;/home/isaac/Downloads/apriltags_kalman/ros_workspace/src/anafi_control/msg/State.msg;/home/isaac/Downloads/apriltags_kalman/ros_workspace/src/anafi_control/msg/MultiRotorRelativeState.msg")
+set(anafi_control_SERVICE_FILES "")

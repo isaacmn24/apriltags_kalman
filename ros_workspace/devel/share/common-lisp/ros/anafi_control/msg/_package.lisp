@@ -1,0 +1,15 @@
+(cl:defpackage anafi_control-msg
+  (:use )
+  (:export
+   "<MULTIROTORRELATIVESTATE>"
+   "MULTIROTORRELATIVESTATE"
+   "<STATE>"
+   "STATE"
+   "<TWISTMODIFIED>"
+   "TWISTMODIFIED"
+   "<TWISTSTAMPEDMODIFIED>"
+   "TWISTSTAMPEDMODIFIED"
+   "<WAYPOINT>"
+   "WAYPOINT"
+  ))
+

@@ -68,8 +68,10 @@ all: rotors_simulator/mav_comm/mav_planning_msgs/all
 all: rotors_simulator/rotors_control/all
 all: rotors_simulator/rotors_joy_interface/all
 all: rotors_simulator/rqt_rotors/all
+all: coordination_algorithm/all
 all: frame_transform/all
 all: apriltag_ros/apriltag_ros/all
+all: anafi_control/all
 all: ekf_fusion/all
 all: rotors_simulator/rotors_gazebo_plugins/all
 all: rotors_simulator/rotors_gazebo/all
@@ -92,8 +94,10 @@ preinstall: rotors_simulator/mav_comm/mav_planning_msgs/preinstall
 preinstall: rotors_simulator/rotors_control/preinstall
 preinstall: rotors_simulator/rotors_joy_interface/preinstall
 preinstall: rotors_simulator/rqt_rotors/preinstall
+preinstall: coordination_algorithm/preinstall
 preinstall: frame_transform/preinstall
 preinstall: apriltag_ros/apriltag_ros/preinstall
+preinstall: anafi_control/preinstall
 preinstall: ekf_fusion/preinstall
 preinstall: rotors_simulator/rotors_gazebo_plugins/preinstall
 preinstall: rotors_simulator/rotors_gazebo/preinstall
@@ -121,13 +125,48 @@ clean: rotors_simulator/mav_comm/mav_planning_msgs/clean
 clean: rotors_simulator/rotors_control/clean
 clean: rotors_simulator/rotors_joy_interface/clean
 clean: rotors_simulator/rqt_rotors/clean
+clean: coordination_algorithm/clean
 clean: frame_transform/clean
 clean: apriltag_ros/apriltag_ros/clean
+clean: anafi_control/clean
 clean: ekf_fusion/clean
 clean: rotors_simulator/rotors_gazebo_plugins/clean
 clean: rotors_simulator/rotors_gazebo/clean
 
 .PHONY : clean
+
+#=============================================================================
+# Directory level rules for directory anafi_control
+
+# Recursive "all" directory target.
+anafi_control/all: anafi_control/CMakeFiles/anafi_control_generate_messages.dir/all
+
+.PHONY : anafi_control/all
+
+# Recursive "preinstall" directory target.
+anafi_control/preinstall:
+
+.PHONY : anafi_control/preinstall
+
+# Recursive "clean" directory target.
+anafi_control/clean: anafi_control/CMakeFiles/anafi_control_genpy.dir/clean
+anafi_control/clean: anafi_control/CMakeFiles/anafi_control_generate_messages.dir/clean
+anafi_control/clean: anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_Waypoint.dir/clean
+anafi_control/clean: anafi_control/CMakeFiles/anafi_control_gennodejs.dir/clean
+anafi_control/clean: anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_TwistStampedModified.dir/clean
+anafi_control/clean: anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_TwistModified.dir/clean
+anafi_control/clean: anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_State.dir/clean
+anafi_control/clean: anafi_control/CMakeFiles/anafi_control_geneus.dir/clean
+anafi_control/clean: anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_MultiRotorRelativeState.dir/clean
+anafi_control/clean: anafi_control/CMakeFiles/anafi_control_generate_messages_lisp.dir/clean
+anafi_control/clean: anafi_control/CMakeFiles/anafi_control_generate_messages_cpp.dir/clean
+anafi_control/clean: anafi_control/CMakeFiles/anafi_control_gencpp.dir/clean
+anafi_control/clean: anafi_control/CMakeFiles/anafi_control_genlisp.dir/clean
+anafi_control/clean: anafi_control/CMakeFiles/anafi_control_generate_messages_eus.dir/clean
+anafi_control/clean: anafi_control/CMakeFiles/anafi_control_generate_messages_py.dir/clean
+anafi_control/clean: anafi_control/CMakeFiles/anafi_control_generate_messages_nodejs.dir/clean
+
+.PHONY : anafi_control/clean
 
 #=============================================================================
 # Directory level rules for directory apriltag_ros/apriltag_ros
@@ -181,6 +220,24 @@ apriltag_ros/apriltag_ros/clean: apriltag_ros/apriltag_ros/CMakeFiles/apriltag_r
 apriltag_ros/apriltag_ros/clean: apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_single_image_detector.dir/clean
 
 .PHONY : apriltag_ros/apriltag_ros/clean
+
+#=============================================================================
+# Directory level rules for directory coordination_algorithm
+
+# Recursive "all" directory target.
+coordination_algorithm/all:
+
+.PHONY : coordination_algorithm/all
+
+# Recursive "preinstall" directory target.
+coordination_algorithm/preinstall:
+
+.PHONY : coordination_algorithm/preinstall
+
+# Recursive "clean" directory target.
+coordination_algorithm/clean:
+
+.PHONY : coordination_algorithm/clean
 
 #=============================================================================
 # Directory level rules for directory drone_head
@@ -951,12 +1008,12 @@ gtest/googlemock/CMakeFiles/gmock_main.dir/all: gtest/googlemock/CMakeFiles/gmoc
 gtest/googlemock/CMakeFiles/gmock_main.dir/all: gtest/googletest/CMakeFiles/gtest.dir/all
 	$(MAKE) -f gtest/googlemock/CMakeFiles/gmock_main.dir/build.make gtest/googlemock/CMakeFiles/gmock_main.dir/depend
 	$(MAKE) -f gtest/googlemock/CMakeFiles/gmock_main.dir/build.make gtest/googlemock/CMakeFiles/gmock_main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=12 "Built target gmock_main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=19 "Built target gmock_main"
 .PHONY : gtest/googlemock/CMakeFiles/gmock_main.dir/all
 
 # Build rule for subdir invocation for target.
 gtest/googlemock/CMakeFiles/gmock_main.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 gtest/googlemock/CMakeFiles/gmock_main.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : gtest/googlemock/CMakeFiles/gmock_main.dir/rule
@@ -983,7 +1040,7 @@ gtest/googlemock/CMakeFiles/gmock.dir/all: gtest/googletest/CMakeFiles/gtest.dir
 
 # Build rule for subdir invocation for target.
 gtest/googlemock/CMakeFiles/gmock.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 gtest/googlemock/CMakeFiles/gmock.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : gtest/googlemock/CMakeFiles/gmock.dir/rule
@@ -1005,7 +1062,7 @@ gtest/googlemock/CMakeFiles/gmock.dir/clean:
 gtest/googletest/CMakeFiles/gtest_main.dir/all: gtest/googletest/CMakeFiles/gtest.dir/all
 	$(MAKE) -f gtest/googletest/CMakeFiles/gtest_main.dir/build.make gtest/googletest/CMakeFiles/gtest_main.dir/depend
 	$(MAKE) -f gtest/googletest/CMakeFiles/gtest_main.dir/build.make gtest/googletest/CMakeFiles/gtest_main.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=13 "Built target gtest_main"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num= "Built target gtest_main"
 .PHONY : gtest/googletest/CMakeFiles/gtest_main.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1032,12 +1089,12 @@ gtest/googletest/CMakeFiles/gtest_main.dir/clean:
 gtest/googletest/CMakeFiles/gtest.dir/all:
 	$(MAKE) -f gtest/googletest/CMakeFiles/gtest.dir/build.make gtest/googletest/CMakeFiles/gtest.dir/depend
 	$(MAKE) -f gtest/googletest/CMakeFiles/gtest.dir/build.make gtest/googletest/CMakeFiles/gtest.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num= "Built target gtest"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=20 "Built target gtest"
 .PHONY : gtest/googletest/CMakeFiles/gtest.dir/all
 
 # Build rule for subdir invocation for target.
 gtest/googletest/CMakeFiles/gtest.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 gtest/googletest/CMakeFiles/gtest.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : gtest/googletest/CMakeFiles/gtest.dir/rule
@@ -1115,7 +1172,7 @@ rotors_simulator/mav_comm/mav_state_machine_msgs/CMakeFiles/mav_state_machine_ms
 rotors_simulator/mav_comm/mav_state_machine_msgs/CMakeFiles/mav_state_machine_msgs_generate_messages_py.dir/all: rotors_simulator/mav_comm/mav_state_machine_msgs/CMakeFiles/_mav_state_machine_msgs_generate_messages_check_deps_RunTaskService.dir/all
 	$(MAKE) -f rotors_simulator/mav_comm/mav_state_machine_msgs/CMakeFiles/mav_state_machine_msgs_generate_messages_py.dir/build.make rotors_simulator/mav_comm/mav_state_machine_msgs/CMakeFiles/mav_state_machine_msgs_generate_messages_py.dir/depend
 	$(MAKE) -f rotors_simulator/mav_comm/mav_state_machine_msgs/CMakeFiles/mav_state_machine_msgs_generate_messages_py.dir/build.make rotors_simulator/mav_comm/mav_state_machine_msgs/CMakeFiles/mav_state_machine_msgs_generate_messages_py.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=73,74 "Built target mav_state_machine_msgs_generate_messages_py"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=75,76 "Built target mav_state_machine_msgs_generate_messages_py"
 .PHONY : rotors_simulator/mav_comm/mav_state_machine_msgs/CMakeFiles/mav_state_machine_msgs_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1281,7 +1338,7 @@ rotors_simulator/mav_comm/mav_state_machine_msgs/CMakeFiles/mav_state_machine_ms
 rotors_simulator/mav_comm/mav_state_machine_msgs/CMakeFiles/mav_state_machine_msgs_generate_messages_lisp.dir/all: rotors_simulator/mav_comm/mav_state_machine_msgs/CMakeFiles/_mav_state_machine_msgs_generate_messages_check_deps_RunTaskService.dir/all
 	$(MAKE) -f rotors_simulator/mav_comm/mav_state_machine_msgs/CMakeFiles/mav_state_machine_msgs_generate_messages_lisp.dir/build.make rotors_simulator/mav_comm/mav_state_machine_msgs/CMakeFiles/mav_state_machine_msgs_generate_messages_lisp.dir/depend
 	$(MAKE) -f rotors_simulator/mav_comm/mav_state_machine_msgs/CMakeFiles/mav_state_machine_msgs_generate_messages_lisp.dir/build.make rotors_simulator/mav_comm/mav_state_machine_msgs/CMakeFiles/mav_state_machine_msgs_generate_messages_lisp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=72 "Built target mav_state_machine_msgs_generate_messages_lisp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=74 "Built target mav_state_machine_msgs_generate_messages_lisp"
 .PHONY : rotors_simulator/mav_comm/mav_state_machine_msgs/CMakeFiles/mav_state_machine_msgs_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1452,7 +1509,7 @@ rotors_simulator/mav_comm/mav_state_machine_msgs/CMakeFiles/mav_state_machine_ms
 
 # Build rule for subdir invocation for target.
 rotors_simulator/mav_comm/mav_state_machine_msgs/CMakeFiles/mav_state_machine_msgs_generate_messages.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 5
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 4
 	$(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/mav_comm/mav_state_machine_msgs/CMakeFiles/mav_state_machine_msgs_generate_messages.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : rotors_simulator/mav_comm/mav_state_machine_msgs/CMakeFiles/mav_state_machine_msgs_generate_messages.dir/rule
@@ -1479,7 +1536,7 @@ rotors_simulator/mav_comm/mav_state_machine_msgs/CMakeFiles/mav_state_machine_ms
 
 # Build rule for subdir invocation for target.
 rotors_simulator/mav_comm/mav_state_machine_msgs/CMakeFiles/mav_state_machine_msgs_gencpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/mav_comm/mav_state_machine_msgs/CMakeFiles/mav_state_machine_msgs_gencpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : rotors_simulator/mav_comm/mav_state_machine_msgs/CMakeFiles/mav_state_machine_msgs_gencpp.dir/rule
@@ -1503,7 +1560,7 @@ rotors_simulator/mav_comm/mav_state_machine_msgs/CMakeFiles/mav_state_machine_ms
 rotors_simulator/mav_comm/mav_state_machine_msgs/CMakeFiles/mav_state_machine_msgs_generate_messages_eus.dir/all: rotors_simulator/mav_comm/mav_state_machine_msgs/CMakeFiles/_mav_state_machine_msgs_generate_messages_check_deps_RunTaskService.dir/all
 	$(MAKE) -f rotors_simulator/mav_comm/mav_state_machine_msgs/CMakeFiles/mav_state_machine_msgs_generate_messages_eus.dir/build.make rotors_simulator/mav_comm/mav_state_machine_msgs/CMakeFiles/mav_state_machine_msgs_generate_messages_eus.dir/depend
 	$(MAKE) -f rotors_simulator/mav_comm/mav_state_machine_msgs/CMakeFiles/mav_state_machine_msgs_generate_messages_eus.dir/build.make rotors_simulator/mav_comm/mav_state_machine_msgs/CMakeFiles/mav_state_machine_msgs_generate_messages_eus.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=71 "Built target mav_state_machine_msgs_generate_messages_eus"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=73 "Built target mav_state_machine_msgs_generate_messages_eus"
 .PHONY : rotors_simulator/mav_comm/mav_state_machine_msgs/CMakeFiles/mav_state_machine_msgs_generate_messages_eus.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1532,12 +1589,12 @@ rotors_simulator/mav_comm/mav_state_machine_msgs/CMakeFiles/mav_state_machine_ms
 rotors_simulator/mav_comm/mav_state_machine_msgs/CMakeFiles/mav_state_machine_msgs_generate_messages_cpp.dir/all: rotors_simulator/mav_comm/mav_state_machine_msgs/CMakeFiles/_mav_state_machine_msgs_generate_messages_check_deps_RunTaskService.dir/all
 	$(MAKE) -f rotors_simulator/mav_comm/mav_state_machine_msgs/CMakeFiles/mav_state_machine_msgs_generate_messages_cpp.dir/build.make rotors_simulator/mav_comm/mav_state_machine_msgs/CMakeFiles/mav_state_machine_msgs_generate_messages_cpp.dir/depend
 	$(MAKE) -f rotors_simulator/mav_comm/mav_state_machine_msgs/CMakeFiles/mav_state_machine_msgs_generate_messages_cpp.dir/build.make rotors_simulator/mav_comm/mav_state_machine_msgs/CMakeFiles/mav_state_machine_msgs_generate_messages_cpp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=70 "Built target mav_state_machine_msgs_generate_messages_cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num= "Built target mav_state_machine_msgs_generate_messages_cpp"
 .PHONY : rotors_simulator/mav_comm/mav_state_machine_msgs/CMakeFiles/mav_state_machine_msgs_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
 rotors_simulator/mav_comm/mav_state_machine_msgs/CMakeFiles/mav_state_machine_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/mav_comm/mav_state_machine_msgs/CMakeFiles/mav_state_machine_msgs_generate_messages_cpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : rotors_simulator/mav_comm/mav_state_machine_msgs/CMakeFiles/mav_state_machine_msgs_generate_messages_cpp.dir/rule
@@ -1756,7 +1813,7 @@ rotors_simulator/mav_comm/mav_system_msgs/CMakeFiles/mav_system_msgs_generate_me
 rotors_simulator/mav_comm/mav_system_msgs/CMakeFiles/mav_system_msgs_generate_messages_eus.dir/all: rotors_simulator/mav_comm/mav_system_msgs/CMakeFiles/_mav_system_msgs_generate_messages_check_deps_ProcessInfo.dir/all
 	$(MAKE) -f rotors_simulator/mav_comm/mav_system_msgs/CMakeFiles/mav_system_msgs_generate_messages_eus.dir/build.make rotors_simulator/mav_comm/mav_system_msgs/CMakeFiles/mav_system_msgs_generate_messages_eus.dir/depend
 	$(MAKE) -f rotors_simulator/mav_comm/mav_system_msgs/CMakeFiles/mav_system_msgs_generate_messages_eus.dir/build.make rotors_simulator/mav_comm/mav_system_msgs/CMakeFiles/mav_system_msgs_generate_messages_eus.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=75 "Built target mav_system_msgs_generate_messages_eus"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=77 "Built target mav_system_msgs_generate_messages_eus"
 .PHONY : rotors_simulator/mav_comm/mav_system_msgs/CMakeFiles/mav_system_msgs_generate_messages_eus.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1841,7 +1898,7 @@ rotors_simulator/mav_comm/mav_system_msgs/CMakeFiles/mav_system_msgs_generate_me
 rotors_simulator/mav_comm/mav_system_msgs/CMakeFiles/mav_system_msgs_generate_messages_lisp.dir/all: rotors_simulator/mav_comm/mav_system_msgs/CMakeFiles/_mav_system_msgs_generate_messages_check_deps_ProcessInfo.dir/all
 	$(MAKE) -f rotors_simulator/mav_comm/mav_system_msgs/CMakeFiles/mav_system_msgs_generate_messages_lisp.dir/build.make rotors_simulator/mav_comm/mav_system_msgs/CMakeFiles/mav_system_msgs_generate_messages_lisp.dir/depend
 	$(MAKE) -f rotors_simulator/mav_comm/mav_system_msgs/CMakeFiles/mav_system_msgs_generate_messages_lisp.dir/build.make rotors_simulator/mav_comm/mav_system_msgs/CMakeFiles/mav_system_msgs_generate_messages_lisp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=76 "Built target mav_system_msgs_generate_messages_lisp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=78 "Built target mav_system_msgs_generate_messages_lisp"
 .PHONY : rotors_simulator/mav_comm/mav_system_msgs/CMakeFiles/mav_system_msgs_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
@@ -1924,7 +1981,7 @@ rotors_simulator/mav_comm/mav_system_msgs/CMakeFiles/mav_system_msgs_generate_me
 rotors_simulator/mav_comm/mav_system_msgs/CMakeFiles/mav_system_msgs_generate_messages_py.dir/all: rotors_simulator/mav_comm/mav_system_msgs/CMakeFiles/_mav_system_msgs_generate_messages_check_deps_ProcessInfo.dir/all
 	$(MAKE) -f rotors_simulator/mav_comm/mav_system_msgs/CMakeFiles/mav_system_msgs_generate_messages_py.dir/build.make rotors_simulator/mav_comm/mav_system_msgs/CMakeFiles/mav_system_msgs_generate_messages_py.dir/depend
 	$(MAKE) -f rotors_simulator/mav_comm/mav_system_msgs/CMakeFiles/mav_system_msgs_generate_messages_py.dir/build.make rotors_simulator/mav_comm/mav_system_msgs/CMakeFiles/mav_system_msgs_generate_messages_py.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=77 "Built target mav_system_msgs_generate_messages_py"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=79 "Built target mav_system_msgs_generate_messages_py"
 .PHONY : rotors_simulator/mav_comm/mav_system_msgs/CMakeFiles/mav_system_msgs_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
@@ -2010,7 +2067,7 @@ rotors_simulator/rotors_comm/CMakeFiles/rotors_comm_generate_messages_nodejs.dir
 rotors_simulator/rotors_comm/CMakeFiles/rotors_comm_generate_messages_nodejs.dir/all: rotors_simulator/rotors_comm/CMakeFiles/_rotors_comm_generate_messages_check_deps_RecordRosbag.dir/all
 	$(MAKE) -f rotors_simulator/rotors_comm/CMakeFiles/rotors_comm_generate_messages_nodejs.dir/build.make rotors_simulator/rotors_comm/CMakeFiles/rotors_comm_generate_messages_nodejs.dir/depend
 	$(MAKE) -f rotors_simulator/rotors_comm/CMakeFiles/rotors_comm_generate_messages_nodejs.dir/build.make rotors_simulator/rotors_comm/CMakeFiles/rotors_comm_generate_messages_nodejs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=83 "Built target rotors_comm_generate_messages_nodejs"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=84 "Built target rotors_comm_generate_messages_nodejs"
 .PHONY : rotors_simulator/rotors_comm/CMakeFiles/rotors_comm_generate_messages_nodejs.dir/all
 
 # Build rule for subdir invocation for target.
@@ -2177,7 +2234,7 @@ rotors_simulator/rotors_comm/CMakeFiles/rotors_comm_generate_messages_lisp.dir/a
 rotors_simulator/rotors_comm/CMakeFiles/rotors_comm_generate_messages_lisp.dir/all: rotors_simulator/rotors_comm/CMakeFiles/_rotors_comm_generate_messages_check_deps_RecordRosbag.dir/all
 	$(MAKE) -f rotors_simulator/rotors_comm/CMakeFiles/rotors_comm_generate_messages_lisp.dir/build.make rotors_simulator/rotors_comm/CMakeFiles/rotors_comm_generate_messages_lisp.dir/depend
 	$(MAKE) -f rotors_simulator/rotors_comm/CMakeFiles/rotors_comm_generate_messages_lisp.dir/build.make rotors_simulator/rotors_comm/CMakeFiles/rotors_comm_generate_messages_lisp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=82 "Built target rotors_comm_generate_messages_lisp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=83 "Built target rotors_comm_generate_messages_lisp"
 .PHONY : rotors_simulator/rotors_comm/CMakeFiles/rotors_comm_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
@@ -2290,7 +2347,7 @@ rotors_simulator/rotors_comm/CMakeFiles/rotors_comm_generate_messages_py.dir/all
 rotors_simulator/rotors_comm/CMakeFiles/rotors_comm_generate_messages_py.dir/all: rotors_simulator/rotors_comm/CMakeFiles/_rotors_comm_generate_messages_check_deps_RecordRosbag.dir/all
 	$(MAKE) -f rotors_simulator/rotors_comm/CMakeFiles/rotors_comm_generate_messages_py.dir/build.make rotors_simulator/rotors_comm/CMakeFiles/rotors_comm_generate_messages_py.dir/depend
 	$(MAKE) -f rotors_simulator/rotors_comm/CMakeFiles/rotors_comm_generate_messages_py.dir/build.make rotors_simulator/rotors_comm/CMakeFiles/rotors_comm_generate_messages_py.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=84,85 "Built target rotors_comm_generate_messages_py"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=85,86 "Built target rotors_comm_generate_messages_py"
 .PHONY : rotors_simulator/rotors_comm/CMakeFiles/rotors_comm_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
@@ -2430,7 +2487,7 @@ rotors_simulator/rotors_comm/CMakeFiles/rotors_comm_generate_messages_eus.dir/al
 rotors_simulator/rotors_comm/CMakeFiles/rotors_comm_generate_messages_eus.dir/all: rotors_simulator/rotors_comm/CMakeFiles/_rotors_comm_generate_messages_check_deps_RecordRosbag.dir/all
 	$(MAKE) -f rotors_simulator/rotors_comm/CMakeFiles/rotors_comm_generate_messages_eus.dir/build.make rotors_simulator/rotors_comm/CMakeFiles/rotors_comm_generate_messages_eus.dir/depend
 	$(MAKE) -f rotors_simulator/rotors_comm/CMakeFiles/rotors_comm_generate_messages_eus.dir/build.make rotors_simulator/rotors_comm/CMakeFiles/rotors_comm_generate_messages_eus.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=81 "Built target rotors_comm_generate_messages_eus"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=82 "Built target rotors_comm_generate_messages_eus"
 .PHONY : rotors_simulator/rotors_comm/CMakeFiles/rotors_comm_generate_messages_eus.dir/all
 
 # Build rule for subdir invocation for target.
@@ -2462,7 +2519,7 @@ rotors_simulator/rotors_comm/CMakeFiles/rotors_comm_generate_messages_cpp.dir/al
 rotors_simulator/rotors_comm/CMakeFiles/rotors_comm_generate_messages_cpp.dir/all: rotors_simulator/rotors_comm/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/all
 	$(MAKE) -f rotors_simulator/rotors_comm/CMakeFiles/rotors_comm_generate_messages_cpp.dir/build.make rotors_simulator/rotors_comm/CMakeFiles/rotors_comm_generate_messages_cpp.dir/depend
 	$(MAKE) -f rotors_simulator/rotors_comm/CMakeFiles/rotors_comm_generate_messages_cpp.dir/build.make rotors_simulator/rotors_comm/CMakeFiles/rotors_comm_generate_messages_cpp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=80 "Built target rotors_comm_generate_messages_cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=81 "Built target rotors_comm_generate_messages_cpp"
 .PHONY : rotors_simulator/rotors_comm/CMakeFiles/rotors_comm_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
@@ -2826,7 +2883,7 @@ rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_generate_messages.dir/all
 
 # Build rule for subdir invocation for target.
 rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_generate_messages.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 14
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 13
 	$(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_generate_messages.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_generate_messages.dir/rule
@@ -2857,7 +2914,7 @@ rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_generate_messages_py.dir/
 rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_generate_messages_py.dir/all: rotors_simulator/mav_comm/mav_msgs/CMakeFiles/_mav_msgs_generate_messages_check_deps_GpsWaypoint.dir/all
 	$(MAKE) -f rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_generate_messages_py.dir/build.make rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_generate_messages_py.dir/depend
 	$(MAKE) -f rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_generate_messages_py.dir/build.make rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_generate_messages_py.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=47,48,49 "Built target mav_msgs_generate_messages_py"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=51,52,53 "Built target mav_msgs_generate_messages_py"
 .PHONY : rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
@@ -2893,7 +2950,7 @@ rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_generate_messages_cpp.dir
 rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_generate_messages_cpp.dir/all: rotors_simulator/mav_comm/mav_msgs/CMakeFiles/_mav_msgs_generate_messages_check_deps_GpsWaypoint.dir/all
 	$(MAKE) -f rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_generate_messages_cpp.dir/build.make rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_generate_messages_cpp.dir/depend
 	$(MAKE) -f rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_generate_messages_cpp.dir/build.make rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_generate_messages_cpp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=36,37,38 "Built target mav_msgs_generate_messages_cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=41,42,43 "Built target mav_msgs_generate_messages_cpp"
 .PHONY : rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
@@ -2925,7 +2982,7 @@ rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_gennodejs.dir/all: rotors
 
 # Build rule for subdir invocation for target.
 rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_gennodejs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_gennodejs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_gennodejs.dir/rule
@@ -3060,7 +3117,7 @@ rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_geneus.dir/all: rotors_si
 
 # Build rule for subdir invocation for target.
 rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_geneus.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_geneus.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_geneus.dir/rule
@@ -3172,12 +3229,12 @@ rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_generate_messages_lisp.di
 rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_generate_messages_lisp.dir/all: rotors_simulator/mav_comm/mav_msgs/CMakeFiles/_mav_msgs_generate_messages_check_deps_GpsWaypoint.dir/all
 	$(MAKE) -f rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_generate_messages_lisp.dir/build.make rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_generate_messages_lisp.dir/depend
 	$(MAKE) -f rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_generate_messages_lisp.dir/build.make rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_generate_messages_lisp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=42,43 "Built target mav_msgs_generate_messages_lisp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=46,47,48 "Built target mav_msgs_generate_messages_lisp"
 .PHONY : rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
 rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 3
 	$(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_generate_messages_lisp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_generate_messages_lisp.dir/rule
@@ -3208,12 +3265,12 @@ rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_generate_messages_eus.dir
 rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_generate_messages_eus.dir/all: rotors_simulator/mav_comm/mav_msgs/CMakeFiles/_mav_msgs_generate_messages_check_deps_GpsWaypoint.dir/all
 	$(MAKE) -f rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_generate_messages_eus.dir/build.make rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_generate_messages_eus.dir/depend
 	$(MAKE) -f rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_generate_messages_eus.dir/build.make rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_generate_messages_eus.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=39,40,41 "Built target mav_msgs_generate_messages_eus"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=44,45 "Built target mav_msgs_generate_messages_eus"
 .PHONY : rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_generate_messages_eus.dir/all
 
 # Build rule for subdir invocation for target.
 rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_generate_messages_eus.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_generate_messages_eus.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_generate_messages_eus.dir/rule
@@ -3240,7 +3297,7 @@ rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_genlisp.dir/all: rotors_s
 
 # Build rule for subdir invocation for target.
 rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_genlisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 3
 	$(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_genlisp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_genlisp.dir/rule
@@ -3271,12 +3328,12 @@ rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_generate_messages_nodejs.
 rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_generate_messages_nodejs.dir/all: rotors_simulator/mav_comm/mav_msgs/CMakeFiles/_mav_msgs_generate_messages_check_deps_GpsWaypoint.dir/all
 	$(MAKE) -f rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_generate_messages_nodejs.dir/build.make rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_generate_messages_nodejs.dir/depend
 	$(MAKE) -f rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_generate_messages_nodejs.dir/build.make rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_generate_messages_nodejs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=44,45,46 "Built target mav_msgs_generate_messages_nodejs"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=49,50 "Built target mav_msgs_generate_messages_nodejs"
 .PHONY : rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_generate_messages_nodejs.dir/all
 
 # Build rule for subdir invocation for target.
 rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_generate_messages_nodejs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 3
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_generate_messages_nodejs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : rotors_simulator/mav_comm/mav_msgs/CMakeFiles/mav_msgs_generate_messages_nodejs.dir/rule
@@ -3447,7 +3504,7 @@ uav_msgs/CMakeFiles/uav_msgs_geneus.dir/all: uav_msgs/CMakeFiles/uav_msgs_genera
 
 # Build rule for subdir invocation for target.
 uav_msgs/CMakeFiles/uav_msgs_geneus.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 uav_msgs/CMakeFiles/uav_msgs_geneus.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : uav_msgs/CMakeFiles/uav_msgs_geneus.dir/rule
@@ -3474,7 +3531,7 @@ uav_msgs/CMakeFiles/uav_msgs_gencpp.dir/all: uav_msgs/CMakeFiles/uav_msgs_genera
 
 # Build rule for subdir invocation for target.
 uav_msgs/CMakeFiles/uav_msgs_gencpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 uav_msgs/CMakeFiles/uav_msgs_gencpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : uav_msgs/CMakeFiles/uav_msgs_gencpp.dir/rule
@@ -3499,12 +3556,12 @@ uav_msgs/CMakeFiles/uav_msgs_generate_messages_eus.dir/all: uav_msgs/CMakeFiles/
 uav_msgs/CMakeFiles/uav_msgs_generate_messages_eus.dir/all: uav_msgs/CMakeFiles/_uav_msgs_generate_messages_check_deps_uav_pose.dir/all
 	$(MAKE) -f uav_msgs/CMakeFiles/uav_msgs_generate_messages_eus.dir/build.make uav_msgs/CMakeFiles/uav_msgs_generate_messages_eus.dir/depend
 	$(MAKE) -f uav_msgs/CMakeFiles/uav_msgs_generate_messages_eus.dir/build.make uav_msgs/CMakeFiles/uav_msgs_generate_messages_eus.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=97 "Built target uav_msgs_generate_messages_eus"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num= "Built target uav_msgs_generate_messages_eus"
 .PHONY : uav_msgs/CMakeFiles/uav_msgs_generate_messages_eus.dir/all
 
 # Build rule for subdir invocation for target.
 uav_msgs/CMakeFiles/uav_msgs_generate_messages_eus.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 1
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 	$(MAKE) -f CMakeFiles/Makefile2 uav_msgs/CMakeFiles/uav_msgs_generate_messages_eus.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : uav_msgs/CMakeFiles/uav_msgs_generate_messages_eus.dir/rule
@@ -3911,12 +3968,12 @@ uav_msgs/CMakeFiles/uav_msgs_generate_messages_cpp.dir/all: uav_msgs/CMakeFiles/
 uav_msgs/CMakeFiles/uav_msgs_generate_messages_cpp.dir/all: uav_msgs/CMakeFiles/_uav_msgs_generate_messages_check_deps_uav_pose.dir/all
 	$(MAKE) -f uav_msgs/CMakeFiles/uav_msgs_generate_messages_cpp.dir/build.make uav_msgs/CMakeFiles/uav_msgs_generate_messages_cpp.dir/depend
 	$(MAKE) -f uav_msgs/CMakeFiles/uav_msgs_generate_messages_cpp.dir/build.make uav_msgs/CMakeFiles/uav_msgs_generate_messages_cpp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num= "Built target uav_msgs_generate_messages_cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=97 "Built target uav_msgs_generate_messages_cpp"
 .PHONY : uav_msgs/CMakeFiles/uav_msgs_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
 uav_msgs/CMakeFiles/uav_msgs_generate_messages_cpp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 uav_msgs/CMakeFiles/uav_msgs_generate_messages_cpp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : uav_msgs/CMakeFiles/uav_msgs_generate_messages_cpp.dir/rule
@@ -5428,7 +5485,7 @@ rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_geneus.
 
 # Build rule for subdir invocation for target.
 rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_geneus.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 7
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 5
 	$(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_geneus.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_geneus.dir/rule
@@ -5493,12 +5550,12 @@ rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_generat
 rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_generate_messages_lisp.dir/all: rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/_mav_planning_msgs_generate_messages_check_deps_PlannerService.dir/all
 	$(MAKE) -f rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_generate_messages_lisp.dir/build.make rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_generate_messages_lisp.dir/depend
 	$(MAKE) -f rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_generate_messages_lisp.dir/build.make rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_generate_messages_lisp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=58,59,60,61 "Built target mav_planning_msgs_generate_messages_lisp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=61,62,63,64 "Built target mav_planning_msgs_generate_messages_lisp"
 .PHONY : rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
 rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_generate_messages_lisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 7
 	$(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_generate_messages_lisp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_generate_messages_lisp.dir/rule
@@ -5590,7 +5647,7 @@ rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_generat
 rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_generate_messages_cpp.dir/all: rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/_mav_planning_msgs_generate_messages_check_deps_PlannerService.dir/all
 	$(MAKE) -f rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_generate_messages_cpp.dir/build.make rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_generate_messages_cpp.dir/depend
 	$(MAKE) -f rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_generate_messages_cpp.dir/build.make rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_generate_messages_cpp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=50,51,52,53 "Built target mav_planning_msgs_generate_messages_cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=54,55,56,57 "Built target mav_planning_msgs_generate_messages_cpp"
 .PHONY : rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
@@ -5626,7 +5683,7 @@ rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_generat
 
 # Build rule for subdir invocation for target.
 rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_generate_messages.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 34
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 32
 	$(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_generate_messages.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_generate_messages.dir/rule
@@ -5691,12 +5748,12 @@ rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_generat
 rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_generate_messages_eus.dir/all: rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/_mav_planning_msgs_generate_messages_check_deps_PlannerService.dir/all
 	$(MAKE) -f rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_generate_messages_eus.dir/build.make rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_generate_messages_eus.dir/depend
 	$(MAKE) -f rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_generate_messages_eus.dir/build.make rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_generate_messages_eus.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=54,55,56,57 "Built target mav_planning_msgs_generate_messages_eus"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=58,59,60 "Built target mav_planning_msgs_generate_messages_eus"
 .PHONY : rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_generate_messages_eus.dir/all
 
 # Build rule for subdir invocation for target.
 rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_generate_messages_eus.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 7
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 5
 	$(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_generate_messages_eus.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_generate_messages_eus.dir/rule
@@ -5723,7 +5780,7 @@ rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_genlisp
 
 # Build rule for subdir invocation for target.
 rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_genlisp.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 7
 	$(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_genlisp.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_genlisp.dir/rule
@@ -5761,12 +5818,12 @@ rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_generat
 rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_generate_messages_nodejs.dir/all: rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/_mav_planning_msgs_generate_messages_check_deps_PlannerService.dir/all
 	$(MAKE) -f rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_generate_messages_nodejs.dir/build.make rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_generate_messages_nodejs.dir/depend
 	$(MAKE) -f rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_generate_messages_nodejs.dir/build.make rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_generate_messages_nodejs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=62,63,64,65 "Built target mav_planning_msgs_generate_messages_nodejs"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=65,66,67,68 "Built target mav_planning_msgs_generate_messages_nodejs"
 .PHONY : rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_generate_messages_nodejs.dir/all
 
 # Build rule for subdir invocation for target.
 rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_generate_messages_nodejs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 7
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 6
 	$(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_generate_messages_nodejs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_generate_messages_nodejs.dir/rule
@@ -5793,7 +5850,7 @@ rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_gennode
 
 # Build rule for subdir invocation for target.
 rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_gennodejs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 7
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 6
 	$(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_gennodejs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_gennodejs.dir/rule
@@ -5831,7 +5888,7 @@ rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_generat
 rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_generate_messages_py.dir/all: rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/_mav_planning_msgs_generate_messages_check_deps_PlannerService.dir/all
 	$(MAKE) -f rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_generate_messages_py.dir/build.make rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_generate_messages_py.dir/depend
 	$(MAKE) -f rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_generate_messages_py.dir/build.make rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_generate_messages_py.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=66,67,68,69 "Built target mav_planning_msgs_generate_messages_py"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=69,70,71,72 "Built target mav_planning_msgs_generate_messages_py"
 .PHONY : rotors_simulator/mav_comm/mav_planning_msgs/CMakeFiles/mav_planning_msgs_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
@@ -5957,12 +6014,12 @@ rotors_simulator/rotors_control/CMakeFiles/roll_pitch_yawrate_thrust_controller_
 rotors_simulator/rotors_control/CMakeFiles/roll_pitch_yawrate_thrust_controller_node.dir/all: rotors_simulator/rotors_control/CMakeFiles/roll_pitch_yawrate_thrust_controller.dir/all
 	$(MAKE) -f rotors_simulator/rotors_control/CMakeFiles/roll_pitch_yawrate_thrust_controller_node.dir/build.make rotors_simulator/rotors_control/CMakeFiles/roll_pitch_yawrate_thrust_controller_node.dir/depend
 	$(MAKE) -f rotors_simulator/rotors_control/CMakeFiles/roll_pitch_yawrate_thrust_controller_node.dir/build.make rotors_simulator/rotors_control/CMakeFiles/roll_pitch_yawrate_thrust_controller_node.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=79 "Built target roll_pitch_yawrate_thrust_controller_node"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num= "Built target roll_pitch_yawrate_thrust_controller_node"
 .PHONY : rotors_simulator/rotors_control/CMakeFiles/roll_pitch_yawrate_thrust_controller_node.dir/all
 
 # Build rule for subdir invocation for target.
 rotors_simulator/rotors_control/CMakeFiles/roll_pitch_yawrate_thrust_controller_node.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 16
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 14
 	$(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_control/CMakeFiles/roll_pitch_yawrate_thrust_controller_node.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : rotors_simulator/rotors_control/CMakeFiles/roll_pitch_yawrate_thrust_controller_node.dir/rule
@@ -6029,12 +6086,12 @@ rotors_simulator/rotors_control/CMakeFiles/lee_position_controller_node.dir/all:
 rotors_simulator/rotors_control/CMakeFiles/lee_position_controller_node.dir/all: rotors_simulator/rotors_control/CMakeFiles/lee_position_controller.dir/all
 	$(MAKE) -f rotors_simulator/rotors_control/CMakeFiles/lee_position_controller_node.dir/build.make rotors_simulator/rotors_control/CMakeFiles/lee_position_controller_node.dir/depend
 	$(MAKE) -f rotors_simulator/rotors_control/CMakeFiles/lee_position_controller_node.dir/build.make rotors_simulator/rotors_control/CMakeFiles/lee_position_controller_node.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=15 "Built target lee_position_controller_node"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=22 "Built target lee_position_controller_node"
 .PHONY : rotors_simulator/rotors_control/CMakeFiles/lee_position_controller_node.dir/all
 
 # Build rule for subdir invocation for target.
 rotors_simulator/rotors_control/CMakeFiles/lee_position_controller_node.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 14
 	$(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_control/CMakeFiles/lee_position_controller_node.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : rotors_simulator/rotors_control/CMakeFiles/lee_position_controller_node.dir/rule
@@ -6100,12 +6157,12 @@ rotors_simulator/rotors_control/CMakeFiles/roll_pitch_yawrate_thrust_controller.
 rotors_simulator/rotors_control/CMakeFiles/roll_pitch_yawrate_thrust_controller.dir/all: drone_head/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/all
 	$(MAKE) -f rotors_simulator/rotors_control/CMakeFiles/roll_pitch_yawrate_thrust_controller.dir/build.make rotors_simulator/rotors_control/CMakeFiles/roll_pitch_yawrate_thrust_controller.dir/depend
 	$(MAKE) -f rotors_simulator/rotors_control/CMakeFiles/roll_pitch_yawrate_thrust_controller.dir/build.make rotors_simulator/rotors_control/CMakeFiles/roll_pitch_yawrate_thrust_controller.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=78 "Built target roll_pitch_yawrate_thrust_controller"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=80 "Built target roll_pitch_yawrate_thrust_controller"
 .PHONY : rotors_simulator/rotors_control/CMakeFiles/roll_pitch_yawrate_thrust_controller.dir/all
 
 # Build rule for subdir invocation for target.
 rotors_simulator/rotors_control/CMakeFiles/roll_pitch_yawrate_thrust_controller.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 14
 	$(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_control/CMakeFiles/roll_pitch_yawrate_thrust_controller.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : rotors_simulator/rotors_control/CMakeFiles/roll_pitch_yawrate_thrust_controller.dir/rule
@@ -6176,7 +6233,7 @@ rotors_simulator/rotors_control/CMakeFiles/lee_position_controller.dir/all: dron
 
 # Build rule for subdir invocation for target.
 rotors_simulator/rotors_control/CMakeFiles/lee_position_controller.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 14
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 13
 	$(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_control/CMakeFiles/lee_position_controller.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : rotors_simulator/rotors_control/CMakeFiles/lee_position_controller.dir/rule
@@ -6237,7 +6294,7 @@ rotors_simulator/rotors_joy_interface/CMakeFiles/rotors_joy_interface.dir/all: d
 
 # Build rule for subdir invocation for target.
 rotors_simulator/rotors_joy_interface/CMakeFiles/rotors_joy_interface.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 15
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 14
 	$(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_joy_interface/CMakeFiles/rotors_joy_interface.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : rotors_simulator/rotors_joy_interface/CMakeFiles/rotors_joy_interface.dir/rule
@@ -6665,7 +6722,7 @@ apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_single_image_client_node.dir/a
 apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_single_image_client_node.dir/all: apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_common.dir/all
 	$(MAKE) -f apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_single_image_client_node.dir/build.make apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_single_image_client_node.dir/depend
 	$(MAKE) -f apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_single_image_client_node.dir/build.make apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_single_image_client_node.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=9 "Built target apriltag_ros_single_image_client_node"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=16 "Built target apriltag_ros_single_image_client_node"
 .PHONY : apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_single_image_client_node.dir/all
 
 # Build rule for subdir invocation for target.
@@ -6728,7 +6785,7 @@ apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_generate_messages.dir/all: apr
 
 # Build rule for subdir invocation for target.
 apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_generate_messages.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 6
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 5
 	$(MAKE) -f CMakeFiles/Makefile2 apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_generate_messages.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_generate_messages.dir/rule
@@ -6917,7 +6974,7 @@ apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_generate_messages_nodejs.dir/a
 apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_generate_messages_nodejs.dir/all: apriltag_ros/apriltag_ros/CMakeFiles/_apriltag_ros_generate_messages_check_deps_AnalyzeSingleImage.dir/all
 	$(MAKE) -f apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_generate_messages_nodejs.dir/build.make apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_generate_messages_nodejs.dir/depend
 	$(MAKE) -f apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_generate_messages_nodejs.dir/build.make apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_generate_messages_nodejs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=6 "Built target apriltag_ros_generate_messages_nodejs"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=14 "Built target apriltag_ros_generate_messages_nodejs"
 .PHONY : apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_generate_messages_nodejs.dir/all
 
 # Build rule for subdir invocation for target.
@@ -7108,7 +7165,7 @@ apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_continuous_node.dir/all: april
 apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_continuous_node.dir/all: apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_common.dir/all
 	$(MAKE) -f apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_continuous_node.dir/build.make apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_continuous_node.dir/depend
 	$(MAKE) -f apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_continuous_node.dir/build.make apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_continuous_node.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=2 "Built target apriltag_ros_continuous_node"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=10 "Built target apriltag_ros_continuous_node"
 .PHONY : apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_continuous_node.dir/all
 
 # Build rule for subdir invocation for target.
@@ -7167,7 +7224,7 @@ apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_generate_messages_eus.dir/all:
 apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_generate_messages_eus.dir/all: apriltag_ros/apriltag_ros/CMakeFiles/_apriltag_ros_generate_messages_check_deps_AnalyzeSingleImage.dir/all
 	$(MAKE) -f apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_generate_messages_eus.dir/build.make apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_generate_messages_eus.dir/depend
 	$(MAKE) -f apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_generate_messages_eus.dir/build.make apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_generate_messages_eus.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=4 "Built target apriltag_ros_generate_messages_eus"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=12 "Built target apriltag_ros_generate_messages_eus"
 .PHONY : apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_generate_messages_eus.dir/all
 
 # Build rule for subdir invocation for target.
@@ -7223,7 +7280,7 @@ apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_single_image_server_node.dir/a
 apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_single_image_server_node.dir/all: apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_single_image_detector.dir/all
 	$(MAKE) -f apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_single_image_server_node.dir/build.make apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_single_image_server_node.dir/depend
 	$(MAKE) -f apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_single_image_server_node.dir/build.make apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_single_image_server_node.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=10 "Built target apriltag_ros_single_image_server_node"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num= "Built target apriltag_ros_single_image_server_node"
 .PHONY : apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_single_image_server_node.dir/all
 
 # Build rule for subdir invocation for target.
@@ -7255,7 +7312,7 @@ apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_generate_messages_lisp.dir/all
 apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_generate_messages_lisp.dir/all: apriltag_ros/apriltag_ros/CMakeFiles/_apriltag_ros_generate_messages_check_deps_AnalyzeSingleImage.dir/all
 	$(MAKE) -f apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_generate_messages_lisp.dir/build.make apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_generate_messages_lisp.dir/depend
 	$(MAKE) -f apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_generate_messages_lisp.dir/build.make apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_generate_messages_lisp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=5 "Built target apriltag_ros_generate_messages_lisp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=13 "Built target apriltag_ros_generate_messages_lisp"
 .PHONY : apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_generate_messages_lisp.dir/all
 
 # Build rule for subdir invocation for target.
@@ -7287,7 +7344,7 @@ apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_generate_messages_cpp.dir/all:
 apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_generate_messages_cpp.dir/all: apriltag_ros/apriltag_ros/CMakeFiles/_apriltag_ros_generate_messages_check_deps_AnalyzeSingleImage.dir/all
 	$(MAKE) -f apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_generate_messages_cpp.dir/build.make apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_generate_messages_cpp.dir/depend
 	$(MAKE) -f apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_generate_messages_cpp.dir/build.make apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_generate_messages_cpp.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=3 "Built target apriltag_ros_generate_messages_cpp"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=11 "Built target apriltag_ros_generate_messages_cpp"
 .PHONY : apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_generate_messages_cpp.dir/all
 
 # Build rule for subdir invocation for target.
@@ -7400,12 +7457,12 @@ apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_generate_messages_py.dir/all: 
 apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_generate_messages_py.dir/all: apriltag_ros/apriltag_ros/CMakeFiles/_apriltag_ros_generate_messages_check_deps_AnalyzeSingleImage.dir/all
 	$(MAKE) -f apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_generate_messages_py.dir/build.make apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_generate_messages_py.dir/depend
 	$(MAKE) -f apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_generate_messages_py.dir/build.make apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_generate_messages_py.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=7,8 "Built target apriltag_ros_generate_messages_py"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=15 "Built target apriltag_ros_generate_messages_py"
 .PHONY : apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_generate_messages_py.dir/all
 
 # Build rule for subdir invocation for target.
 apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_generate_messages_py.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_generate_messages_py.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_generate_messages_py.dir/rule
@@ -7432,7 +7489,7 @@ apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_genpy.dir/all: apriltag_ros/ap
 
 # Build rule for subdir invocation for target.
 apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_genpy.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 1
 	$(MAKE) -f CMakeFiles/Makefile2 apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_genpy.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_genpy.dir/rule
@@ -7454,7 +7511,7 @@ apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_genpy.dir/clean:
 apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_common.dir/all: apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_generate_messages_cpp.dir/all
 	$(MAKE) -f apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_common.dir/build.make apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_common.dir/depend
 	$(MAKE) -f apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_common.dir/build.make apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_common.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=1 "Built target apriltag_ros_common"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=9 "Built target apriltag_ros_common"
 .PHONY : apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_common.dir/all
 
 # Build rule for subdir invocation for target.
@@ -7481,12 +7538,12 @@ apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_common.dir/clean:
 apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_single_image_detector.dir/all: apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_common.dir/all
 	$(MAKE) -f apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_single_image_detector.dir/build.make apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_single_image_detector.dir/depend
 	$(MAKE) -f apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_single_image_detector.dir/build.make apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_single_image_detector.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num= "Built target apriltag_ros_single_image_detector"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=17 "Built target apriltag_ros_single_image_detector"
 .PHONY : apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_single_image_detector.dir/all
 
 # Build rule for subdir invocation for target.
 apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_single_image_detector.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 3
 	$(MAKE) -f CMakeFiles/Makefile2 apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_single_image_detector.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_single_image_detector.dir/rule
@@ -7500,6 +7557,467 @@ apriltag_ros_single_image_detector: apriltag_ros/apriltag_ros/CMakeFiles/aprilta
 apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_single_image_detector.dir/clean:
 	$(MAKE) -f apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_single_image_detector.dir/build.make apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_single_image_detector.dir/clean
 .PHONY : apriltag_ros/apriltag_ros/CMakeFiles/apriltag_ros_single_image_detector.dir/clean
+
+#=============================================================================
+# Target rules for target anafi_control/CMakeFiles/anafi_control_genpy.dir
+
+# All Build rule for target.
+anafi_control/CMakeFiles/anafi_control_genpy.dir/all: anafi_control/CMakeFiles/anafi_control_generate_messages_py.dir/all
+	$(MAKE) -f anafi_control/CMakeFiles/anafi_control_genpy.dir/build.make anafi_control/CMakeFiles/anafi_control_genpy.dir/depend
+	$(MAKE) -f anafi_control/CMakeFiles/anafi_control_genpy.dir/build.make anafi_control/CMakeFiles/anafi_control_genpy.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num= "Built target anafi_control_genpy"
+.PHONY : anafi_control/CMakeFiles/anafi_control_genpy.dir/all
+
+# Build rule for subdir invocation for target.
+anafi_control/CMakeFiles/anafi_control_genpy.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 anafi_control/CMakeFiles/anafi_control_genpy.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
+.PHONY : anafi_control/CMakeFiles/anafi_control_genpy.dir/rule
+
+# Convenience name for target.
+anafi_control_genpy: anafi_control/CMakeFiles/anafi_control_genpy.dir/rule
+
+.PHONY : anafi_control_genpy
+
+# clean rule for target.
+anafi_control/CMakeFiles/anafi_control_genpy.dir/clean:
+	$(MAKE) -f anafi_control/CMakeFiles/anafi_control_genpy.dir/build.make anafi_control/CMakeFiles/anafi_control_genpy.dir/clean
+.PHONY : anafi_control/CMakeFiles/anafi_control_genpy.dir/clean
+
+#=============================================================================
+# Target rules for target anafi_control/CMakeFiles/anafi_control_generate_messages.dir
+
+# All Build rule for target.
+anafi_control/CMakeFiles/anafi_control_generate_messages.dir/all: anafi_control/CMakeFiles/anafi_control_generate_messages_lisp.dir/all
+anafi_control/CMakeFiles/anafi_control_generate_messages.dir/all: anafi_control/CMakeFiles/anafi_control_generate_messages_cpp.dir/all
+anafi_control/CMakeFiles/anafi_control_generate_messages.dir/all: anafi_control/CMakeFiles/anafi_control_generate_messages_eus.dir/all
+anafi_control/CMakeFiles/anafi_control_generate_messages.dir/all: anafi_control/CMakeFiles/anafi_control_generate_messages_py.dir/all
+anafi_control/CMakeFiles/anafi_control_generate_messages.dir/all: anafi_control/CMakeFiles/anafi_control_generate_messages_nodejs.dir/all
+	$(MAKE) -f anafi_control/CMakeFiles/anafi_control_generate_messages.dir/build.make anafi_control/CMakeFiles/anafi_control_generate_messages.dir/depend
+	$(MAKE) -f anafi_control/CMakeFiles/anafi_control_generate_messages.dir/build.make anafi_control/CMakeFiles/anafi_control_generate_messages.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num= "Built target anafi_control_generate_messages"
+.PHONY : anafi_control/CMakeFiles/anafi_control_generate_messages.dir/all
+
+# Build rule for subdir invocation for target.
+anafi_control/CMakeFiles/anafi_control_generate_messages.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 8
+	$(MAKE) -f CMakeFiles/Makefile2 anafi_control/CMakeFiles/anafi_control_generate_messages.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
+.PHONY : anafi_control/CMakeFiles/anafi_control_generate_messages.dir/rule
+
+# Convenience name for target.
+anafi_control_generate_messages: anafi_control/CMakeFiles/anafi_control_generate_messages.dir/rule
+
+.PHONY : anafi_control_generate_messages
+
+# clean rule for target.
+anafi_control/CMakeFiles/anafi_control_generate_messages.dir/clean:
+	$(MAKE) -f anafi_control/CMakeFiles/anafi_control_generate_messages.dir/build.make anafi_control/CMakeFiles/anafi_control_generate_messages.dir/clean
+.PHONY : anafi_control/CMakeFiles/anafi_control_generate_messages.dir/clean
+
+#=============================================================================
+# Target rules for target anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_Waypoint.dir
+
+# All Build rule for target.
+anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_Waypoint.dir/all:
+	$(MAKE) -f anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_Waypoint.dir/build.make anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_Waypoint.dir/depend
+	$(MAKE) -f anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_Waypoint.dir/build.make anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_Waypoint.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num= "Built target _anafi_control_generate_messages_check_deps_Waypoint"
+.PHONY : anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_Waypoint.dir/all
+
+# Build rule for subdir invocation for target.
+anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_Waypoint.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_Waypoint.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
+.PHONY : anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_Waypoint.dir/rule
+
+# Convenience name for target.
+_anafi_control_generate_messages_check_deps_Waypoint: anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_Waypoint.dir/rule
+
+.PHONY : _anafi_control_generate_messages_check_deps_Waypoint
+
+# clean rule for target.
+anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_Waypoint.dir/clean:
+	$(MAKE) -f anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_Waypoint.dir/build.make anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_Waypoint.dir/clean
+.PHONY : anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_Waypoint.dir/clean
+
+#=============================================================================
+# Target rules for target anafi_control/CMakeFiles/anafi_control_gennodejs.dir
+
+# All Build rule for target.
+anafi_control/CMakeFiles/anafi_control_gennodejs.dir/all: anafi_control/CMakeFiles/anafi_control_generate_messages_nodejs.dir/all
+	$(MAKE) -f anafi_control/CMakeFiles/anafi_control_gennodejs.dir/build.make anafi_control/CMakeFiles/anafi_control_gennodejs.dir/depend
+	$(MAKE) -f anafi_control/CMakeFiles/anafi_control_gennodejs.dir/build.make anafi_control/CMakeFiles/anafi_control_gennodejs.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num= "Built target anafi_control_gennodejs"
+.PHONY : anafi_control/CMakeFiles/anafi_control_gennodejs.dir/all
+
+# Build rule for subdir invocation for target.
+anafi_control/CMakeFiles/anafi_control_gennodejs.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 anafi_control/CMakeFiles/anafi_control_gennodejs.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
+.PHONY : anafi_control/CMakeFiles/anafi_control_gennodejs.dir/rule
+
+# Convenience name for target.
+anafi_control_gennodejs: anafi_control/CMakeFiles/anafi_control_gennodejs.dir/rule
+
+.PHONY : anafi_control_gennodejs
+
+# clean rule for target.
+anafi_control/CMakeFiles/anafi_control_gennodejs.dir/clean:
+	$(MAKE) -f anafi_control/CMakeFiles/anafi_control_gennodejs.dir/build.make anafi_control/CMakeFiles/anafi_control_gennodejs.dir/clean
+.PHONY : anafi_control/CMakeFiles/anafi_control_gennodejs.dir/clean
+
+#=============================================================================
+# Target rules for target anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_TwistStampedModified.dir
+
+# All Build rule for target.
+anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_TwistStampedModified.dir/all:
+	$(MAKE) -f anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_TwistStampedModified.dir/build.make anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_TwistStampedModified.dir/depend
+	$(MAKE) -f anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_TwistStampedModified.dir/build.make anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_TwistStampedModified.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num= "Built target _anafi_control_generate_messages_check_deps_TwistStampedModified"
+.PHONY : anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_TwistStampedModified.dir/all
+
+# Build rule for subdir invocation for target.
+anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_TwistStampedModified.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_TwistStampedModified.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
+.PHONY : anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_TwistStampedModified.dir/rule
+
+# Convenience name for target.
+_anafi_control_generate_messages_check_deps_TwistStampedModified: anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_TwistStampedModified.dir/rule
+
+.PHONY : _anafi_control_generate_messages_check_deps_TwistStampedModified
+
+# clean rule for target.
+anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_TwistStampedModified.dir/clean:
+	$(MAKE) -f anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_TwistStampedModified.dir/build.make anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_TwistStampedModified.dir/clean
+.PHONY : anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_TwistStampedModified.dir/clean
+
+#=============================================================================
+# Target rules for target anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_TwistModified.dir
+
+# All Build rule for target.
+anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_TwistModified.dir/all:
+	$(MAKE) -f anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_TwistModified.dir/build.make anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_TwistModified.dir/depend
+	$(MAKE) -f anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_TwistModified.dir/build.make anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_TwistModified.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num= "Built target _anafi_control_generate_messages_check_deps_TwistModified"
+.PHONY : anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_TwistModified.dir/all
+
+# Build rule for subdir invocation for target.
+anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_TwistModified.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_TwistModified.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
+.PHONY : anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_TwistModified.dir/rule
+
+# Convenience name for target.
+_anafi_control_generate_messages_check_deps_TwistModified: anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_TwistModified.dir/rule
+
+.PHONY : _anafi_control_generate_messages_check_deps_TwistModified
+
+# clean rule for target.
+anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_TwistModified.dir/clean:
+	$(MAKE) -f anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_TwistModified.dir/build.make anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_TwistModified.dir/clean
+.PHONY : anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_TwistModified.dir/clean
+
+#=============================================================================
+# Target rules for target anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_State.dir
+
+# All Build rule for target.
+anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_State.dir/all:
+	$(MAKE) -f anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_State.dir/build.make anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_State.dir/depend
+	$(MAKE) -f anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_State.dir/build.make anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_State.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num= "Built target _anafi_control_generate_messages_check_deps_State"
+.PHONY : anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_State.dir/all
+
+# Build rule for subdir invocation for target.
+anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_State.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_State.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
+.PHONY : anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_State.dir/rule
+
+# Convenience name for target.
+_anafi_control_generate_messages_check_deps_State: anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_State.dir/rule
+
+.PHONY : _anafi_control_generate_messages_check_deps_State
+
+# clean rule for target.
+anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_State.dir/clean:
+	$(MAKE) -f anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_State.dir/build.make anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_State.dir/clean
+.PHONY : anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_State.dir/clean
+
+#=============================================================================
+# Target rules for target anafi_control/CMakeFiles/anafi_control_geneus.dir
+
+# All Build rule for target.
+anafi_control/CMakeFiles/anafi_control_geneus.dir/all: anafi_control/CMakeFiles/anafi_control_generate_messages_eus.dir/all
+	$(MAKE) -f anafi_control/CMakeFiles/anafi_control_geneus.dir/build.make anafi_control/CMakeFiles/anafi_control_geneus.dir/depend
+	$(MAKE) -f anafi_control/CMakeFiles/anafi_control_geneus.dir/build.make anafi_control/CMakeFiles/anafi_control_geneus.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num= "Built target anafi_control_geneus"
+.PHONY : anafi_control/CMakeFiles/anafi_control_geneus.dir/all
+
+# Build rule for subdir invocation for target.
+anafi_control/CMakeFiles/anafi_control_geneus.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 anafi_control/CMakeFiles/anafi_control_geneus.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
+.PHONY : anafi_control/CMakeFiles/anafi_control_geneus.dir/rule
+
+# Convenience name for target.
+anafi_control_geneus: anafi_control/CMakeFiles/anafi_control_geneus.dir/rule
+
+.PHONY : anafi_control_geneus
+
+# clean rule for target.
+anafi_control/CMakeFiles/anafi_control_geneus.dir/clean:
+	$(MAKE) -f anafi_control/CMakeFiles/anafi_control_geneus.dir/build.make anafi_control/CMakeFiles/anafi_control_geneus.dir/clean
+.PHONY : anafi_control/CMakeFiles/anafi_control_geneus.dir/clean
+
+#=============================================================================
+# Target rules for target anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_MultiRotorRelativeState.dir
+
+# All Build rule for target.
+anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_MultiRotorRelativeState.dir/all:
+	$(MAKE) -f anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_MultiRotorRelativeState.dir/build.make anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_MultiRotorRelativeState.dir/depend
+	$(MAKE) -f anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_MultiRotorRelativeState.dir/build.make anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_MultiRotorRelativeState.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num= "Built target _anafi_control_generate_messages_check_deps_MultiRotorRelativeState"
+.PHONY : anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_MultiRotorRelativeState.dir/all
+
+# Build rule for subdir invocation for target.
+anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_MultiRotorRelativeState.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
+	$(MAKE) -f CMakeFiles/Makefile2 anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_MultiRotorRelativeState.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
+.PHONY : anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_MultiRotorRelativeState.dir/rule
+
+# Convenience name for target.
+_anafi_control_generate_messages_check_deps_MultiRotorRelativeState: anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_MultiRotorRelativeState.dir/rule
+
+.PHONY : _anafi_control_generate_messages_check_deps_MultiRotorRelativeState
+
+# clean rule for target.
+anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_MultiRotorRelativeState.dir/clean:
+	$(MAKE) -f anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_MultiRotorRelativeState.dir/build.make anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_MultiRotorRelativeState.dir/clean
+.PHONY : anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_MultiRotorRelativeState.dir/clean
+
+#=============================================================================
+# Target rules for target anafi_control/CMakeFiles/anafi_control_generate_messages_lisp.dir
+
+# All Build rule for target.
+anafi_control/CMakeFiles/anafi_control_generate_messages_lisp.dir/all: rotors_simulator/rotors_comm/CMakeFiles/geometry_msgs_generate_messages_lisp.dir/all
+anafi_control/CMakeFiles/anafi_control_generate_messages_lisp.dir/all: anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_Waypoint.dir/all
+anafi_control/CMakeFiles/anafi_control_generate_messages_lisp.dir/all: anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_TwistStampedModified.dir/all
+anafi_control/CMakeFiles/anafi_control_generate_messages_lisp.dir/all: anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_TwistModified.dir/all
+anafi_control/CMakeFiles/anafi_control_generate_messages_lisp.dir/all: anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_State.dir/all
+anafi_control/CMakeFiles/anafi_control_generate_messages_lisp.dir/all: anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_MultiRotorRelativeState.dir/all
+	$(MAKE) -f anafi_control/CMakeFiles/anafi_control_generate_messages_lisp.dir/build.make anafi_control/CMakeFiles/anafi_control_generate_messages_lisp.dir/depend
+	$(MAKE) -f anafi_control/CMakeFiles/anafi_control_generate_messages_lisp.dir/build.make anafi_control/CMakeFiles/anafi_control_generate_messages_lisp.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=4,5 "Built target anafi_control_generate_messages_lisp"
+.PHONY : anafi_control/CMakeFiles/anafi_control_generate_messages_lisp.dir/all
+
+# Build rule for subdir invocation for target.
+anafi_control/CMakeFiles/anafi_control_generate_messages_lisp.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 anafi_control/CMakeFiles/anafi_control_generate_messages_lisp.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
+.PHONY : anafi_control/CMakeFiles/anafi_control_generate_messages_lisp.dir/rule
+
+# Convenience name for target.
+anafi_control_generate_messages_lisp: anafi_control/CMakeFiles/anafi_control_generate_messages_lisp.dir/rule
+
+.PHONY : anafi_control_generate_messages_lisp
+
+# clean rule for target.
+anafi_control/CMakeFiles/anafi_control_generate_messages_lisp.dir/clean:
+	$(MAKE) -f anafi_control/CMakeFiles/anafi_control_generate_messages_lisp.dir/build.make anafi_control/CMakeFiles/anafi_control_generate_messages_lisp.dir/clean
+.PHONY : anafi_control/CMakeFiles/anafi_control_generate_messages_lisp.dir/clean
+
+#=============================================================================
+# Target rules for target anafi_control/CMakeFiles/anafi_control_generate_messages_cpp.dir
+
+# All Build rule for target.
+anafi_control/CMakeFiles/anafi_control_generate_messages_cpp.dir/all: rotors_simulator/rotors_comm/CMakeFiles/geometry_msgs_generate_messages_cpp.dir/all
+anafi_control/CMakeFiles/anafi_control_generate_messages_cpp.dir/all: anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_Waypoint.dir/all
+anafi_control/CMakeFiles/anafi_control_generate_messages_cpp.dir/all: anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_TwistStampedModified.dir/all
+anafi_control/CMakeFiles/anafi_control_generate_messages_cpp.dir/all: anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_TwistModified.dir/all
+anafi_control/CMakeFiles/anafi_control_generate_messages_cpp.dir/all: anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_State.dir/all
+anafi_control/CMakeFiles/anafi_control_generate_messages_cpp.dir/all: anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_MultiRotorRelativeState.dir/all
+	$(MAKE) -f anafi_control/CMakeFiles/anafi_control_generate_messages_cpp.dir/build.make anafi_control/CMakeFiles/anafi_control_generate_messages_cpp.dir/depend
+	$(MAKE) -f anafi_control/CMakeFiles/anafi_control_generate_messages_cpp.dir/build.make anafi_control/CMakeFiles/anafi_control_generate_messages_cpp.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=1,2 "Built target anafi_control_generate_messages_cpp"
+.PHONY : anafi_control/CMakeFiles/anafi_control_generate_messages_cpp.dir/all
+
+# Build rule for subdir invocation for target.
+anafi_control/CMakeFiles/anafi_control_generate_messages_cpp.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 anafi_control/CMakeFiles/anafi_control_generate_messages_cpp.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
+.PHONY : anafi_control/CMakeFiles/anafi_control_generate_messages_cpp.dir/rule
+
+# Convenience name for target.
+anafi_control_generate_messages_cpp: anafi_control/CMakeFiles/anafi_control_generate_messages_cpp.dir/rule
+
+.PHONY : anafi_control_generate_messages_cpp
+
+# clean rule for target.
+anafi_control/CMakeFiles/anafi_control_generate_messages_cpp.dir/clean:
+	$(MAKE) -f anafi_control/CMakeFiles/anafi_control_generate_messages_cpp.dir/build.make anafi_control/CMakeFiles/anafi_control_generate_messages_cpp.dir/clean
+.PHONY : anafi_control/CMakeFiles/anafi_control_generate_messages_cpp.dir/clean
+
+#=============================================================================
+# Target rules for target anafi_control/CMakeFiles/anafi_control_gencpp.dir
+
+# All Build rule for target.
+anafi_control/CMakeFiles/anafi_control_gencpp.dir/all: anafi_control/CMakeFiles/anafi_control_generate_messages_cpp.dir/all
+	$(MAKE) -f anafi_control/CMakeFiles/anafi_control_gencpp.dir/build.make anafi_control/CMakeFiles/anafi_control_gencpp.dir/depend
+	$(MAKE) -f anafi_control/CMakeFiles/anafi_control_gencpp.dir/build.make anafi_control/CMakeFiles/anafi_control_gencpp.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num= "Built target anafi_control_gencpp"
+.PHONY : anafi_control/CMakeFiles/anafi_control_gencpp.dir/all
+
+# Build rule for subdir invocation for target.
+anafi_control/CMakeFiles/anafi_control_gencpp.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 anafi_control/CMakeFiles/anafi_control_gencpp.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
+.PHONY : anafi_control/CMakeFiles/anafi_control_gencpp.dir/rule
+
+# Convenience name for target.
+anafi_control_gencpp: anafi_control/CMakeFiles/anafi_control_gencpp.dir/rule
+
+.PHONY : anafi_control_gencpp
+
+# clean rule for target.
+anafi_control/CMakeFiles/anafi_control_gencpp.dir/clean:
+	$(MAKE) -f anafi_control/CMakeFiles/anafi_control_gencpp.dir/build.make anafi_control/CMakeFiles/anafi_control_gencpp.dir/clean
+.PHONY : anafi_control/CMakeFiles/anafi_control_gencpp.dir/clean
+
+#=============================================================================
+# Target rules for target anafi_control/CMakeFiles/anafi_control_genlisp.dir
+
+# All Build rule for target.
+anafi_control/CMakeFiles/anafi_control_genlisp.dir/all: anafi_control/CMakeFiles/anafi_control_generate_messages_lisp.dir/all
+	$(MAKE) -f anafi_control/CMakeFiles/anafi_control_genlisp.dir/build.make anafi_control/CMakeFiles/anafi_control_genlisp.dir/depend
+	$(MAKE) -f anafi_control/CMakeFiles/anafi_control_genlisp.dir/build.make anafi_control/CMakeFiles/anafi_control_genlisp.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num= "Built target anafi_control_genlisp"
+.PHONY : anafi_control/CMakeFiles/anafi_control_genlisp.dir/all
+
+# Build rule for subdir invocation for target.
+anafi_control/CMakeFiles/anafi_control_genlisp.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 anafi_control/CMakeFiles/anafi_control_genlisp.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
+.PHONY : anafi_control/CMakeFiles/anafi_control_genlisp.dir/rule
+
+# Convenience name for target.
+anafi_control_genlisp: anafi_control/CMakeFiles/anafi_control_genlisp.dir/rule
+
+.PHONY : anafi_control_genlisp
+
+# clean rule for target.
+anafi_control/CMakeFiles/anafi_control_genlisp.dir/clean:
+	$(MAKE) -f anafi_control/CMakeFiles/anafi_control_genlisp.dir/build.make anafi_control/CMakeFiles/anafi_control_genlisp.dir/clean
+.PHONY : anafi_control/CMakeFiles/anafi_control_genlisp.dir/clean
+
+#=============================================================================
+# Target rules for target anafi_control/CMakeFiles/anafi_control_generate_messages_eus.dir
+
+# All Build rule for target.
+anafi_control/CMakeFiles/anafi_control_generate_messages_eus.dir/all: rotors_simulator/rotors_comm/CMakeFiles/geometry_msgs_generate_messages_eus.dir/all
+anafi_control/CMakeFiles/anafi_control_generate_messages_eus.dir/all: anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_Waypoint.dir/all
+anafi_control/CMakeFiles/anafi_control_generate_messages_eus.dir/all: anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_TwistStampedModified.dir/all
+anafi_control/CMakeFiles/anafi_control_generate_messages_eus.dir/all: anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_TwistModified.dir/all
+anafi_control/CMakeFiles/anafi_control_generate_messages_eus.dir/all: anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_State.dir/all
+anafi_control/CMakeFiles/anafi_control_generate_messages_eus.dir/all: anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_MultiRotorRelativeState.dir/all
+	$(MAKE) -f anafi_control/CMakeFiles/anafi_control_generate_messages_eus.dir/build.make anafi_control/CMakeFiles/anafi_control_generate_messages_eus.dir/depend
+	$(MAKE) -f anafi_control/CMakeFiles/anafi_control_generate_messages_eus.dir/build.make anafi_control/CMakeFiles/anafi_control_generate_messages_eus.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=3 "Built target anafi_control_generate_messages_eus"
+.PHONY : anafi_control/CMakeFiles/anafi_control_generate_messages_eus.dir/all
+
+# Build rule for subdir invocation for target.
+anafi_control/CMakeFiles/anafi_control_generate_messages_eus.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 anafi_control/CMakeFiles/anafi_control_generate_messages_eus.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
+.PHONY : anafi_control/CMakeFiles/anafi_control_generate_messages_eus.dir/rule
+
+# Convenience name for target.
+anafi_control_generate_messages_eus: anafi_control/CMakeFiles/anafi_control_generate_messages_eus.dir/rule
+
+.PHONY : anafi_control_generate_messages_eus
+
+# clean rule for target.
+anafi_control/CMakeFiles/anafi_control_generate_messages_eus.dir/clean:
+	$(MAKE) -f anafi_control/CMakeFiles/anafi_control_generate_messages_eus.dir/build.make anafi_control/CMakeFiles/anafi_control_generate_messages_eus.dir/clean
+.PHONY : anafi_control/CMakeFiles/anafi_control_generate_messages_eus.dir/clean
+
+#=============================================================================
+# Target rules for target anafi_control/CMakeFiles/anafi_control_generate_messages_py.dir
+
+# All Build rule for target.
+anafi_control/CMakeFiles/anafi_control_generate_messages_py.dir/all: rotors_simulator/rotors_comm/CMakeFiles/geometry_msgs_generate_messages_py.dir/all
+anafi_control/CMakeFiles/anafi_control_generate_messages_py.dir/all: anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_Waypoint.dir/all
+anafi_control/CMakeFiles/anafi_control_generate_messages_py.dir/all: anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_TwistStampedModified.dir/all
+anafi_control/CMakeFiles/anafi_control_generate_messages_py.dir/all: anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_TwistModified.dir/all
+anafi_control/CMakeFiles/anafi_control_generate_messages_py.dir/all: anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_State.dir/all
+anafi_control/CMakeFiles/anafi_control_generate_messages_py.dir/all: anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_MultiRotorRelativeState.dir/all
+	$(MAKE) -f anafi_control/CMakeFiles/anafi_control_generate_messages_py.dir/build.make anafi_control/CMakeFiles/anafi_control_generate_messages_py.dir/depend
+	$(MAKE) -f anafi_control/CMakeFiles/anafi_control_generate_messages_py.dir/build.make anafi_control/CMakeFiles/anafi_control_generate_messages_py.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=7,8 "Built target anafi_control_generate_messages_py"
+.PHONY : anafi_control/CMakeFiles/anafi_control_generate_messages_py.dir/all
+
+# Build rule for subdir invocation for target.
+anafi_control/CMakeFiles/anafi_control_generate_messages_py.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 anafi_control/CMakeFiles/anafi_control_generate_messages_py.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
+.PHONY : anafi_control/CMakeFiles/anafi_control_generate_messages_py.dir/rule
+
+# Convenience name for target.
+anafi_control_generate_messages_py: anafi_control/CMakeFiles/anafi_control_generate_messages_py.dir/rule
+
+.PHONY : anafi_control_generate_messages_py
+
+# clean rule for target.
+anafi_control/CMakeFiles/anafi_control_generate_messages_py.dir/clean:
+	$(MAKE) -f anafi_control/CMakeFiles/anafi_control_generate_messages_py.dir/build.make anafi_control/CMakeFiles/anafi_control_generate_messages_py.dir/clean
+.PHONY : anafi_control/CMakeFiles/anafi_control_generate_messages_py.dir/clean
+
+#=============================================================================
+# Target rules for target anafi_control/CMakeFiles/anafi_control_generate_messages_nodejs.dir
+
+# All Build rule for target.
+anafi_control/CMakeFiles/anafi_control_generate_messages_nodejs.dir/all: rotors_simulator/rotors_comm/CMakeFiles/geometry_msgs_generate_messages_nodejs.dir/all
+anafi_control/CMakeFiles/anafi_control_generate_messages_nodejs.dir/all: anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_Waypoint.dir/all
+anafi_control/CMakeFiles/anafi_control_generate_messages_nodejs.dir/all: anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_TwistStampedModified.dir/all
+anafi_control/CMakeFiles/anafi_control_generate_messages_nodejs.dir/all: anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_TwistModified.dir/all
+anafi_control/CMakeFiles/anafi_control_generate_messages_nodejs.dir/all: anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_State.dir/all
+anafi_control/CMakeFiles/anafi_control_generate_messages_nodejs.dir/all: anafi_control/CMakeFiles/_anafi_control_generate_messages_check_deps_MultiRotorRelativeState.dir/all
+	$(MAKE) -f anafi_control/CMakeFiles/anafi_control_generate_messages_nodejs.dir/build.make anafi_control/CMakeFiles/anafi_control_generate_messages_nodejs.dir/depend
+	$(MAKE) -f anafi_control/CMakeFiles/anafi_control_generate_messages_nodejs.dir/build.make anafi_control/CMakeFiles/anafi_control_generate_messages_nodejs.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=6 "Built target anafi_control_generate_messages_nodejs"
+.PHONY : anafi_control/CMakeFiles/anafi_control_generate_messages_nodejs.dir/all
+
+# Build rule for subdir invocation for target.
+anafi_control/CMakeFiles/anafi_control_generate_messages_nodejs.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 1
+	$(MAKE) -f CMakeFiles/Makefile2 anafi_control/CMakeFiles/anafi_control_generate_messages_nodejs.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
+.PHONY : anafi_control/CMakeFiles/anafi_control_generate_messages_nodejs.dir/rule
+
+# Convenience name for target.
+anafi_control_generate_messages_nodejs: anafi_control/CMakeFiles/anafi_control_generate_messages_nodejs.dir/rule
+
+.PHONY : anafi_control_generate_messages_nodejs
+
+# clean rule for target.
+anafi_control/CMakeFiles/anafi_control_generate_messages_nodejs.dir/clean:
+	$(MAKE) -f anafi_control/CMakeFiles/anafi_control_generate_messages_nodejs.dir/build.make anafi_control/CMakeFiles/anafi_control_generate_messages_nodejs.dir/clean
+.PHONY : anafi_control/CMakeFiles/anafi_control_generate_messages_nodejs.dir/clean
 
 #=============================================================================
 # Target rules for target ekf_fusion/CMakeFiles/robot_localization_generate_messages_cpp.dir
@@ -7826,7 +8344,6 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/LiftDragPlugin.dir/all: drone_
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/LiftDragPlugin.dir/all: drone_head/CMakeFiles/actionlib_generate_messages_py.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/LiftDragPlugin.dir/all: drone_head/CMakeFiles/gazebo_msgs_generate_messages_nodejs.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/LiftDragPlugin.dir/all: drone_head/CMakeFiles/actionlib_generate_messages_nodejs.dir/all
-rotors_simulator/rotors_gazebo_plugins/CMakeFiles/LiftDragPlugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_eus.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/LiftDragPlugin.dir/all: drone_head/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/LiftDragPlugin.dir/all: drone_head/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/LiftDragPlugin.dir/all: drone_head/CMakeFiles/tf_generate_messages_lisp.dir/all
@@ -7880,6 +8397,7 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/LiftDragPlugin.dir/all: rotors
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/LiftDragPlugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_eus.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/LiftDragPlugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_cpp.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/LiftDragPlugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_nodejs.dir/all
+rotors_simulator/rotors_gazebo_plugins/CMakeFiles/LiftDragPlugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_eus.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/LiftDragPlugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_lisp.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/LiftDragPlugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/mav_msgs.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/LiftDragPlugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_cpp.dir/all
@@ -7893,7 +8411,7 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/LiftDragPlugin.dir/all: rotors
 
 # Build rule for subdir invocation for target.
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/LiftDragPlugin.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 41
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 38
 	$(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/LiftDragPlugin.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/LiftDragPlugin.dir/rule
@@ -8017,7 +8535,6 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_wind_plugin.dir/
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_wind_plugin.dir/all: drone_head/CMakeFiles/actionlib_generate_messages_py.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_wind_plugin.dir/all: drone_head/CMakeFiles/gazebo_msgs_generate_messages_nodejs.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_wind_plugin.dir/all: drone_head/CMakeFiles/actionlib_generate_messages_nodejs.dir/all
-rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_wind_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_eus.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_wind_plugin.dir/all: drone_head/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_wind_plugin.dir/all: drone_head/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_wind_plugin.dir/all: drone_head/CMakeFiles/tf_generate_messages_lisp.dir/all
@@ -8071,6 +8588,7 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_wind_plugin.dir/
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_wind_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_eus.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_wind_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_cpp.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_wind_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_nodejs.dir/all
+rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_wind_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_eus.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_wind_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_lisp.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_wind_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/mav_msgs.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_wind_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_cpp.dir/all
@@ -8079,12 +8597,12 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_wind_plugin.dir/
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_wind_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_py.dir/all
 	$(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_wind_plugin.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_wind_plugin.dir/depend
 	$(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_wind_plugin.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_wind_plugin.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=95 "Built target rotors_gazebo_wind_plugin"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num= "Built target rotors_gazebo_wind_plugin"
 .PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_wind_plugin.dir/all
 
 # Build rule for subdir invocation for target.
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_wind_plugin.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 42
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 38
 	$(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_wind_plugin.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_wind_plugin.dir/rule
@@ -8154,7 +8672,6 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_odometry_plugin.
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_odometry_plugin.dir/all: drone_head/CMakeFiles/actionlib_generate_messages_py.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_odometry_plugin.dir/all: drone_head/CMakeFiles/gazebo_msgs_generate_messages_nodejs.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_odometry_plugin.dir/all: drone_head/CMakeFiles/actionlib_generate_messages_nodejs.dir/all
-rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_odometry_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_eus.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_odometry_plugin.dir/all: drone_head/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_odometry_plugin.dir/all: drone_head/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_odometry_plugin.dir/all: drone_head/CMakeFiles/tf_generate_messages_lisp.dir/all
@@ -8208,6 +8725,7 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_odometry_plugin.
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_odometry_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_eus.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_odometry_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_cpp.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_odometry_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_nodejs.dir/all
+rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_odometry_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_eus.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_odometry_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_lisp.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_odometry_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/mav_msgs.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_odometry_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_cpp.dir/all
@@ -8216,12 +8734,12 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_odometry_plugin.
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_odometry_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_py.dir/all
 	$(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_odometry_plugin.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_odometry_plugin.dir/depend
 	$(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_odometry_plugin.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_odometry_plugin.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=93 "Built target rotors_gazebo_odometry_plugin"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=94 "Built target rotors_gazebo_odometry_plugin"
 .PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_odometry_plugin.dir/all
 
 # Build rule for subdir invocation for target.
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_odometry_plugin.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 42
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 39
 	$(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_odometry_plugin.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_odometry_plugin.dir/rule
@@ -8291,7 +8809,6 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_pressure_plugin.
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_pressure_plugin.dir/all: drone_head/CMakeFiles/actionlib_generate_messages_py.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_pressure_plugin.dir/all: drone_head/CMakeFiles/gazebo_msgs_generate_messages_nodejs.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_pressure_plugin.dir/all: drone_head/CMakeFiles/actionlib_generate_messages_nodejs.dir/all
-rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_pressure_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_eus.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_pressure_plugin.dir/all: drone_head/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_pressure_plugin.dir/all: drone_head/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_pressure_plugin.dir/all: drone_head/CMakeFiles/tf_generate_messages_lisp.dir/all
@@ -8345,6 +8862,7 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_pressure_plugin.
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_pressure_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_eus.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_pressure_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_cpp.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_pressure_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_nodejs.dir/all
+rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_pressure_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_eus.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_pressure_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_lisp.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_pressure_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/mav_msgs.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_pressure_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_cpp.dir/all
@@ -8353,12 +8871,12 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_pressure_plugin.
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_pressure_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_py.dir/all
 	$(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_pressure_plugin.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_pressure_plugin.dir/depend
 	$(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_pressure_plugin.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_pressure_plugin.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=94 "Built target rotors_gazebo_pressure_plugin"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num= "Built target rotors_gazebo_pressure_plugin"
 .PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_pressure_plugin.dir/all
 
 # Build rule for subdir invocation for target.
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_pressure_plugin.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 42
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 38
 	$(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_pressure_plugin.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_pressure_plugin.dir/rule
@@ -8536,7 +9054,6 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_motor_model.dir/
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_motor_model.dir/all: drone_head/CMakeFiles/actionlib_generate_messages_py.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_motor_model.dir/all: drone_head/CMakeFiles/gazebo_msgs_generate_messages_nodejs.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_motor_model.dir/all: drone_head/CMakeFiles/actionlib_generate_messages_nodejs.dir/all
-rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_motor_model.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_eus.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_motor_model.dir/all: drone_head/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_motor_model.dir/all: drone_head/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_motor_model.dir/all: drone_head/CMakeFiles/tf_generate_messages_lisp.dir/all
@@ -8590,6 +9107,7 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_motor_model.dir/
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_motor_model.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_eus.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_motor_model.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_cpp.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_motor_model.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_nodejs.dir/all
+rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_motor_model.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_eus.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_motor_model.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_lisp.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_motor_model.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/mav_msgs.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_motor_model.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_cpp.dir/all
@@ -8598,12 +9116,12 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_motor_model.dir/
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_motor_model.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_py.dir/all
 	$(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_motor_model.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_motor_model.dir/depend
 	$(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_motor_model.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_motor_model.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=91 "Built target rotors_gazebo_motor_model"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num= "Built target rotors_gazebo_motor_model"
 .PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_motor_model.dir/all
 
 # Build rule for subdir invocation for target.
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_motor_model.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 42
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 38
 	$(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_motor_model.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_motor_model.dir/rule
@@ -8652,12 +9170,12 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/mav_msgs.dir/all:
 	$(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/mav_msgs.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/mav_msgs.dir/depend
 	$(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/mav_msgs.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/mav_msgs.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=16,17,18,19,20,21,22,23,24,25,26,27,28,29,30,31,32,33,34,35 "Built target mav_msgs"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=23,24,25,26,27,28,29,30,31,32,33,34,35,36,37,38,39,40 "Built target mav_msgs"
 .PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/mav_msgs.dir/all
 
 # Build rule for subdir invocation for target.
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/mav_msgs.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 20
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 18
 	$(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/mav_msgs.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/mav_msgs.dir/rule
@@ -8754,7 +9272,6 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_fw_dynamics_plug
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_fw_dynamics_plugin.dir/all: drone_head/CMakeFiles/actionlib_generate_messages_py.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_fw_dynamics_plugin.dir/all: drone_head/CMakeFiles/gazebo_msgs_generate_messages_nodejs.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_fw_dynamics_plugin.dir/all: drone_head/CMakeFiles/actionlib_generate_messages_nodejs.dir/all
-rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_fw_dynamics_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_eus.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_fw_dynamics_plugin.dir/all: drone_head/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_fw_dynamics_plugin.dir/all: drone_head/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_fw_dynamics_plugin.dir/all: drone_head/CMakeFiles/tf_generate_messages_lisp.dir/all
@@ -8808,6 +9325,7 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_fw_dynamics_plug
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_fw_dynamics_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_eus.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_fw_dynamics_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_cpp.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_fw_dynamics_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_nodejs.dir/all
+rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_fw_dynamics_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_eus.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_fw_dynamics_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_lisp.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_fw_dynamics_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/mav_msgs.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_fw_dynamics_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_cpp.dir/all
@@ -8816,12 +9334,12 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_fw_dynamics_plug
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_fw_dynamics_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_py.dir/all
 	$(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_fw_dynamics_plugin.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_fw_dynamics_plugin.dir/depend
 	$(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_fw_dynamics_plugin.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_fw_dynamics_plugin.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=87 "Built target rotors_gazebo_fw_dynamics_plugin"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=88 "Built target rotors_gazebo_fw_dynamics_plugin"
 .PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_fw_dynamics_plugin.dir/all
 
 # Build rule for subdir invocation for target.
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_fw_dynamics_plugin.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 42
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 39
 	$(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_fw_dynamics_plugin.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_fw_dynamics_plugin.dir/rule
@@ -8918,7 +9436,6 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_bag_plugin.dir/a
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_bag_plugin.dir/all: drone_head/CMakeFiles/actionlib_generate_messages_py.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_bag_plugin.dir/all: drone_head/CMakeFiles/gazebo_msgs_generate_messages_nodejs.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_bag_plugin.dir/all: drone_head/CMakeFiles/actionlib_generate_messages_nodejs.dir/all
-rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_bag_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_eus.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_bag_plugin.dir/all: drone_head/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_bag_plugin.dir/all: drone_head/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_bag_plugin.dir/all: drone_head/CMakeFiles/tf_generate_messages_lisp.dir/all
@@ -8972,6 +9489,7 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_bag_plugin.dir/a
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_bag_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_eus.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_bag_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_cpp.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_bag_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_nodejs.dir/all
+rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_bag_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_eus.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_bag_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_lisp.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_bag_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/mav_msgs.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_bag_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_cpp.dir/all
@@ -8985,7 +9503,7 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_bag_plugin.dir/a
 
 # Build rule for subdir invocation for target.
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_bag_plugin.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 41
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 38
 	$(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_bag_plugin.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_bag_plugin.dir/rule
@@ -9055,7 +9573,6 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_controller_inter
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_controller_interface.dir/all: drone_head/CMakeFiles/actionlib_generate_messages_py.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_controller_interface.dir/all: drone_head/CMakeFiles/gazebo_msgs_generate_messages_nodejs.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_controller_interface.dir/all: drone_head/CMakeFiles/actionlib_generate_messages_nodejs.dir/all
-rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_controller_interface.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_eus.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_controller_interface.dir/all: drone_head/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_controller_interface.dir/all: drone_head/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_controller_interface.dir/all: drone_head/CMakeFiles/tf_generate_messages_lisp.dir/all
@@ -9109,6 +9626,7 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_controller_inter
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_controller_interface.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_eus.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_controller_interface.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_cpp.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_controller_interface.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_nodejs.dir/all
+rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_controller_interface.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_eus.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_controller_interface.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_lisp.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_controller_interface.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/mav_msgs.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_controller_interface.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_cpp.dir/all
@@ -9117,12 +9635,12 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_controller_inter
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_controller_interface.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_py.dir/all
 	$(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_controller_interface.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_controller_interface.dir/depend
 	$(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_controller_interface.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_controller_interface.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=86 "Built target rotors_gazebo_controller_interface"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=87 "Built target rotors_gazebo_controller_interface"
 .PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_controller_interface.dir/all
 
 # Build rule for subdir invocation for target.
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_controller_interface.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 42
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 39
 	$(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_controller_interface.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_controller_interface.dir/rule
@@ -9192,7 +9710,6 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/gazebo_geotagged_images_plugin
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/gazebo_geotagged_images_plugin.dir/all: drone_head/CMakeFiles/actionlib_generate_messages_py.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/gazebo_geotagged_images_plugin.dir/all: drone_head/CMakeFiles/gazebo_msgs_generate_messages_nodejs.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/gazebo_geotagged_images_plugin.dir/all: drone_head/CMakeFiles/actionlib_generate_messages_nodejs.dir/all
-rotors_simulator/rotors_gazebo_plugins/CMakeFiles/gazebo_geotagged_images_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_eus.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/gazebo_geotagged_images_plugin.dir/all: drone_head/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/gazebo_geotagged_images_plugin.dir/all: drone_head/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/gazebo_geotagged_images_plugin.dir/all: drone_head/CMakeFiles/tf_generate_messages_lisp.dir/all
@@ -9246,6 +9763,7 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/gazebo_geotagged_images_plugin
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/gazebo_geotagged_images_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_eus.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/gazebo_geotagged_images_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_cpp.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/gazebo_geotagged_images_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_nodejs.dir/all
+rotors_simulator/rotors_gazebo_plugins/CMakeFiles/gazebo_geotagged_images_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_eus.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/gazebo_geotagged_images_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_lisp.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/gazebo_geotagged_images_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/mav_msgs.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/gazebo_geotagged_images_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_cpp.dir/all
@@ -9254,12 +9772,12 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/gazebo_geotagged_images_plugin
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/gazebo_geotagged_images_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_py.dir/all
 	$(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/gazebo_geotagged_images_plugin.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/gazebo_geotagged_images_plugin.dir/depend
 	$(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/gazebo_geotagged_images_plugin.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/gazebo_geotagged_images_plugin.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=11 "Built target gazebo_geotagged_images_plugin"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=18 "Built target gazebo_geotagged_images_plugin"
 .PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/gazebo_geotagged_images_plugin.dir/all
 
 # Build rule for subdir invocation for target.
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/gazebo_geotagged_images_plugin.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 42
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 39
 	$(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/gazebo_geotagged_images_plugin.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/gazebo_geotagged_images_plugin.dir/rule
@@ -9329,7 +9847,6 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_magnetometer_plu
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_magnetometer_plugin.dir/all: drone_head/CMakeFiles/actionlib_generate_messages_py.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_magnetometer_plugin.dir/all: drone_head/CMakeFiles/gazebo_msgs_generate_messages_nodejs.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_magnetometer_plugin.dir/all: drone_head/CMakeFiles/actionlib_generate_messages_nodejs.dir/all
-rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_magnetometer_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_eus.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_magnetometer_plugin.dir/all: drone_head/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_magnetometer_plugin.dir/all: drone_head/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_magnetometer_plugin.dir/all: drone_head/CMakeFiles/tf_generate_messages_lisp.dir/all
@@ -9383,6 +9900,7 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_magnetometer_plu
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_magnetometer_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_eus.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_magnetometer_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_cpp.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_magnetometer_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_nodejs.dir/all
+rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_magnetometer_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_eus.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_magnetometer_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_lisp.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_magnetometer_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/mav_msgs.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_magnetometer_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_cpp.dir/all
@@ -9391,12 +9909,12 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_magnetometer_plu
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_magnetometer_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_py.dir/all
 	$(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_magnetometer_plugin.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_magnetometer_plugin.dir/depend
 	$(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_magnetometer_plugin.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_magnetometer_plugin.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=89 "Built target rotors_gazebo_magnetometer_plugin"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=90 "Built target rotors_gazebo_magnetometer_plugin"
 .PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_magnetometer_plugin.dir/all
 
 # Build rule for subdir invocation for target.
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_magnetometer_plugin.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 42
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 39
 	$(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_magnetometer_plugin.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_magnetometer_plugin.dir/rule
@@ -9493,7 +10011,6 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_imu_plugin.dir/a
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_imu_plugin.dir/all: drone_head/CMakeFiles/actionlib_generate_messages_py.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_imu_plugin.dir/all: drone_head/CMakeFiles/gazebo_msgs_generate_messages_nodejs.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_imu_plugin.dir/all: drone_head/CMakeFiles/actionlib_generate_messages_nodejs.dir/all
-rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_imu_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_eus.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_imu_plugin.dir/all: drone_head/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_imu_plugin.dir/all: drone_head/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_imu_plugin.dir/all: drone_head/CMakeFiles/tf_generate_messages_lisp.dir/all
@@ -9547,6 +10064,7 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_imu_plugin.dir/a
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_imu_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_eus.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_imu_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_cpp.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_imu_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_nodejs.dir/all
+rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_imu_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_eus.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_imu_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_lisp.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_imu_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/mav_msgs.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_imu_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_cpp.dir/all
@@ -9555,12 +10073,12 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_imu_plugin.dir/a
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_imu_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_py.dir/all
 	$(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_imu_plugin.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_imu_plugin.dir/depend
 	$(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_imu_plugin.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_imu_plugin.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=88 "Built target rotors_gazebo_imu_plugin"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=89 "Built target rotors_gazebo_imu_plugin"
 .PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_imu_plugin.dir/all
 
 # Build rule for subdir invocation for target.
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_imu_plugin.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 42
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 39
 	$(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_imu_plugin.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_imu_plugin.dir/rule
@@ -9630,7 +10148,6 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_noisydepth_plugi
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_noisydepth_plugin.dir/all: drone_head/CMakeFiles/actionlib_generate_messages_py.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_noisydepth_plugin.dir/all: drone_head/CMakeFiles/gazebo_msgs_generate_messages_nodejs.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_noisydepth_plugin.dir/all: drone_head/CMakeFiles/actionlib_generate_messages_nodejs.dir/all
-rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_noisydepth_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_eus.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_noisydepth_plugin.dir/all: drone_head/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_noisydepth_plugin.dir/all: drone_head/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_noisydepth_plugin.dir/all: drone_head/CMakeFiles/tf_generate_messages_lisp.dir/all
@@ -9684,6 +10201,7 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_noisydepth_plugi
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_noisydepth_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_eus.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_noisydepth_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_cpp.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_noisydepth_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_nodejs.dir/all
+rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_noisydepth_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_eus.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_noisydepth_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_lisp.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_noisydepth_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/mav_msgs.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_noisydepth_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_cpp.dir/all
@@ -9692,12 +10210,12 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_noisydepth_plugi
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_noisydepth_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_py.dir/all
 	$(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_noisydepth_plugin.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_noisydepth_plugin.dir/depend
 	$(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_noisydepth_plugin.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_noisydepth_plugin.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=92 "Built target rotors_gazebo_noisydepth_plugin"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=93 "Built target rotors_gazebo_noisydepth_plugin"
 .PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_noisydepth_plugin.dir/all
 
 # Build rule for subdir invocation for target.
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_noisydepth_plugin.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 42
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 39
 	$(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_noisydepth_plugin.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_noisydepth_plugin.dir/rule
@@ -9821,7 +10339,6 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_mavlink_interfac
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_mavlink_interface.dir/all: drone_head/CMakeFiles/actionlib_generate_messages_py.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_mavlink_interface.dir/all: drone_head/CMakeFiles/gazebo_msgs_generate_messages_nodejs.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_mavlink_interface.dir/all: drone_head/CMakeFiles/actionlib_generate_messages_nodejs.dir/all
-rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_mavlink_interface.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_eus.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_mavlink_interface.dir/all: drone_head/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_mavlink_interface.dir/all: drone_head/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_mavlink_interface.dir/all: drone_head/CMakeFiles/tf_generate_messages_lisp.dir/all
@@ -9895,6 +10412,7 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_mavlink_interfac
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_mavlink_interface.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_eus.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_mavlink_interface.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_cpp.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_mavlink_interface.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_nodejs.dir/all
+rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_mavlink_interface.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_eus.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_mavlink_interface.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_lisp.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_mavlink_interface.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/mav_msgs.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_mavlink_interface.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_cpp.dir/all
@@ -9903,12 +10421,12 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_mavlink_interfac
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_mavlink_interface.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_py.dir/all
 	$(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_mavlink_interface.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_mavlink_interface.dir/depend
 	$(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_mavlink_interface.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_mavlink_interface.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=90 "Built target rotors_gazebo_mavlink_interface"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=91 "Built target rotors_gazebo_mavlink_interface"
 .PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_mavlink_interface.dir/all
 
 # Build rule for subdir invocation for target.
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_mavlink_interface.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 42
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 39
 	$(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_mavlink_interface.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_mavlink_interface.dir/rule
@@ -9978,7 +10496,6 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_multirotor_base_
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_multirotor_base_plugin.dir/all: drone_head/CMakeFiles/actionlib_generate_messages_py.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_multirotor_base_plugin.dir/all: drone_head/CMakeFiles/gazebo_msgs_generate_messages_nodejs.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_multirotor_base_plugin.dir/all: drone_head/CMakeFiles/actionlib_generate_messages_nodejs.dir/all
-rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_multirotor_base_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_eus.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_multirotor_base_plugin.dir/all: drone_head/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_multirotor_base_plugin.dir/all: drone_head/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_multirotor_base_plugin.dir/all: drone_head/CMakeFiles/tf_generate_messages_lisp.dir/all
@@ -10032,6 +10549,7 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_multirotor_base_
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_multirotor_base_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_eus.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_multirotor_base_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_cpp.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_multirotor_base_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_nodejs.dir/all
+rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_multirotor_base_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_eus.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_multirotor_base_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_lisp.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_multirotor_base_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/mav_msgs.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_multirotor_base_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_cpp.dir/all
@@ -10040,12 +10558,12 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_multirotor_base_
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_multirotor_base_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_py.dir/all
 	$(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_multirotor_base_plugin.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_multirotor_base_plugin.dir/depend
 	$(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_multirotor_base_plugin.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_multirotor_base_plugin.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num= "Built target rotors_gazebo_multirotor_base_plugin"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=92 "Built target rotors_gazebo_multirotor_base_plugin"
 .PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_multirotor_base_plugin.dir/all
 
 # Build rule for subdir invocation for target.
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_multirotor_base_plugin.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 41
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 39
 	$(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_multirotor_base_plugin.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_multirotor_base_plugin.dir/rule
@@ -10115,7 +10633,6 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_gps_plugin.dir/a
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_gps_plugin.dir/all: drone_head/CMakeFiles/actionlib_generate_messages_py.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_gps_plugin.dir/all: drone_head/CMakeFiles/gazebo_msgs_generate_messages_nodejs.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_gps_plugin.dir/all: drone_head/CMakeFiles/actionlib_generate_messages_nodejs.dir/all
-rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_gps_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_eus.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_gps_plugin.dir/all: drone_head/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_gps_plugin.dir/all: drone_head/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_gps_plugin.dir/all: drone_head/CMakeFiles/tf_generate_messages_lisp.dir/all
@@ -10169,6 +10686,7 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_gps_plugin.dir/a
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_gps_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_eus.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_gps_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_cpp.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_gps_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_nodejs.dir/all
+rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_gps_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_eus.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_gps_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_lisp.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_gps_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/mav_msgs.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_gps_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_cpp.dir/all
@@ -10182,7 +10700,7 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_gps_plugin.dir/a
 
 # Build rule for subdir invocation for target.
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_gps_plugin.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 41
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 38
 	$(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_gps_plugin.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_gps_plugin.dir/rule
@@ -10252,7 +10770,6 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_lidar_plugin.dir
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_lidar_plugin.dir/all: drone_head/CMakeFiles/actionlib_generate_messages_py.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_lidar_plugin.dir/all: drone_head/CMakeFiles/gazebo_msgs_generate_messages_nodejs.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_lidar_plugin.dir/all: drone_head/CMakeFiles/actionlib_generate_messages_nodejs.dir/all
-rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_lidar_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_eus.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_lidar_plugin.dir/all: drone_head/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_lidar_plugin.dir/all: drone_head/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_lidar_plugin.dir/all: drone_head/CMakeFiles/tf_generate_messages_lisp.dir/all
@@ -10306,6 +10823,7 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_lidar_plugin.dir
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_lidar_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_eus.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_lidar_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_cpp.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_lidar_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_nodejs.dir/all
+rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_lidar_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_eus.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_lidar_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_lisp.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_lidar_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/mav_msgs.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_lidar_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_cpp.dir/all
@@ -10319,7 +10837,7 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_lidar_plugin.dir
 
 # Build rule for subdir invocation for target.
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_lidar_plugin.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 41
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 38
 	$(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_lidar_plugin.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_lidar_plugin.dir/rule
@@ -10389,7 +10907,6 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_ros_interface_pl
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_ros_interface_plugin.dir/all: drone_head/CMakeFiles/actionlib_generate_messages_py.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_ros_interface_plugin.dir/all: drone_head/CMakeFiles/gazebo_msgs_generate_messages_nodejs.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_ros_interface_plugin.dir/all: drone_head/CMakeFiles/actionlib_generate_messages_nodejs.dir/all
-rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_ros_interface_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_eus.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_ros_interface_plugin.dir/all: drone_head/CMakeFiles/rosgraph_msgs_generate_messages_py.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_ros_interface_plugin.dir/all: drone_head/CMakeFiles/dynamic_reconfigure_generate_messages_cpp.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_ros_interface_plugin.dir/all: drone_head/CMakeFiles/tf_generate_messages_lisp.dir/all
@@ -10443,6 +10960,7 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_ros_interface_pl
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_ros_interface_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_eus.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_ros_interface_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_cpp.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_ros_interface_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_nodejs.dir/all
+rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_ros_interface_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_eus.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_ros_interface_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_lisp.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_ros_interface_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/mav_msgs.dir/all
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_ros_interface_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/visualization_msgs_generate_messages_cpp.dir/all
@@ -10451,12 +10969,12 @@ rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_ros_interface_pl
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_ros_interface_plugin.dir/all: rotors_simulator/rotors_gazebo_plugins/CMakeFiles/topic_tools_generate_messages_py.dir/all
 	$(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_ros_interface_plugin.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_ros_interface_plugin.dir/depend
 	$(MAKE) -f rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_ros_interface_plugin.dir/build.make rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_ros_interface_plugin.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num= "Built target rotors_gazebo_ros_interface_plugin"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=95 "Built target rotors_gazebo_ros_interface_plugin"
 .PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_ros_interface_plugin.dir/all
 
 # Build rule for subdir invocation for target.
 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_ros_interface_plugin.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 41
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 39
 	$(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_ros_interface_plugin.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : rotors_simulator/rotors_gazebo_plugins/CMakeFiles/rotors_gazebo_ros_interface_plugin.dir/rule
@@ -10537,12 +11055,12 @@ rotors_simulator/rotors_gazebo/CMakeFiles/hovering_example.dir/all: drone_head/C
 rotors_simulator/rotors_gazebo/CMakeFiles/hovering_example.dir/all: drone_head/CMakeFiles/rosgraph_msgs_generate_messages_nodejs.dir/all
 	$(MAKE) -f rotors_simulator/rotors_gazebo/CMakeFiles/hovering_example.dir/build.make rotors_simulator/rotors_gazebo/CMakeFiles/hovering_example.dir/depend
 	$(MAKE) -f rotors_simulator/rotors_gazebo/CMakeFiles/hovering_example.dir/build.make rotors_simulator/rotors_gazebo/CMakeFiles/hovering_example.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=14 "Built target hovering_example"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles --progress-num=21 "Built target hovering_example"
 .PHONY : rotors_simulator/rotors_gazebo/CMakeFiles/hovering_example.dir/all
 
 # Build rule for subdir invocation for target.
 rotors_simulator/rotors_gazebo/CMakeFiles/hovering_example.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 17
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 16
 	$(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo/CMakeFiles/hovering_example.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : rotors_simulator/rotors_gazebo/CMakeFiles/hovering_example.dir/rule
@@ -10628,7 +11146,7 @@ rotors_simulator/rotors_gazebo/CMakeFiles/waypoint_publisher_file.dir/all: drone
 
 # Build rule for subdir invocation for target.
 rotors_simulator/rotors_gazebo/CMakeFiles/waypoint_publisher_file.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 17
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 16
 	$(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo/CMakeFiles/waypoint_publisher_file.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : rotors_simulator/rotors_gazebo/CMakeFiles/waypoint_publisher_file.dir/rule
@@ -10714,7 +11232,7 @@ rotors_simulator/rotors_gazebo/CMakeFiles/waypoint_publisher.dir/all: drone_head
 
 # Build rule for subdir invocation for target.
 rotors_simulator/rotors_gazebo/CMakeFiles/waypoint_publisher.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 17
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 16
 	$(MAKE) -f CMakeFiles/Makefile2 rotors_simulator/rotors_gazebo/CMakeFiles/waypoint_publisher.dir/all
 	$(CMAKE_COMMAND) -E cmake_progress_start /home/isaac/Downloads/apriltags_kalman/ros_workspace/build/CMakeFiles 0
 .PHONY : rotors_simulator/rotors_gazebo/CMakeFiles/waypoint_publisher.dir/rule
