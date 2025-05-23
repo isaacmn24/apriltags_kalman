@@ -9,12 +9,15 @@ import numpy as np
 import tf.transformations
 
 class TransformListener:
-    def __init__(self, publisher_topic, subscriber_topic):
+    def __init__(self):
         self.pose = PoseStamped()
         self.pose_covariance = np.zeros((6, 6))  # Placeholder for covariance matrix
         # self.target_frame = "hummingbird/real_odometry_sensor"
         # self.source_frame = "hummingbird/camera_link_optical"                 # Initialize to None as withholder
         
+        subscriber_topic = "/tag_detections_corrected"
+        publisher_topic = "/tag_detections/transformed_pose"
+
         self.target_frame = "anafi_localization_1"
         self.source_frame = "correct_camera_frame" 
 
@@ -95,10 +98,7 @@ if __name__ == '__main__':
     # Initialize ROS node
     rospy.init_node("tf_listener_tag_detection")
 
-    tag_detections_sub_topic = "/tag_detections_corrected"
-    tag_detections_pub_topic = "/tag_detections/transformed_pose"
-
-    transform_listener_tag_detections = TransformListener(tag_detections_pub_topic, tag_detections_sub_topic)
+    transform_listener_tag_detections = TransformListener()
 
     rate = rospy.Rate(10)  # 10 Hz
     while not rospy.is_shutdown():

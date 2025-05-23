@@ -11,8 +11,10 @@ import subprocess
 import os
 
 # Bag files
-path = "/home/isaac/Downloads/apriltags_kalman/ros_workspace/other_files"
+path = "/home/isaac/Downloads/apriltags_kalman/ros_workspace/other_files/tests/bag files"
 bag_files = [f for f in os.listdir(path) if f.endswith(".bag")]
+
+csv_path = "/home/isaac/Downloads/apriltags_kalman/ros_workspace/other_files/tests/csv files"
 
 class DataGenerator():
     def __init__(self):
@@ -31,9 +33,10 @@ class DataGenerator():
         
         # Define the CSV file
         base_name = os.path.splitext(test)[0]  # Removes .bag
-        self.ground_truth_filename = f"ground_truth_data_{base_name}.csv"
-        self.filter_filename       = f"filter_data_{base_name}.csv"
+        self.ground_truth_filename = f"{csv_path}/ground_truth_data_{base_name}.csv"
+        self.filter_filename       = f"{csv_path}/filter_data_{base_name}.csv"
 
+        """
         # Write the header for the CSV file
         with open(self.ground_truth_filename, mode="w") as file:
             writer = csv.writer(file)
@@ -43,6 +46,16 @@ class DataGenerator():
         with open(self.filter_filename, mode="w") as file:
             writer = csv.writer(file)
             writer.writerow(["time_secs", "time_nsecs", "x_filter", "y_filter", "z_filter", "roll_filter", "pitch_filter", "yaw_filter"])
+        """
+
+        with open(self.ground_truth_filename, mode="w") as file:
+            writer = csv.writer(file)
+            writer.writerow(["time_secs", "time_nsecs", "x", "y", "z", "roll", "pitch", "yaw"])
+
+        # Write the header for the CSV file
+        with open(self.filter_filename, mode="w") as file:
+            writer = csv.writer(file)
+            writer.writerow(["time_secs", "time_nsecs", "x", "y", "z", "roll", "pitch", "yaw"])
 
         self.ground_truth_sub = rospy.Subscriber("/apriltag_box/transformed_odom", Odometry, self.ground_truth_callback)
         self.filter_sub       = rospy.Subscriber("/odometry/filtered", Odometry, self.filter_callback)

@@ -9,6 +9,7 @@ from nav_msgs.msg import Odometry
 from trajectory_msgs.msg import MultiDOFJointTrajectory, MultiDOFJointTrajectoryPoint
 import math
 import numpy as np
+import matplotlib.pyplot as plt
 
 apriltag_pose = Pose()
 
@@ -17,7 +18,7 @@ def euclidean_distance(pose1, pose2):
     return math.sqrt((pose1.x-pose2.x)**2 + (pose1.y-pose2.y)**2 + (pose1.z-pose2.z)**2)
 
 class Drone():
-    def __init__(self, drone_name, battery_left, memory_left):
+    def __init__(self, drone_name, battery_left=100, memory_left=100):
         self.total_battery       = 100   # percentage 2700  # mAh
         self.total_memory        = 100   # percentage 256   # GB
         self.total_distance      = 10 # m
@@ -32,6 +33,14 @@ class Drone():
         self.drone_name = drone_name
 
         # self.time_to_reach_charger = self.distance_to_charger / self.speed
+
+        self.start_time = rospy.Time.now().to_sec()
+        self.effective_deadline = 0
+
+        self.time_array     = []
+        self.deadline_array = []
+        self.battery_array  = []
+        self.memory_array   = []
 
         number_of_priorities = 3
         self.w_battery  = 1 / number_of_priorities
@@ -52,11 +61,30 @@ class Drone():
         self.distance_to_charger = euclidean_distance(apriltag_pose.position, msg.pose.pose.position)
         # print(apriltag_pose)
 
+        t = rospy.Time.now().to_sec() - self.start_time
+        battery_left = 100 - 6.25*t
+        memory_left  = 100 - 2*t
+
+        if battery_left < 0:
+            self.battery_left = 0
+            rospy.signal_shutdown("No battery left")
+        else:
+            self.battery_left = battery_left
+
+        # if memory_left < 0:
+        #     print("Memoria acabada")
+        #     self.memory_left = 0
+        # else:
+        #     self.memory_left = memory_left
+
+        self.time_array.append(t)
+        self.deadline_array.append(self.effective_deadline)
+        self.battery_array.append(self.battery_array)
+        self.memory_array.append(self.memory_array)
+
         return
 
-
     def calculate_deadline(self):
-    	
     	# Slack is the amount of time a task can be delayed before it must start in order to meet its deadline. Juego, de toda la vida
         # slack = (self.battery_left / self.consumption_rate) - self.time_to_reach_charger - self.charging_duration
 
@@ -68,9 +96,8 @@ class Drone():
         normal_distance = self.distance_to_charger/self.total_distance
         normal_memory   = 1 - self.memory_left/self.total_memory
 
-        effective_deadline = self.w_battery * normal_battery + self.w_distance * normal_distance + self.w_memory * normal_memory
-
-        return effective_deadline
+        self.effective_deadline = self.w_battery * normal_battery + self.w_distance * normal_distance + self.w_memory * normal_memory
+        return self.effective_deadline
 
     def move(self, waypoint):
         print(f"Moving drone {self.drone_name} to {waypoint}")
@@ -96,30 +123,42 @@ def apriltag_callback(msg):
     apriltag_pose = msg.pose.pose
     return
 
+def plot(hummingbird, hummingbird1, hummingbird2):
+        print("Shutting down and saving plot...")
+
+        drones = [hummingbird, hummingbird1, hummingbird2]
+
+        plt.figure()
+        for drone in drones:
+            plt.plot(drone.time_array, drone.deadline_array, label=drone.drone_name)
+
+        plt.title("Data Over Time")
+        plt.xlabel("Time (s)")
+        plt.ylabel("Value")
+        plt.legend()
+        plt.savefig("ros_plot.png", dpi=300, bbox_inches='tight')
+        # Optional: show plot at shutdown (will block!)
+
+        # plt.show()
+
 if __name__ == '__main__':
+    rospy.on_shutdown(lambda: plot(hummingbird, hummingbird1, hummingbird2))
+
     rospy.init_node("coordination_simulation")
     rospy.Subscriber("/apriltag_box/real_odometry_sensor/odometry", Odometry, apriltag_callback)
 
-    hummingbird = Drone(drone_name="hummingbird",
-                        battery_left=70,
-                        memory_left=60)
-    hummingbird1 = Drone(drone_name="hummingbird2",
-                        battery_left=70,
-                        memory_left=60)
-    hummingbird2 = Drone(drone_name="hummingbird3",
-                        battery_left=70,
-                        memory_left=60)
+    hummingbird  = Drone(drone_name="hummingbird")
+    hummingbird1 = Drone(drone_name="hummingbird2")
+    hummingbird2 = Drone(drone_name="hummingbird3")
 
-    move = 0
+    move = 1
     if move:
         hummingbird.move((5,0,2))
-        hummingbird1.move((10,0,2))
-        hummingbird2.move((15,0,2))
-    
+        hummingbird1.move((0,5,2))
+        hummingbird2.move((-5,0,2))
+
     rate = rospy.Rate(10)  # 10 Hz
     while not rospy.is_shutdown():
-        # print(apriltag_pose)
-
         deadlines = [(hummingbird, hummingbird.calculate_deadline()),
                  (hummingbird1, hummingbird1.calculate_deadline()),
                  (hummingbird2, hummingbird2.calculate_deadline())]
@@ -128,13 +167,11 @@ if __name__ == '__main__':
         deadlines.sort(key=lambda x: x[1], reverse=True)
 
         # Output results
-        print("\n\n\n\nDrone charging priority (highest to lowest):")
-        for drone, score in deadlines:
-            print(f"{drone.drone_name}: \nbattery  = {drone.battery_left}% left \ndistance = {drone.distance_to_charger} m away from charger \nmemory   = {drone.memory_left}% left \n\npriority score = {score:.2f} \n-----------------------------")
+        # print("\n\n\n\nDrone charging priority (highest to lowest):")
+        # for drone, score in deadlines:
+            # print(f"{drone.drone_name}: \nbattery  = {drone.battery_left}% left \ndistance = {drone.distance_to_charger} m away from charger \nmemory   = {drone.memory_left}% left \n\npriority score = {score:.2f} \n-----------------------------")
 
         rate.sleep() 
-
-
 
     """def move(self, waypoint):
         # Create the message

@@ -48,6 +48,11 @@ Veo en un esquema de árboles las relaciones de coordenadas
 rosrun rqt_tf_tree rqt_tf_tree 
 
 
+export ROS_MASTER_URI=http://192.168.7.1:11311
+export ROS_IP=192.168.7.192
+
+
+
 
 
 

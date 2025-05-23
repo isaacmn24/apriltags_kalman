@@ -4,12 +4,37 @@ import rospy
 import tf2_ros
 from geometry_msgs.msg import PoseStamped, TwistStamped
 from nav_msgs.msg import Odometry
+from uav_msgs.msg import uav_pose
 import tf2_geometry_msgs
 import numpy as np
 import tf.transformations
+import math
+
+def jacobian(q):
+    q1 = q.x
+    q2 = q.y
+    q3 = q.z
+    q4 = q.w
+
+    J = np.zeros((3, 4))
+
+    J[0,0] = (-(q3 + q2) / ((q3 + q2)**2 + (q4 + q1)**2)) + ((q3 - q2) / ((q3 - q2)**2 + (q4 - q1)**2))
+    J[0,1] = ((q4 + q1) / ((q3 + q2)**2 + (q4 + q1)**2)) - ((q4 - q1) / ((q3 - q2)**2 + (q4 - q1)**2))
+    J[0,2] = ((q4 + q1) / ((q3 + q2)**2 + (q4 + q1)**2)) + ((q4 - q1) / ((q3 - q2)**2 + (q4 - q1)**2))
+    J[0,3] = (-(q3 + q2) / ((q3 + q2)**2 + (q4 + q1)**2)) - ((q3 - q2) / ((q3 - q2)**2 + (q4 - q1)**2))
+    J[1,0] = (2 * q4) / math.sqrt(1 - 4 * (q2 * q3 + q1 * q4)**2)
+    J[1,1] = (2 * q3) / math.sqrt(1 - 4 * (q2 * q3 + q1 * q4)**2)
+    J[1,2] = (2 * q2) / math.sqrt(1 - 4 * (q2 * q3 + q1 * q4)**2)
+    J[1,3] = (2 * q1) / math.sqrt(1 - 4 * (q2 * q3 + q1 * q4)**2)
+    J[2,0] = (-(q3 + q2) / ((q3 + q2)**2 + (q4 + q1)**2)) + ((q3 - q2) / ((q3 - q2)**2 + (q4 - q1)**2))
+    J[2,1] = ((q4 + q1) / ((q3 + q2)**2 + (q4 + q1)**2)) - ((q4 - q1) / ((q3 - q2)**2 + (q4 - q1)**2))
+    J[2,2] = ((q4 + q1) / ((q3 + q2)**2 + (q4 + q1)**2)) + ((q4 - q1) / ((q3 - q2)**2 + (q4 - q1)**2))
+    J[2,3] = (-(q3 + q2) / ((q3 + q2)**2 + (q4 + q1)**2)) - ((q3 - q2) / ((q3 - q2)**2 + (q4 - q1)**2))
+
+    return J
 
 class TransformListener:
-    def __init__(self, publisher_topic, subscriber_topic):
+    def __init__(self):
         self.pose = PoseStamped()
         self.pose_covariance = np.zeros((6, 6))  # Placeholder for covariance matrix
         self.twist = TwistStamped()
@@ -20,21 +45,51 @@ class TransformListener:
         self.tf_buffer = tf2_ros.Buffer()
         self.listener = tf2_ros.TransformListener(self.tf_buffer)
         
+        subscriber_topic = "/fc0/pose"
+        publisher_topic = "/apriltag_box/transformed_odom"
+
         rospy.sleep(5)
 
         self.pub = rospy.Publisher(publisher_topic, Odometry, queue_size=10)
-        self.sub = rospy.Subscriber(subscriber_topic, Odometry, self.read_odom)
+        #self.sub = rospy.Subscriber(subscriber_topic, Odometry, self.read_odom)
+        self.sub = rospy.Subscriber(subscriber_topic, uav_pose, self.read_odom)
 
         return
     
     def read_odom(self,msg):
         self.pose.header = msg.header
-        self.pose.pose = msg.pose.pose
-        self.pose_covariance = np.array(msg.pose.covariance).reshape((6, 6))  # Store as 6x6 matrix
+        self.pose.pose.position     = msg.position
+        self.pose.pose.orientation  = msg.orientation
+        # self.pose_covariance        = 36*[0]
+        # self.pose_covariance = np.array(msg.pose.covariance).reshape((6, 6))  # Store as 6x6 matrix
 
         self.twist.header = msg.header
-        self.twist.twist = msg.twist.twist
-        self.twist_covariance = np.array(msg.twist.covariance).reshape((6, 6))
+        self.twist.twist.linear     = msg.velocity
+        self.twist.twist.angular    = msg.angVelocity
+        # self.twist_covariance       = 36*[0]
+        # self.twist_covariance = np.array(msg.twist.covariance).reshape((6, 6))
+
+        all_covariance = np.array(msg.covariance).reshape((10,10))
+        position_covariance     = all_covariance[0:3, 0:3]
+        velocity_covariance     = all_covariance[3:6, 3:6]
+        quaternions_covariance  = all_covariance[6:10, 6:10]
+
+        J = jacobian(msg.orientation)
+        euler_covariance = J @ quaternions_covariance @ J.T
+
+        pose_covariance = np.zeros((6,6))
+        pose_covariance[0:3, 0:3] = position_covariance
+        pose_covariance[3:6, 3:6] = euler_covariance
+        self.pose_covariance = pose_covariance.flatten()
+
+        twist_covariance = 0.1*np.eye(6)
+        twist_covariance[0:3,0:3] = velocity_covariance
+        self.twist_covariance = twist_covariance.flatten()
+
+        print(self.pose)
+        print(self.pose_covariance)
+        print(self.twist)
+        print(self.twist_covariance)
 
         return
 
@@ -121,7 +176,6 @@ class TransformListener:
         # transformed_pose = tf2_geometry_msgs.do_transform_pose(self.pose,transformation)
         # transformed_pose = self.apply_transform(transformation_matrix, self.pose, debugging=1)
         
-        
         # Extract rotation from transformation
         q = transformation.transform.rotation
         rotation_matrix = transformation_matrix[:3, :3]  # Extract 3x3 rotation
@@ -179,7 +233,6 @@ class TransformListener:
 
         self.pub.publish(transformed_msg)
 
-        #self.pub.publish(transformed_pose)
         print("\033[92m Published transformed pose stamped message\033[0m")
         
         return
@@ -188,10 +241,7 @@ if __name__ == '__main__':
     # Initialize ROS node
     rospy.init_node("tf_listener_apriltag_box")
 
-    apriltag_odom_sub_topic = "/apriltag_box/real_odometry_sensor/odometry"
-    apriltag_odom_pub_topic = "/apriltag_box/transformed_odom"
-
-    transform_listener_apriltag_odom = TransformListener(apriltag_odom_pub_topic, apriltag_odom_sub_topic)
+    transform_listener_apriltag_odom = TransformListener()
 
     rate = rospy.Rate(10)  # 10 Hz
     while not rospy.is_shutdown():
