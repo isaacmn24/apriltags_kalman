@@ -12,7 +12,7 @@ from pyproj import Proj
 from pyproj.transformer import Transformer
 
 home_gps = (48.750186, 9.105734, 514.354)   # (lat, lon, alt)
-object_gps = (48.750272, 9.105765, 537)
+object_gps = (48.750231, 9.105686, 473)
 
 # Convert from GPS (LLA) to ECEF
 def lla_to_ecef(lat, lon, alt):
@@ -87,13 +87,38 @@ class Broadcaster():
         t.transform.rotation.w = self.marker_board_pose.pose.orientation.w
 
         self.br.sendTransform(t)
+        print("Marker board frame published")
         return
 
-    def publish_combined_anafi_pose_frame(self):
+    def publish_anafi_pose_frame(self):
         t = geometry_msgs.msg.TransformStamped()
         t.header.stamp = self.drone_pose_vicon.header.stamp
         t.header.frame_id = "world"
         t.child_frame_id = "anafi_localization_1"
+        t.transform.translation.x = self.drone_pose_vicon.pose.position.x
+        t.transform.translation.y = self.drone_pose_vicon.pose.position.y
+        t.transform.translation.z = self.drone_pose_vicon.pose.position.z
+
+        q = self.drone_pose_vicon.pose.orientation
+        q_array = [q.x, q.y, q.z, q.w]
+
+        q_rotated = tf_conversions.transformations.quaternion_multiply([0,0,1,0], q_array)
+
+        t.transform.rotation.x = q_rotated[0]
+        t.transform.rotation.y = q_rotated[1]
+        t.transform.rotation.z = q_rotated[2]
+        t.transform.rotation.w = q_rotated[3]
+        
+        self.br.sendTransform(t)
+
+        print("Anafi frame published")
+        return
+
+    def publish_rotated_anafi_pose_frame(self):
+        t = geometry_msgs.msg.TransformStamped()
+        t.header.stamp = self.drone_pose_vicon.header.stamp
+        t.header.frame_id = "anafi_localization_1"
+        t.child_frame_id = "anafi_rotated"
         t.transform.translation.x = self.drone_pose_vicon.pose.position.x
         t.transform.translation.y = self.drone_pose_vicon.pose.position.y
         t.transform.translation.z = self.drone_pose_vicon.pose.position.z
@@ -104,6 +129,9 @@ class Broadcaster():
         t.transform.rotation.w = self.drone_pose_vicon.pose.orientation.w
         
         self.br.sendTransform(t)
+
+        print("Anafi frame published")
+        return
 
     def publish_camera_frame(self):
         t = geometry_msgs.msg.TransformStamped()
@@ -220,6 +248,14 @@ class Broadcaster():
 
     def drone_attitude_callback(self,msg):
         self.drone_pose_vicon.pose.orientation = msg.quaternion
+
+        self.marker_board_pose.header = msg.header
+        self.marker_board_pose.pose.orientation.w = 1
+        self.marker_board_pose.pose.position.x = ned[0]
+        self.marker_board_pose.pose.position.y = ned[1]
+        self.marker_board_pose.pose.position.z = ned[2]
+
+
         return
     
     def drone_callback(self,msg):
@@ -254,7 +290,7 @@ if __name__ == '__main__':
     rate = rospy.Rate(10)
     while not rospy.is_shutdown():
         brc.publish_apriltag_box_frame()
-        brc.publish_combined_anafi_pose_frame()
+        brc.publish_anafi_pose_frame()
         #brc.publish_camera_frame()
         brc.publish_gimbaled_camera_frame()
         brc.publish_correct_camera_frame()
