@@ -1,0 +1,6 @@
+Time (s),First priority,,Second priority,,Third priority,
+,Drone,Score,Drone,Score,Drone,Score
+0.00,hummingbird_2,0.367,hummingbird_3,0.267,hummingbird_1,0.100
+5.80,hummingbird_2,0.379,hummingbird_3,0.306,hummingbird_1,0.174
+11.60,hummingbird_3,0.345,hummingbird_2,0.325,hummingbird_1,0.313
+17.35,hummingbird_1,0.451,hummingbird_3,0.383,hummingbird_2,0.275

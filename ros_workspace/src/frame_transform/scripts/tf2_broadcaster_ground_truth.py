@@ -255,7 +255,6 @@ class Broadcaster():
         self.marker_board_pose.pose.position.y = ned[1]
         self.marker_board_pose.pose.position.z = ned[2]
 
-
         return
     
     def drone_callback(self,msg):

@@ -1,0 +1,6 @@
+Time (s),First priority,,,,,Second priority,,,,,Third priority,,,,
+,Drone,Score,Distance (m),Battery (%),Memory (%),Drone,Score,Distance (m),Battery (%),Memory (%),Drone,Score,Distance (m),Battery (%),Memory (%)
+0.00,hummingbird_2,0.467,3.15,70.0,90.0,hummingbird_3,0.315,4.12,85.0,70.0,hummingbird_1,0.100,2.45,100.0,80.0
+2.79,hummingbird_2,0.543,6.34,52.5,84.4,hummingbird_3,0.394,3.43,67.3,64.3,hummingbird_1,0.178,1.06,82.3,74.3
+5.60,hummingbird_2,0.606,9.98,35.0,78.8,hummingbird_3,0.471,5.01,49.9,58.8,hummingbird_1,0.290,1.00,64.8,68.7
+8.38,hummingbird_2,0.628,10.00,17.6,73.2,hummingbird_3,0.548,5.00,32.4,53.2,hummingbird_1,0.406,1.00,47.2,63.1

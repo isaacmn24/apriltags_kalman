@@ -46,8 +46,8 @@
 
 		<!-- ********** spawn model ********** -->
 
-
-<group ns="hummingbird">
+	<!-- Drone 1 -->
+	<group ns="hummingbird_1">
 		<include file="$(find rotors_gazebo)/launch/spawn_mav.launch">
 			<arg name="mav_name" value="$(arg mav_name)" />
 			<!-- odom and imu should be included in mav_generic_odometry_sensor.gazebo -->
@@ -55,7 +55,7 @@
 			<arg name="enable_logging" value="$(arg enable_logging)" />
 			<arg name="enable_ground_truth" value="$(arg enable_ground_truth)" />
 			<arg name="log_file" value="$(arg log_file)"/>
-			<arg name="namespace" value="$(arg drone_name)"/>
+			<arg name="namespace" value="hummingbird_1"/>
 			<arg name="x" value="-1"/>
   			<arg name="y" value="-2"/>
   			<arg name="z" value="3"/>
@@ -73,14 +73,14 @@
 	</group>
 
 	<!-- Drone 2 -->
-	<group ns="hummingbird2">
+	<group ns="hummingbird_2">
 	<include file="$(find rotors_gazebo)/launch/spawn_mav.launch">
 		<arg name="mav_name" value="hummingbird" />
 		<arg name="model" value="$(find rotors_description)/urdf/mav_generic_odometry_sensor.gazebo" />
 		<arg name="enable_logging" value="$(arg enable_logging)" />
 		<arg name="enable_ground_truth" value="$(arg enable_ground_truth)" />
 		<arg name="log_file" value="hummingbird2_log" />
-		<arg name="namespace" value="hummingbird2"/>
+		<arg name="namespace" value="hummingbird_2"/>
 		<arg name="x" value="1"/>
 		<arg name="y" value="0"/>
 		<arg name="z" value="3"/>
@@ -97,14 +97,14 @@
 	</group>
 
 	<!-- Drone 3 -->
-	<group ns="hummingbird3">
+	<group ns="hummingbird_3">
 	<include file="$(find rotors_gazebo)/launch/spawn_mav.launch">
 		<arg name="mav_name" value="hummingbird" />
 		<arg name="model" value="$(find rotors_description)/urdf/mav_generic_odometry_sensor.gazebo" />
 		<arg name="enable_logging" value="$(arg enable_logging)" />
 		<arg name="enable_ground_truth" value="$(arg enable_ground_truth)" />
 		<arg name="log_file" value="hummingbird3_log" />
-		<arg name="namespace" value="hummingbird3"/>
+		<arg name="namespace" value="hummingbird_3"/>
 		<arg name="x" value="2"/>
 		<arg name="y" value="2"/>
 		<arg name="z" value="3"/>

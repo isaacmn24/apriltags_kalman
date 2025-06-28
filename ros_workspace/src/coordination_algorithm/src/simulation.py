@@ -10,6 +10,7 @@ from trajectory_msgs.msg import MultiDOFJointTrajectory, MultiDOFJointTrajectory
 import math
 import numpy as np
 import matplotlib.pyplot as plt
+import csv
 
 apriltag_pose = Pose()
 
@@ -17,30 +18,93 @@ def euclidean_distance(pose1, pose2):
     # Calculate Euclidean distance from the origin.
     return math.sqrt((pose1.x-pose2.x)**2 + (pose1.y-pose2.y)**2 + (pose1.z-pose2.z)**2)
 
+def save_csv(drones):
+    # Choose the drone with the longest time array to sample indices
+    longest_time_array = max(drones, key=lambda d: len(d.time_array)).time_array
+
+    if len(longest_time_array) < 4:
+        print("Not enough data points to sample 4 times.")
+        return
+
+    # Pick 4 evenly spaced indices
+    total = len(longest_time_array)
+    indices = [int(i * total / 4) for i in range(4)]
+
+    with open("priority_snapshots.csv", "w", newline='') as file:
+        writer = csv.writer(file)
+
+        # Extended header
+        writer.writerow(["Time (s)", 
+                         "First priority", "", "", "", "", 
+                         "Second priority", "", "", "", "", 
+                         "Third priority", "", "", "", ""])
+        writer.writerow(["", 
+                         "Drone", "Score", "Distance (m)", "Battery (%)", "Memory (%)", 
+                         "Drone", "Score", "Distance (m)", "Battery (%)", "Memory (%)", 
+                         "Drone", "Score", "Distance (m)", "Battery (%)", "Memory (%)"])
+
+        for idx in indices:
+            snapshot = []
+            t = longest_time_array[idx]
+            snapshot.append(f"{t:.2f}")
+
+            entries = []
+            for drone in drones:
+                i = idx if len(drone.time_array) > idx else -1
+                entries.append((
+                    drone.drone_name,
+                    drone.deadline_array[i],
+                    drone.distance_array[i],
+                    drone.battery_array[i],
+                    drone.memory_array[i]
+                ))
+
+            # Sort by score descending
+            entries.sort(key=lambda x: x[1], reverse=True)
+
+            # Write top 3
+            for entry in entries[:3]:
+                name, score, distance, battery, memory = entry
+                snapshot.extend([
+                    name, 
+                    f"{score:.3f}", 
+                    f"{distance:.2f}", 
+                    f"{battery:.1f}", 
+                    f"{memory:.1f}"
+                ])
+
+            writer.writerow(snapshot)
+
+    print("Saved priority snapshots to 'priority_snapshots.csv'.")
+
+
 class Drone():
     def __init__(self, drone_name, battery_left=100, memory_left=100):
         self.total_battery       = 100   # percentage 2700  # mAh
         self.total_memory        = 100   # percentage 256   # GB
         self.total_distance      = 10 # m
         
-        self.battery_left        = battery_left
+        self.battery_left         = battery_left
+        self.battery_initial      = battery_left
         #self.consumption_rate    = 0.1/60
         #self.speed               = 0.1
         #self.charging_duration   = 0
-        self.distance_to_charger = 0
-        self.memory_left         = memory_left
+        self.distance_to_charger  = 0
+        self.memory_initial       = memory_left
+        self.memory_left          = memory_left
 
         self.drone_name = drone_name
 
         # self.time_to_reach_charger = self.distance_to_charger / self.speed
 
-        self.start_time = rospy.Time.now().to_sec()
+        # self.start_time = rospy.Time.now().to_sec()
         self.effective_deadline = 0
 
         self.time_array     = []
         self.deadline_array = []
         self.battery_array  = []
         self.memory_array   = []
+        self.distance_array = []
 
         number_of_priorities = 3
         self.w_battery  = 1 / number_of_priorities
@@ -58,29 +122,42 @@ class Drone():
         self.drone_pose.header = msg.header
         self.drone_pose.pose = msg.pose.pose
 
-        self.distance_to_charger = euclidean_distance(apriltag_pose.position, msg.pose.pose.position)
+        self.distance_to_charger = round(euclidean_distance(apriltag_pose.position, msg.pose.pose.position),3)
         # print(apriltag_pose)
 
-        t = rospy.Time.now().to_sec() - self.start_time
-        battery_left = 100 - 6.25*t
-        memory_left  = 100 - 2*t
+        if already_moved == 1:
+            if not hasattr(self, 'start_time') or self.start_time is None:
+                self.start_time = msg.header.stamp.to_sec()
 
-        if battery_left < 0:
+            t = msg.header.stamp.to_sec() - self.start_time
+
+            #t = rospy.Time.now().to_sec() - self.start_time
+            self.battery_left = round(self.battery_initial - 6.25*t,3)
+            self.memory_left  = round(self.memory_initial  - 2*t,3)
+
+            # self.battery_left = self.battery_initial
+            # self.memory_left = self.memory_initial
+
+            self.calculate_deadline()
+        else:
+            t = 0
+
+        if self.battery_left < 0:
             self.battery_left = 0
             rospy.signal_shutdown("No battery left")
-        else:
-            self.battery_left = battery_left
 
-        # if memory_left < 0:
-        #     print("Memoria acabada")
-        #     self.memory_left = 0
-        # else:
-        #     self.memory_left = memory_left
+        if self.memory_left < 0:
+            self.memory_left = 0
+            rospy.signal_shutdown("No storage left")
+
+        if self.distance_to_charger > self.total_distance+1 or self.distance_to_charger <= 0.5:
+            rospy.signal_shutdown("No storage left")
 
         self.time_array.append(t)
         self.deadline_array.append(self.effective_deadline)
-        self.battery_array.append(self.battery_array)
-        self.memory_array.append(self.memory_array)
+        self.distance_array.append(self.distance_to_charger)
+        self.battery_array.append(self.battery_left)
+        self.memory_array.append(self.memory_left)
 
         return
 
@@ -113,9 +190,8 @@ class Drone():
         pose_msg.pose.orientation.w = 1
 
         # Send the message
-        rospy.sleep(2)  # Give time for publisher to register
+        rospy.sleep(1)
         self.pub.publish(pose_msg)
-        #rospy.sleep(5)
         return
 
 def apriltag_callback(msg):
@@ -124,22 +200,39 @@ def apriltag_callback(msg):
     return
 
 def plot(hummingbird, hummingbird1, hummingbird2):
-        print("Shutting down and saving plot...")
+    print("Shutting down and saving plot...")
 
-        drones = [hummingbird, hummingbird1, hummingbird2]
+    drones = [hummingbird, hummingbird1, hummingbird2]
 
-        plt.figure()
-        for drone in drones:
-            plt.plot(drone.time_array, drone.deadline_array, label=drone.drone_name)
+    for drone in drones:
+        # Find the first index with a non-zero time
+        non_zero_idx = next((i for i, t in enumerate(drone.deadline_array) if t > 0), None)
+        drone.time_array     = drone.time_array[non_zero_idx:]
+        drone.deadline_array = drone.deadline_array[non_zero_idx:]
+        drone.battery_array  = drone.battery_array[non_zero_idx:]
+        drone.memory_array   = drone.memory_array[non_zero_idx:]
 
-        plt.title("Data Over Time")
-        plt.xlabel("Time (s)")
-        plt.ylabel("Value")
-        plt.legend()
-        plt.savefig("ros_plot.png", dpi=300, bbox_inches='tight')
-        # Optional: show plot at shutdown (will block!)
+    # Save CSV snapshots
+    save_csv(drones)
 
-        # plt.show()
+    plt.figure()
+    for drone in drones:
+        diff = np.shape(drone.deadline_array)[0] - np.shape(drone.time_array)[0]
+        print(f"\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n{diff}\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
+        if diff > 0:
+            drone.deadline_array = drone.deadline_array[:-diff]
+        elif diff < 0:
+            drone.time_array = drone.time_array[:-abs(diff)]      
+        plt.plot(drone.time_array, drone.deadline_array, label=drone.drone_name)
+
+    # plt.title("Data Over Time")
+    plt.xlabel("Time (s)")
+    plt.ylabel("Priority score")
+    plt.legend()
+    plt.savefig("ros_plot.png", dpi=300, bbox_inches='tight')
+    # Optional: show plot at shutdown (will block!)
+
+    # plt.show()
 
 if __name__ == '__main__':
     rospy.on_shutdown(lambda: plot(hummingbird, hummingbird1, hummingbird2))
@@ -147,78 +240,32 @@ if __name__ == '__main__':
     rospy.init_node("coordination_simulation")
     rospy.Subscriber("/apriltag_box/real_odometry_sensor/odometry", Odometry, apriltag_callback)
 
-    hummingbird  = Drone(drone_name="hummingbird")
-    hummingbird1 = Drone(drone_name="hummingbird2")
-    hummingbird2 = Drone(drone_name="hummingbird3")
+    hummingbird  = Drone(drone_name="hummingbird_1", battery_left=100, memory_left=80)
+    hummingbird1 = Drone(drone_name="hummingbird_2", battery_left=70, memory_left=90) 
+    hummingbird2 = Drone(drone_name="hummingbird_3", battery_left=85, memory_left=70) 
 
     move = 1
+    already_moved = 0
     if move:
-        hummingbird.move((5,0,2))
-        hummingbird1.move((0,5,2))
-        hummingbird2.move((-5,0,2))
+        hummingbird.move((1,0,2))       # 1
+        hummingbird1.move((0,10,2))      # 10
+        hummingbird2.move((-5,0,2))     # -5
+        rospy.sleep(3)
+        already_moved = 1
+
+    rospy.sleep(3)
+
+    step = 2
 
     rate = rospy.Rate(10)  # 10 Hz
     while not rospy.is_shutdown():
-        deadlines = [(hummingbird, hummingbird.calculate_deadline()),
-                 (hummingbird1, hummingbird1.calculate_deadline()),
-                 (hummingbird2, hummingbird2.calculate_deadline())]
-    
-        # Sort by highest priority (EDF-like: most urgent = lowest score)
-        deadlines.sort(key=lambda x: x[1], reverse=True)
+        hummingbird.move((step,0,2))
+        hummingbird1.move((0,11-step,2))
 
-        # Output results
-        # print("\n\n\n\nDrone charging priority (highest to lowest):")
-        # for drone, score in deadlines:
-            # print(f"{drone.drone_name}: \nbattery  = {drone.battery_left}% left \ndistance = {drone.distance_to_charger} m away from charger \nmemory   = {drone.memory_left}% left \n\npriority score = {score:.2f} \n-----------------------------")
+        print(f"---------\nDistance;\n{hummingbird.drone_name}: {hummingbird.distance_to_charger} {hummingbird1.drone_name}: {hummingbird1.distance_to_charger} {hummingbird2.drone_name}: {hummingbird2.distance_to_charger}\n")
+        print(f"Battery:\n{hummingbird.drone_name}: {hummingbird.battery_left} {hummingbird1.drone_name}: {hummingbird1.battery_left} {hummingbird2.drone_name}: {hummingbird2.battery_left}\n")
+        print(f"Memory:\n{hummingbird.drone_name}: {hummingbird.memory_left} {hummingbird1.drone_name}: {hummingbird1.memory_left} {hummingbird2.drone_name}: {hummingbird2.memory_left}\n---------")
+
+        step += 1
 
         rate.sleep() 
-
-    """def move(self, waypoint):
-        # Create the message
-        trajectory_msg = MultiDOFJointTrajectory()
-        trajectory_msg.joint_names.append("base_link")
-
-        # Define transform (position and orientation)
-
-        target_x = waypoint[0]
-        target_y = waypoint[1]
-        target_z = waypoint[2]
-
-        transform = Transform()
-        transform.translation = Vector3(x=target_x, y=target_y, z=target_z)
-        transform.rotation = Quaternion(x=0.0, y=0.0, z=0.0, w=1.0)  # No rotation
-
-        # Define velocity
-        velocity = Twist()
-
-        # # Direction from current to target
-        # dx = target_x - current_x
-        # dy = target_y - current_y
-        # dz = target_z - current_z
-
-        # norm = math.sqrt(dx**2 + dy**2 + dz**2)
-
-        # # Desired speed (e.g. 1 m/s)
-        # speed = 1.0
-
-        # vx = speed * dx / norm
-        # vy = speed * dy / norm
-        # vz = speed * dz / norm
-
-        velocity.linear = Vector3(x=0.5, y=0.0, z=0.0)  # 0.5 m/s in x
-        velocity.angular = Vector3(x=0.0, y=0.0, z=0.0)
-
-        # Create trajectory point
-        point = MultiDOFJointTrajectoryPoint()
-        point.transforms.append(transform)
-        point.velocities.append(velocity)
-        point.time_from_start = rospy.Duration(10.0)  # Reach target in 10 seconds
-
-        # Add point to message
-        trajectory_msg.points.append(point)
-
-        # Send the message
-        rospy.sleep(1)  # Give time for publisher to register
-        self.pub.publish(trajectory_msg)
-
-        return"""
